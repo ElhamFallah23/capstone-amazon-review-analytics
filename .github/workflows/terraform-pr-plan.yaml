@@ -4,17 +4,17 @@ name: Terraform Plan on pull request
 on:
   pull_request:
 
-  paths:
-    - 'infra/**'
-    - 'modules/glue/**'
-    - 'modules/iam/**'
-    - 'modules/s3_ingestion/**'
-    - 'modules/sns/**'
-    #- 'modules/lambda/**'
-    #- 'modules/stepfunction/**'
-    #- 'modules/snowflake/**'
-    #- 'modules/snowflake-integration/**'
-    - '.github/workflows/terraform-ipost-merge-apply.yaml'
+    paths:
+      - 'infra/**'
+      - 'modules/glue/**'
+      - 'modules/iam/**'
+      - 'modules/s3_ingestion/**'
+      - 'modules/sns/**'
+      #- 'modules/lambda/**'
+      #- 'modules/stepfunction/**'
+      #- 'modules/snowflake/**'
+      #- 'modules/snowflake-integration/**'
+      - '.github/workflows/terraform-ipost-merge-apply.yaml'
 
 # Permissions required for GitHub Actions to assume the OIDC role
 permissions:
