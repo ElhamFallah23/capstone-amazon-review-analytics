@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - test-oidc-connection
+      
     paths:
       - 'infra/**'
       - 'modules/glue/**'
