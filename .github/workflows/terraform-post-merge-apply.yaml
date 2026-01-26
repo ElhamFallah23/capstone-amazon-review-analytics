@@ -15,7 +15,7 @@ on:
       #- 'modules/stepfunction/**'
       #- 'modules/snowflake/**'
       #- 'modules/snowflake-integration/**'
-      - '.github/workflows/terraform-ipost-merge-apply.yaml'
+      - '.github/workflows/terraform-post-merge-apply.yaml'
 
 # Permissions required for GitHub Actions to assume the OIDC role
 permissions:
