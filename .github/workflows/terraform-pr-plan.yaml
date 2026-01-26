@@ -1,0 +1,64 @@
+name: Terraform Plan on pull request
+
+# Trigger this workflow only on pull requests affecting infra or modules
+on:
+  pull_request:
+
+  paths:
+    - 'infra/**'
+    - 'modules/glue/**'
+    - 'modules/iam/**'
+    - 'modules/s3_ingestion/**'
+    - 'modules/sns/**'
+    #- 'modules/lambda/**'
+    #- 'modules/stepfunction/**'
+    #- 'modules/snowflake/**'
+    #- 'modules/snowflake-integration/**'
+    - '.github/workflows/terraform-ipost-merge-apply.yaml'
+
+# Permissions required for GitHub Actions to assume the OIDC role
+permissions:
+  id-token: write      # Required for OIDC auth
+  contents: read   
+  pull-requests: write  # (Optional) for commenting back on PRs
+
+jobs:
+  terraform-pr:
+    name: Terraform Plan for Pr 
+    runs-on: ubuntu-latest
+
+    #Protect this job behind environment approval
+    environment: dev-approve     # this enables manual approval before terraform apply
+
+    steps:
+      # Step 1: Checkout repository code
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      # Step 2: Configure AWS credentials using OIDC role
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::887724315744:role/github_actions_oidc
+          aws-region: eu-central-1
+
+      # Step 3: Install Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      # Step 4: Initialize Terraform (backend and providers)
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./infra
+
+      # Step 5: Run Terraform Plan to preview changes
+      - name: Terraform Plan (PR)
+        run: terraform plan -input=false
+        working-directory: ./infra
+
+ 
+
+
+

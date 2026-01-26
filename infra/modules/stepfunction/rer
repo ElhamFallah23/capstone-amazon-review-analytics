@@ -1,0 +1,7 @@
+
+
+module "s3_ingestion" {
+  source = "./modules/s3_ingestion"
+  bucket_name = "amazon-ingestion"
+  environment = terraform.workspace
+}

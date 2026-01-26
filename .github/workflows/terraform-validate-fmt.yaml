@@ -1,0 +1,40 @@
+name: Terraform Format & Validate
+
+# Run this workflow on every push or pull request to main branch
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.tf'
+      - '.github/workflows/terraform-validate-fmt.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+  terraform-checks:
+    name: Terraform Format & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      # Step 3: Run 'terraform fmt' to check formatting
+      - name: Check Terraform formatting
+        run: terraform fmt -check -recursive
+
+      # Step 4: Run 'terraform validate' to check configuration syntax
+      - name: Validate Terraform configuration
+        run: terraform validate
+        working-directory: ./infra
+
+
