@@ -8,7 +8,7 @@ resource "aws_sns_topic" "job_notifications" {
 
 resource "aws_sns_topic_subscription" "email_subscription" {
   topic_arn = aws_sns_topic.job_notifications.arn
-  protocol = "email" // Email-based subscription
-  endpoint = var.notification_email // Email address to receive notifications
+  protocol  = "email"                // Email-based subscription
+  endpoint  = var.notification_email // Email address to receive notifications
 }
 

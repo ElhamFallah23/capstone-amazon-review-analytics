@@ -2,10 +2,10 @@
 
 output "lambda_function_name" {
   description = "Name of the Lambda function"
-  value = aws_lambda_function.glue_status_checker.function_name
+  value       = aws_lambda_function.glue_status_checker.function_name
 }
 
 output "lambda_function_arn" {
   description = "ARN of the Lambda function"
-  value = aws_lambda_function.glue_status_checker.arn
+  value       = aws_lambda_function.glue_status_checker.arn
 }

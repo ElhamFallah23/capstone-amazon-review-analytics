@@ -2,10 +2,10 @@
 resource "aws_s3_bucket" "ingestion" {
   bucket = "${var.bucket_name}-${var.environment}"
 
-  tags = { 
-    Name = "Ingestion Bucket"
+  tags = {
+    Name        = "Ingestion Bucket"
     Environment = var.environment
-    }
+  }
 }
 
 # Recommended: block public access to the bucket
@@ -20,7 +20,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_access" {
 
 # Optional: enable versioning when requested
 resource "aws_s3_bucket_versioning" "versioning" {
-  bucket = aws_s3_bucket.ingestion.id         # for s3: .id == .bucket in other words, attribute "id" is unique resource identifier used to reference that specific resource from other resources.
+  bucket = aws_s3_bucket.ingestion.id # for s3: .id == .bucket in other words, attribute "id" is unique resource identifier used to reference that specific resource from other resources.
 
   versioning_configuration {
     status = var.enable_versioning ? "Enabled" : "Suspended"
