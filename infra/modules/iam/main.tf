@@ -104,8 +104,8 @@ resource "aws_iam_role" "github_actions_oidc" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
           StringEquals = {
+            "token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main"
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
-            "token.actions.githubusercontent.com:sub" = "repo:${var.github_repo}:ref:refs/heads/${var.github_branch}"
           }
         }
       }
