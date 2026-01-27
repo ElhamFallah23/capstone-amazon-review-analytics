@@ -66,6 +66,25 @@ resource "aws_iam_policy" "sns_full_access" {
 
 # -----------------
 
+# Create an OpenID Connect (OIDC) provider for GitHub Actions
+# This tells AWS to trust tokens issued by GitHub Actions
+resource "aws_iam_openid_connect_provider" "github" {
+
+  # GitHub's OIDC token issuer URL
+  url = "https://token.actions.githubusercontent.com"
+
+  # List of client IDs (audiences) that are allowed
+  client_id_list = [
+    "sts.amazonaws.com"
+  ]
+
+  # GitHub OIDC root certificate thumbprint
+  thumbprint_list = [
+    "6938fd4d98bab03faadb97b34396831e3780aea1"
+  ]
+}
+
+
 # Get current AWS Account ID for building the trust policy 
 data "aws_caller_identity" "current" {}
 
@@ -78,8 +97,9 @@ resource "aws_iam_role" "github_actions_oidc" {
     Statement = [
       {
         Effect = "Allow"
+        #federated principle = OIDC provider(Github)
         Principal = {                              # who = token.actions.githubusercontent.com
-          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
+          Federated = aws_iam_openid_connect_provider.github.arn 
         }
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {

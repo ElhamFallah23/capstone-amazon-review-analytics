@@ -45,7 +45,7 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
     policy_arn = module.iam.sns_fullaccess_policy_arn
 }
 
-# I have a qustion: 
+# I have a question
 #module "oidc_role" {
  # source = "./modules/iam"
   #environment = terraform.workspace

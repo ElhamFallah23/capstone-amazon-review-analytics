@@ -13,3 +13,8 @@ variable "github_branch" {
 description = "Branch name used for deployment"
 type = string
 }
+
+variable "environ" {
+description = "Environment"
+type = string
+}
