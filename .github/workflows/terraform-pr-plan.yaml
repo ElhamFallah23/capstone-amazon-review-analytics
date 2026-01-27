@@ -39,8 +39,11 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::887724315744:role/github_actions_oidc
+          role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
           aws-region: eu-central-1
+      
+      - name: Test AWS Identity 
+        run: aws sts get-caller-identity
 
       # Step 3: Install Terraform CLI
       - name: Setup Terraform
