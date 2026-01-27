@@ -90,7 +90,7 @@ data "aws_caller_identity" "current" {}
 
 # Create IAM role to be assumed by GitHub Actions via OIDC
 resource "aws_iam_role" "github_actions_oidc" {
-  name = "github-actions-oidc-role-dev  #{var.environment}"
+  name = "github-actions-oidc-role-${var.environment}"
 
   assume_role_policy = jsonencode({ #who can assume this Role
     Version = "2012-10-17"
