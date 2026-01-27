@@ -14,7 +14,7 @@ description = "Branch name used for deployment"
 type = string
 }
 
-variable "environ" {
-description = "Environment"
-type = string
-}
+#variable "environment" {
+#description = "The environment to deploy to (e.g. dev, staging,prod)"
+#type = string
+#}

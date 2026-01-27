@@ -6,13 +6,13 @@ module "bootstrap" {
   source = "./modules/bootstrap"
   bucket_name = "capstone-terraform-state-bucket"
   lock_table_name = "capstone-tf-locks"
-  environment = terraform.workspace
+  environment = var.environment
 }
 
 module "s3_ingestion" {
   source = "./modules/s3_ingestion"
   bucket_name = "amazon-ingestion"
-  environment = terraform.workspace
+  environment = var.environment
 }
 
 module "glue" {
@@ -23,19 +23,19 @@ module "glue" {
   s3_input_path = "s3://amazon-ingestion-dev/reviews/"      
   # schedule_expression = "cron(0 12 * * ? *)"
   iam_role_arn = module.iam.glue_crawler_role_arn
-  environment = terraform.workspace
+  environment = var.environment
 }
 
 module "iam" {
   source = "./modules/iam"
-  environment = terraform.workspace
+  environment = var.environment
   github_repo = "your-username/your-repo"
   github_branch = "main"
 }
 
 module "sns" {
   source = "./modules/sns"
-  environment = terraform.workspace
+  environment = var.environment
   notification_email = var.notification_email
 }
 
@@ -48,7 +48,7 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
 # I have a question
 #module "oidc_role" {
  # source = "./modules/iam"
-  #environment = terraform.workspace
+  #environment = var.environment
   #github_repo = "your-username/your-repo"
   #github_branch = "main"
 #}
