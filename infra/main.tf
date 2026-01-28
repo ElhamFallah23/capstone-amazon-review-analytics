@@ -46,6 +46,9 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
 }
 
 
+
+
+
 #module "lambda" {
   #ambda_role_arn = module.iam.lambda_role_arn
   #sns_topic_arn = module.sns.topic_arn
