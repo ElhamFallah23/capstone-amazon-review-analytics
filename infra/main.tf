@@ -46,25 +46,9 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #module "lambda" {
-# lambda_role_arn = module.iam.lambda_role_arn
-#sns_topic_arn = module.sns.topic_arn
-#glue_job_name = "amazon_review_etl_${var.environment}"
-# environment = terraform.workspace
+  #ambda_role_arn = module.iam.lambda_role_arn
+  #sns_topic_arn = module.sns.topic_arn
+  #glue_job_name = "amazon_review_etl_${var.environment}"
+  #environment = var.environment
 #}

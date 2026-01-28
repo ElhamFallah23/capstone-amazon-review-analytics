@@ -27,8 +27,8 @@ jobs:
     name: Terraform Plan for Pr 
     runs-on: ubuntu-latest
 
-    #Protect this job behind environment approval
-    #environment: dev-approve     # this enables manual approval before terraform apply
+    # Protect this job behind environment approval
+    environment: dev-approve     # this enables manual approval before terraform apply
 
     steps:
       # Step 1: Checkout repository code
