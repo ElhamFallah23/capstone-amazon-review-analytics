@@ -11,7 +11,7 @@ module "bootstrap" {
 
 module "s3_ingestion" {
   source      = "./modules/s3_ingestion"
-  bucket_name = "amazon-ingestion"
+  bucket_name = "amazon-ingestion" # ??
   environment = var.environment
 }
 
@@ -29,8 +29,8 @@ module "glue" {
 module "iam" {
   source        = "./modules/iam"
   environment   = var.environment
-  github_repo   = "your-username/your-repo"
-  github_branch = "main"
+  github_repo   = var.github_repo
+  github_branch = var.github_branch
 }
 
 module "sns" {
@@ -45,13 +45,6 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
   policy_arn = module.iam.sns_fullaccess_policy_arn
 }
 
-# I have a question
-#module "oidc_role" {
-# source = "./modules/iam"
-#environment = var.environment
-#github_repo = "your-username/your-repo"
-#github_branch = "main"
-#}
 
 
 
