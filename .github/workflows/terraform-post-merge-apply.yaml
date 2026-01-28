@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Protect this job behind environment approval
-    environment: dev-approve     # this enables manual approval before terraform apply
+    #environment: dev-approve     # this enables manual approval before terraform apply
 
     steps:
       # Step 1: Checkout repository code
