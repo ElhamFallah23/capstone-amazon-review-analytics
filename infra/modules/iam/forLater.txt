@@ -62,3 +62,37 @@ resource "aws_iam_policy" "sns_full_access" {
     Environment = var.environment
   }
 }
+
+
+
++++++++++++++++++++++
+#My condition
+
+        Condition = {
+          StringEquals = {
+            "token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main"
+            #"token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*"
+            #"token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:*"
+            #"token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+
+            "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+          }
+        }
+
+
+
+
+                     "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
+
+"Condition": {
+           "StringEquals": {
+              "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+            },
+           "StringLike": {
+             "token.actions.githubusercontent.com:sub": [
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+            ]
+          }
+        }

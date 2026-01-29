@@ -102,11 +102,16 @@ resource "aws_iam_role" "github_actions_oidc" {
           Federated = aws_iam_openid_connect_provider.github.arn
         }
         Action = "sts:AssumeRoleWithWebIdentity"
-        Condition = {
-          StringEquals = {
-            "token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main"
-            #"token.actions.githubusercontent.com:sub" = "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
-            "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+        "Condition": {
+           "StringEquals": {
+              "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+            },
+           "StringLike": {
+             "token.actions.githubusercontent.com:sub": [
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
+             "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+            ]
           }
         }
       }

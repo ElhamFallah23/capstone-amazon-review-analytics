@@ -1,0 +1,190 @@
+# Terraform Commands Cheat Sheet
+
+## 1. terraform init
+Initializes the Terraform working directory by downloading the required provider plugins and setting up the backend (e.g., S3 for remote state). This must be run once before any other commands.
+
+## 2. terraform fmt
+Automatically formats Terraform configuration files to a canonical format.
+
+## 3. terraform validate
+Validates the Terraform configuration files for syntax and internal consistency, without accessing any remote services.
+
+## 4. terraform plan
+Creates an execution plan showing what actions Terraform will take to change the infrastructure to match the configuration.
+
+## 5. terraform apply
+Applies the changes required to reach the desired state of the configuration. You will be prompted for approval unless `-auto-approve` is specified.
+
+## 6. terraform destroy
+Destroys all resources managed by Terraform that are defined in the configuration.
+
+## 7. terraform show
+Displays the current state or a saved plan file in a human-readable format.
+
+## 8. terraform output
+Displays the values of output variables defined in the configuration.
+
+## 9. terraform state list
+Lists all resources tracked in the current state file.
+
+## 10. terraform state show <resource>
+Shows attributes of a specific resource in the Terraform state.
+
+## 11. terraform taint <resource>
+Manually marks a resource for recreation on the next apply.
+
+## 12. terraform untaint <resource>
+Removes the taint from a resource, canceling the recreation action.
+
+## 13. terraform workspace list
+Lists all available workspaces.
+
+## 14. terraform workspace new <name>
+Creates a new workspace with the given name.
+
+## 15. terraform workspace select <name>
+Selects an existing workspace to switch context.
+
+## 16. terraform import <address> <id>
+Imports an existing resource into Terraform state so it can be managed.
+
+## 17. terraform refresh
+Updates the state file with the real infrastructure (used to detect drift).
+
+## 18. terraform output -json
+Useful for automation, this outputs variables in machine-readable JSON format.
+
+---
+
+# Note:
+- Always use `terraform init` after modifying provider versions or backend settings.
+- For production environments, always review the `plan` before `apply`.
+- Remote backends (like S3 + DynamoDB) should be used for team collaboration and CI/CD pipelines.
+
+
+*******************************************************************
+
+# Git and GitHub Actions Commands Cheat Sheet
+
+## 🔹 Git Commands
+
+### 1. git init
+Initializes a new Git repository in the current directory.
+
+### 2. git clone <repo-url>
+Clones a remote repository to your local machine.
+
+### 3. git status
+Shows the status of changes in your working directory and staging area.
+
+### 4. git add .
+Stages all changes (new, modified, deleted files) for the next commit.
+
+### 5. git commit -m "your message"
+Commits staged changes with a descriptive message.
+
+### 6. git push origin <branch-name>
+Pushes commits from the current branch to the remote repository.
+
+### 7. git pull origin <branch-name>
+Fetches and integrates changes from the remote branch into your local branch.
+
+### 8. git branch
+Lists all local branches.
+
+### 9. git branch <branch-name>
+Creates a new branch.
+
+### 10. git checkout <branch-name>
+Switches to the specified branch.
+
+### 11. git checkout -b <branch-name>
+Creates and switches to a new branch in one command.
+
+### 12. git merge <branch-name>
+Merges the specified branch into the current branch.
+
+### 13. git log
+Displays the commit history.
+
+### 14. git diff
+Shows changes between working directory and last commit.
+
+### 15. git remote -v
+Lists the current remote repository URLs.
+
+---
+
+## 🔹 GitHub Actions Related
+
+### Workflow Files
+Workflows live inside `.github/workflows/` and are written in YAML.
+
+### 1. Trigger by Push
+```yaml
+on:
+  push:
+    branches:
+      - main
+```
+
+### 2. Trigger by Pull Request
+```yaml
+on:
+  pull_request:
+```
+
+### 3. Define Jobs and Steps
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+```
+
+### 4. Set Environment for Manual Approval
+```yaml
+environment:
+  name: dev-approve
+  url: https://your-env-link
+```
+
+### 5. Use Secrets from GitHub
+```yaml
+env:
+  AWS_REGION: us-east-1
+  AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+```
+
+### 6. Terraform in GitHub Actions
+```yaml
+- name: Setup Terraform
+  uses: hashicorp/setup-terraform@v2
+
+- name: Terraform Init
+  run: terraform init
+
+- name: Terraform Plan
+  run: terraform plan
+
+- name: Terraform Apply
+  run: terraform apply -auto-approve
+```
+
+---
+
+# ✅ Best Practice:
+- Use separate workflows for plan and apply.
+- Use manual approval for apply in production.
+- Protect main branch using environments and required reviewers.
+
+
+
+*******************************************************************
