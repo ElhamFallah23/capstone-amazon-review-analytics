@@ -111,7 +111,7 @@ resource "aws_iam_role" "github_actions_oidc" {
               "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
               "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
               "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
-              "repo:ElhamFallah23/capstone-amazon-review-analytics:*", # new after Shakuuul
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:*", # new after Shakuuuuuuul
               "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
             ]
           }

@@ -37,7 +37,7 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::887724315744:role/github_actions_oidc
+          role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
           aws-region: eu-central-1
 
         # Step 4: terraform init
