@@ -8,10 +8,10 @@ on:
       #- test-oidc-connection
     paths:
       - 'infra/**'
-      - 'modules/glue/**'
+      #- 'modules/glue/**'
       - 'modules/iam/**'
       - 'modules/s3_ingestion/**'
-      - 'modules/sns/**'
+      #- 'modules/sns/**'
       #- 'modules/lambda/**'
       #- 'modules/stepfunction/**'
       #- 'modules/snowflake/**'

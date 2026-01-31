@@ -14,3 +14,7 @@ output "github_oidc_role_arn" {
 }
 
 
+output "glue_job_role_arn" {
+  description = "ARN of the IAM role used by Glue ETL job"
+  value       = aws_iam_role.glue_job_role.arn
+}

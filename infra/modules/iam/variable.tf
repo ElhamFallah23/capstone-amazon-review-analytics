@@ -13,3 +13,14 @@ variable "github_branch" {
   description = "Branch name used for deployment"
   type        = string
 }
+
+
+variable "raw_bucket_arn" {
+  description = "ARN of the S3 bucket containing raw input data"
+  type        = string
+}
+
+variable "processed_bucket_arn" {
+  description = "ARN of the S3 bucket for processed/flattened output data"
+  type        = string
+}
