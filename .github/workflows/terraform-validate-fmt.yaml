@@ -32,7 +32,12 @@ jobs:
       - name: Check Terraform formatting
         run: terraform fmt -check -recursive
 
-      # Step 4: Run 'terraform validate' to check configuration syntax
+        # Step 4: terraform init
+      - name: Validate Terraform configuration
+        run: terraform init -input= false
+        working-directory: ./infra
+
+      # Step 5: Run 'terraform validate' to check configuration syntax
       - name: Validate Terraform configuration
         run: terraform validate
         working-directory: ./infra
