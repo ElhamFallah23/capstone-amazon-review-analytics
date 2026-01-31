@@ -1,6 +1,6 @@
 notification_email = "fallah.elham@gmail.com"
 github_repo        = "ElhamFallah23/capstone-amazon-review-analytics"
-github_branch      = "main" 
+github_branch      = "main"
 environment        = "dev"
 
 
@@ -24,7 +24,7 @@ lambda_handler = "main.handler"
 
 # Optional environment variables for Lambda function
 lambda_environment_variables = {
-  STAGE = "dev"
+  STAGE     = "dev"
   LOG_LEVEL = "INFO"
 }
 

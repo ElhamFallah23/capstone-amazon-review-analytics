@@ -4,8 +4,8 @@
 #############################################
 
 variable "environment" {
-description = "Deployment environment (e.g. dev, staging, prod)"
-type = string
+  description = "Deployment environment (e.g. dev, staging, prod)"
+  type        = string
 }
 
 
@@ -53,25 +53,25 @@ variable "iam_role_arn_crawler" {
 #############################################
 
 variable "glue_job_name" {
-description = "Base name of the Glue ETL job"
-type = string
+  description = "Base name of the Glue ETL job"
+  type        = string
 }
 
 variable "iam_role_arn_glue_job" {
-description = "IAM Role ARN assumed by the Glue Job"
-type = string
+  description = "IAM Role ARN assumed by the Glue Job"
+  type        = string
 }
 
 variable "number_of_workers" {
-description = "Number of workers allocated to the Glue Job"
-type = number
-default = 2
+  description = "Number of workers allocated to the Glue Job"
+  type        = number
+  default     = 2
 }
 
 variable "job_timeout" {
-description = "Maximum execution time for the Glue Job in minutes"
-type = number
-default = 60
+  description = "Maximum execution time for the Glue Job in minutes"
+  type        = number
+  default     = 60
 }
 
 #############################################
@@ -79,26 +79,26 @@ default = 60
 #############################################
 
 variable "script_s3_path" {
-description = "S3 path where the Glue ETL Python script is stored"
-type = string
+  description = "S3 path where the Glue ETL Python script is stored"
+  type        = string
 }
 
-variable "temp_s3_path" {                                             # ??? why it is needed
-description = "Temporary S3 directory used by Glue during execution"
-type = string
+variable "temp_s3_path" { # ??? why it is needed
+  description = "Temporary S3 directory used by Glue during execution"
+  type        = string
 }
 
 variable "raw_s3_path" {
-description = "S3 path containing raw Amazon review data"     # Both Glue Job (read from this) and Crawler (crawl) use this main source 
-type = string
+  description = "S3 path containing raw Amazon review data" # Both Glue Job (read from this) and Crawler (crawl) use this main source 
+  type        = string
 }
 
 variable "processed_s3_path" {
-description = "S3 path where processed/flattened data will be written"
-type = string
+  description = "S3 path where processed/flattened data will be written"
+  type        = string
 }
 
 variable "pglue_script_s3_object_dependency" {
   description = "SUsed only to enforce creation orderbetween s3 object and Glue job"
-  type = any
+  type        = any
 }

@@ -15,6 +15,6 @@ variable "github_branch" {
 }
 
 variable "environment" {
-description = "The environment to deploy to (e.g. dev, staging,prod)"
-type = string
+  description = "The environment to deploy to (e.g. dev, staging,prod)"
+  type        = string
 }

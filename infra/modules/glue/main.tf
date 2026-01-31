@@ -5,8 +5,8 @@ resource "aws_glue_catalog_database" "reviews_db" {
 
 # Define a Glue Crawler to scan data in S3 and create table in the above database
 resource "aws_glue_crawler" "reviews_crawler" {
-  name          = "${var.crawler_name}_${var.environment}"
-  role          = var.iam_role_arn_crawler # IAM Role with permissions to access S3 and Glue
+  name               = "${var.crawler_name}_${var.environment}"
+  role               = var.iam_role_arn_crawler # IAM Role with permissions to access S3 and Glue
   glue_database_name = aws_glue_catalog_database.reviews_db.name
 
   # Define the S3 location where the data to crawl stored
@@ -100,10 +100,10 @@ resource "aws_glue_job" "reviews_etl_job" {
     "--TempDir" = var.temp_s3_path
 
     # Custom job parameters
-    "--raw_input_path" = var.raw_s3_path
+    "--raw_input_path"        = var.raw_s3_path
     "--processed_output_path" = var.processed_s3_path
-    "--environment" = var.environment
-  } 
+    "--environment"           = var.environment
+  }
 
 
   depends_on = [
@@ -120,9 +120,9 @@ resource "aws_glue_job" "reviews_etl_job" {
   # Tags for cost tracking and ownership
   ###########################################
   tags = {
-    Project = "amazon-review-analytics"
+    Project     = "amazon-review-analytics"
     Environment = var.environment
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 

@@ -7,7 +7,7 @@ variable "environment" {
 variable "lambda_function_name" {
   description = "The name of lambda function"
   type        = string
-} 
+}
 
 variable "lambda_role_arn" {
   description = "The IAM Role ARN that Lambda will use"
@@ -27,12 +27,12 @@ variable "glue_job_name" {
 
 variable "stepfunction_arn" {
   description = "ARN of the Step Function that triggers this Lambda"
-  type = string
+  type        = string
 }
 
 variable "project_tag" {
   description = "Project name or tag"
-  type = string
-  default = "amazon-review-analytics"
+  type        = string
+  default     = "amazon-review-analytics"
 }
 

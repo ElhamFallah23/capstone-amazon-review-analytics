@@ -102,16 +102,16 @@ resource "aws_iam_role" "github_actions_oidc" {
           Federated = aws_iam_openid_connect_provider.github.arn
         }
         Action = "sts:AssumeRoleWithWebIdentity"
-        "Condition": {
-           "StringEquals": {
-              "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-            },
-           "StringLike": {
-             "token.actions.githubusercontent.com:sub": [
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",             
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+        "Condition" : {
+          "StringEquals" : {
+            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com"
+          },
+          "StringLike" : {
+            "token.actions.githubusercontent.com:sub" : [
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
             ]
           }
         }
@@ -173,13 +173,13 @@ resource "aws_iam_role" "glue_job_role" {
         Action = "sts:AssumeRole"
       }
     ]
- })
+  })
 
- tags = {
-   Project = "amazon-review-analytics"
-   Environment = var.environment
-   Service = "glue"
-   RoleType = "glue-job"
+  tags = {
+    Project     = "amazon-review-analytics"
+    Environment = var.environment
+    Service     = "glue"
+    RoleType    = "glue-job"
   }
 }
 
@@ -187,7 +187,7 @@ resource "aws_iam_role" "glue_job_role" {
 # IAM Policy for Glue Job
 # ------------------------------------------------------------
 resource "aws_iam_policy" "glue_job_policy" {
-  name = "glue-job-policy-${var.environment}"
+  name        = "glue-job-policy-${var.environment}"
   description = "Permissions for Glue ETL job to access S3 and CloudWatch logs"
 
   policy = jsonencode({
@@ -228,7 +228,7 @@ resource "aws_iam_policy" "glue_job_policy" {
       # ------------------------------------------------------
       {
         Effect = "Allow"
-          Action = [
+        Action = [
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents"
@@ -243,8 +243,8 @@ resource "aws_iam_policy" "glue_job_policy" {
 # Attach policy to Glue Job role
 # ------------------------------------------------------------
 resource "aws_iam_role_policy_attachment" "glue_job_policy_attachment" {
-role = aws_iam_role.glue_job_role.name
-policy_arn = aws_iam_policy.glue_job_policy.arn
+  role       = aws_iam_role.glue_job_role.name
+  policy_arn = aws_iam_policy.glue_job_policy.arn
 }
 
 

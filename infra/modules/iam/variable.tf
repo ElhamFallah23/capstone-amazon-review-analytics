@@ -16,11 +16,11 @@ variable "github_branch" {
 
 
 variable "raw_bucket_arn" {
-description = "ARN of the S3 bucket containing raw input data"
-type = string
+  description = "ARN of the S3 bucket containing raw input data"
+  type        = string
 }
 
 variable "processed_bucket_arn" {
-description = "ARN of the S3 bucket for processed/flattened output data"
-type = string
+  description = "ARN of the S3 bucket for processed/flattened output data"
+  type        = string
 }
