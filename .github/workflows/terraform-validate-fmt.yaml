@@ -34,7 +34,7 @@ jobs:
 
         # Step 4: terraform init
       - name: Validate Terraform configuration
-        run: terraform init -input= false
+        run: terraform init -input=false
         working-directory: ./infra
 
       # Step 5: Run 'terraform validate' to check configuration syntax
