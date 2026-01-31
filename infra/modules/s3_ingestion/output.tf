@@ -20,3 +20,14 @@ output "glue_scripts_bucket_name" {
  output "glue_script_s3_object_id" {
   value       = aws_s3_object.glue_job_script.id 
 }
+
+output "processed_bucket_arn" {
+  description = "ARN of Processed data bucket"
+  value       = aws_s3_bucket.processed_data.arn
+}
+
+
+output "raw_bucket_arn" {
+  description = "ARN of raw ingestion bucket"
+  value       = aws_s3_bucket.ingestion.arn
+}

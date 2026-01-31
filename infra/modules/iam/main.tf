@@ -23,7 +23,7 @@ resource "aws_iam_role" "glue_crawler_role" {
 }
 
 # Attach AWS managed policy for Glue service access to S3
-resource "aws_iam_role_policy_attachment" "glue_sservice" {
+resource "aws_iam_role_policy_attachment" "glue_service" {
   role       = aws_iam_role.glue_crawler_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 }
