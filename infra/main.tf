@@ -14,7 +14,7 @@ module "s3_ingestion" {
   environment = var.environment
 
   raw_bucket_name = "amazon-ingestion" 
-  glue_scripts_bucket_name = "amazon_glue_scripts_bucket"
+  glue_scripts_bucket_name = "amazon_glue_scripts_bucket" # should add to AWS
   processed_bucket_name = "amazon_processed_bucket"
 
   tags = {
