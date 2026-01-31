@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   terraform-checks:
@@ -32,7 +33,19 @@ jobs:
       - name: Check Terraform formatting
         run: terraform fmt -check -recursive
 
-      # Step 4: Run 'terraform validate' to check configuration syntax
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
+          aws-region: eu-central-1
+
+        # Step 4: terraform init
+      - name: Validate Terraform configuration
+        run: terraform init -input=false
+        working-directory: ./infra
+
+      # Step 5: Run 'terraform validate' to check configuration syntax
       - name: Validate Terraform configuration
         run: terraform validate
         working-directory: ./infra
