@@ -104,8 +104,6 @@ module "glue_status_lambda" {
 
   # Lambda function configuration 
   lambda_function_name = "glue_job_status_checker"
-  handler              = "lambda_function.lambda_handler"
-  runtime              = "python3.10"
 
   # Glue integration 
   glue_job_name = module.glue.glue_job_name

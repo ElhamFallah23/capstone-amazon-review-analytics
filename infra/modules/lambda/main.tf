@@ -27,11 +27,13 @@ resource "aws_lambda_function" "glue_status_checker" {
 
 # Grant Lambda permission to be invoked by Step Function
 resource "aws_lambda_permission" "allow_stepfunction" {
+  count = var.stepfunction == null ? 0 : 1
+
   statement_id  = "AllowExecutionFromStepFunction"                      # Name of policy statement
   action        = "lambda:InvokeFunction"                               # Let Lambda to be invoked
   function_name = aws_lambda_function.glue_status_checker.function_name # Which Lambda
   principal     = "states.amazonaws.com"                                # Only AWS step function
-  source_arn    = var.stepfunction_arn                                  # Wihtout this line, every step function can run the Lambda
+  #source_arn    = var.stepfunction_arn                                  # Wihtout this line, every step function can run the Lambda
 }
 
 

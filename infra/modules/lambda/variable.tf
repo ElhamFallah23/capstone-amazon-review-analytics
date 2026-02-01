@@ -28,6 +28,7 @@ variable "glue_job_name" {
 variable "stepfunction_arn" {
   description = "ARN of the Step Function that triggers this Lambda"
   type        = string
+  default     = null
 }
 
 variable "project_tag" {
