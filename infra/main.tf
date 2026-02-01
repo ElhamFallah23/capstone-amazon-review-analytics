@@ -81,7 +81,8 @@ module "iam" {
   raw_bucket_arn       = module.s3_ingestion.raw_bucket_arn       # ok
   processed_bucket_arn = module.s3_ingestion.processed_bucket_arn # okkk
 
-  project_tag = "AmazonReviewAnalytics"
+  project_tag   = "AmazonReviewAnalytics"
+  sns_topic_arn = module.sns.topic_arn
 }
 
 module "sns" {
