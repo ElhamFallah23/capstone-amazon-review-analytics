@@ -66,15 +66,15 @@ resource "aws_s3_bucket" "processed_data" {
 # Upload Glue ETL script to S3
 # This script will be executed by AWS Glue Job
 # ------------------------------------------------------------
-resource "aws_s3_object" "glue_job_script" {
-  bucket = aws_s3_bucket.glue_scripts.bucket
+#resource "aws_s3_object" "glue_job_script" {
+# bucket = aws_s3_bucket.glue_scripts.bucket
 
-  # S3 key (path) where the script will be stored
-  key = "glue/reviews_etl_job.py"
+# # S3 key (path) where the script will be stored
+# key = "glue/reviews_etl_job.py"
 
-  # Local path to the Glue ETL Python script
-  source = "${path.module}/glue_job/reviews_etl_job.py"
-
-  # Ensures Terraform detects script changes and re-uploads
-  etag = filemd5("${path.module}/glue_job/reviews_etl_job.py") # To track changes that occer in Python file; Glue Job always run the up-to-date script
-}
+## Local path to the Glue ETL Python script
+#source = "${path.module}/glue_job/reviews_etl_job.py"
+#
+# # Ensures Terraform detects script changes and re-uploads
+# etag = filemd5("${path.module}/glue_job/reviews_etl_job.py") # To track changes that occer in Python file; Glue Job always run the up-to-date script
+#}
