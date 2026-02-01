@@ -27,7 +27,7 @@ resource "aws_lambda_function" "glue_status_checker" {
 
 # Grant Lambda permission to be invoked by Step Function
 resource "aws_lambda_permission" "allow_stepfunction" {
-  count = var.stepfunction == null ? 0 : 1
+  count = var.stepfunction_arn == null ? 0 : 1
 
   statement_id  = "AllowExecutionFromStepFunction"                      # Name of policy statement
   action        = "lambda:InvokeFunction"                               # Let Lambda to be invoked
