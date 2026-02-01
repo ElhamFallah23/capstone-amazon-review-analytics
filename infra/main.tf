@@ -63,7 +63,6 @@ module "glue" {
   # This table is created by the crawler and later read by the Glue job
   # ------------------------------------------------------------
   glue_table_name = "reviews"
-  glue_database_name = 
 }
 
 
