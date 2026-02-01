@@ -96,25 +96,26 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
 
 
 
-#module "glue_status_lambda" {
-# source           = "./modules/lambda"
-# # General environment configuration
-# environment      = var.environment
+module "glue_status_lambda" {
+  source = "./modules/lambda"
 
-# # Lambda function configuration 
-# lambda_function_name = "glue_job_status_checker"
-# handler = "lambda_function.lambda_handler"
-# runtime = "python3.10"
+  # General environment configuration
+  environment = var.environment
 
-## Glue integration 
-# glue_job_name = module.glue.glue_job_name.                    # ok
+  # Lambda function configuration 
+  lambda_function_name = "glue_job_status_checker"
+  handler              = "lambda_function.lambda_handler"
+  runtime              = "python3.10"
 
-# # IAM Role created in IAM module 
-# lambda_role_arn = module.iam.lambda_role_arn                  # ????
+  # Glue integration 
+  glue_job_name = module.glue.glue_job_name
 
-# # SNS integration for notifications
-# sns_topic_arn = module.sns.topic_arn
+  # IAM Role created in IAM module 
+  lambda_role_arn = module.iam.lambda_role_arn
 
-#project_tag = "AmazonReviewAnalytics"
-#
-#}
+  # SNS integration for notifications
+  sns_topic_arn = module.sns.topic_arn
+
+  project_tag = "AmazonReviewAnalytics"
+
+}

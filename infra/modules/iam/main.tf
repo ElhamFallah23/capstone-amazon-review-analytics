@@ -248,8 +248,86 @@ resource "aws_iam_role_policy_attachment" "glue_job_policy_attachment" {
   policy_arn = aws_iam_policy.glue_job_policy.arn
 }
 
+###########################
+
+# ------------------------------------------------------------
+# IAM Role for Lambda
+# ------------------------------------------------------------
+
+resource "aws_iam_role" "lambda_role" {
+  name = "${var.lambda_name}-role-${var.environment}"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+  tags = {
+    Environment = var.environment
+    Project     = var.project_tag
+  }
+}
+
+# ------------------------------------------------------------
+# IAM Policy for Lambda
+# ------------------------------------------------------------
 
 
+resource "aws_iam_policy" "lambda_policy" {
+  name = "${var.lambda_name}-policy-${var.environment}"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      # CloudWatch Logs
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "*"
+      },
+
+      # Glue read access
+      {
+        Effect = "Allow"
+        Action = [
+          "glue:GetJob",
+          "glue:GetJobRun"
+        ]
+        Resource = "*"
+      },
+
+      # SNS publish
+      {
+        Effect   = "Allow"
+        Action   = "sns:Publish"
+        Resource = var.sns_topic_arn
+      }
+    ]
+  })
+}
+
+
+# ------------------------------------------------------------
+# Attach IAM Policy To Role for Lambda
+# ------------------------------------------------------------
+
+
+resource "aws_iam_role_policy_attachment" "lambda_attach" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.lambda_policy.arn
+}
 
 
 

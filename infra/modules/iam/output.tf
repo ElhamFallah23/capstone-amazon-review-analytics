@@ -18,3 +18,8 @@ output "glue_job_role_arn" {
   description = "ARN of the IAM role used by Glue ETL job"
   value       = aws_iam_role.glue_job_role.arn
 }
+
+output "lambda_role_arn" {
+  description = "IAM role ARN for Lambda"
+  value       = aws_iam_role.lambda_role.arn
+}
