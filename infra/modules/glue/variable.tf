@@ -12,6 +12,7 @@ variable "environment" {
 #############################################
 # Glue Catalog Database configuration
 #############################################
+
 variable "glue_database_name" {
   description = "Name of the Glue database"
   type        = string
@@ -29,11 +30,6 @@ variable "glue_table_name" {
 
 variable "crawler_name" {
   description = "Name of the Glue crawler"
-  type        = string
-}
-
-variable "raw_s3_path" {
-  description = "S3 path for the data to be crawled"
   type        = string
 }
 
@@ -98,7 +94,8 @@ variable "processed_s3_path" {
   type        = string
 }
 
-variable "pglue_script_s3_object_dependency" {
-  description = "SUsed only to enforce creation orderbetween s3 object and Glue job"
+variable "glue_script_s3_object_dependency" {
+  description = "Used only to enforce creation order between s3 object and Glue job"
   type        = any
 }
+
