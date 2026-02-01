@@ -31,6 +31,9 @@ resource "aws_iam_role_policy_attachment" "glue_s3_access" {
   role       = aws_iam_role.glue_crawler_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
+#######################
+
+
 
 # Create IAM Policy for SNS permissions
 resource "aws_iam_policy" "sns_full_access" {
@@ -63,6 +66,9 @@ resource "aws_iam_policy" "sns_full_access" {
     Environment = var.environment
   }
 }
+
+
+
 
 # -----------------
 
@@ -338,7 +344,7 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
 
 resource "aws_iam_role" "stepfunction_role" {
   # A clear and unique role name helps operations & debugging
-  name = "role-stepfunctions-${var.stepfunction_state_machine_name}-${var.environment}"
+  name = "role-stepfunctions-${var.state_machine_name}-${var.environment}"
 
   # Step Functions service assumes this role at runtime
   assume_role_policy = jsonencode({
@@ -367,7 +373,7 @@ resource "aws_iam_role" "stepfunction_role" {
 ############################################
 
 resource "aws_iam_policy" "stepfunction_policy" {
-  name        = "policy-stepfunctions-${var.stepfunction_state_machine_name}-${var.environment}"
+  name        = "policy-stepfunctions-${var.state_machine_name}-${var.environment}"
   description = "Permissions for Step Functions to start Glue jobs and invoke Lambda"
 
   policy = jsonencode({

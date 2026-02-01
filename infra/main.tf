@@ -134,8 +134,8 @@ module "stepfunction" {
   stepfunction_role_arn = module.iam.stepfunction_role_arn
 
   glue_job_name             = module.glue.glue_job_name
-  glue_job_arn              = module.glue.glue_job_arn
-  lambda_status_checker_arn = module.lambda.lambda_function_arn
+  glue_job_arn              = module.iam.glue_job_role_arn
+  lambda_status_checker_arn = module.iam.lambda_role_arn
 
   poll_interval_seconds = 60
   enable_logging        = true
@@ -143,3 +143,6 @@ module "stepfunction" {
   # Optional: pass Glue args overrides if you want to override defaults at runtime
   glue_arguments_override = {}
 }
+
+
+

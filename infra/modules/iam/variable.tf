@@ -49,7 +49,7 @@ variable "lambda_function_name" {
 # Step Functions IAM inputs
 ############################################
 
-variable "stepfunction_state_machine_name" {
+variable "state_machine_name" {
   description = "Base name of the Step Functions state machine (env suffix may be appended in root)"
   type        = string
 }
