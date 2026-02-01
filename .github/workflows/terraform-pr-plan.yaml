@@ -6,10 +6,10 @@ on:
 
     paths:
       - 'infra/**'
-      - 'modules/glue/**'
+      #- 'modules/glue/**'
       - 'modules/iam/**'
       - 'modules/s3_ingestion/**'
-      - 'modules/sns/**'
+      #- 'modules/sns/**'
       #- 'modules/lambda/**'
       #- 'modules/stepfunction/**'
       #- 'modules/snowflake/**'
@@ -26,9 +26,6 @@ jobs:
   terraform-pr:
     name: Terraform Plan for Pr 
     runs-on: ubuntu-latest
-
-    # Protect this job behind environment approval
-   # environment: dev-approve     # this enables manual approval before terraform apply
 
     steps:
       # Step 1: Checkout repository code

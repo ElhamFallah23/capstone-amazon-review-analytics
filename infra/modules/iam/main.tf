@@ -23,7 +23,7 @@ resource "aws_iam_role" "glue_crawler_role" {
 }
 
 # Attach AWS managed policy for Glue service access to S3
-resource "aws_iam_role_policy_attachment" "glue_sservice" {
+resource "aws_iam_role_policy_attachment" "glue_service" {
   role       = aws_iam_role.glue_crawler_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 }
@@ -102,16 +102,17 @@ resource "aws_iam_role" "github_actions_oidc" {
           Federated = aws_iam_openid_connect_provider.github.arn
         }
         Action = "sts:AssumeRoleWithWebIdentity"
-        "Condition": {
-           "StringEquals": {
-              "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-            },
-           "StringLike": {
-             "token.actions.githubusercontent.com:sub": [
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",             
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
-             "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+        "Condition" : {
+          "StringEquals" : {
+            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com"
+          },
+          "StringLike" : {
+            "token.actions.githubusercontent.com:sub" : [
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
+              #"repo:ElhamFallah23/capstone-amazon-review-analytics:*",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
             ]
           }
         }
@@ -148,6 +149,106 @@ resource "aws_iam_role_policy_attachment" "attach_terraform_access" {
   role       = aws_iam_role.github_actions_oidc.name
   policy_arn = aws_iam_policy.terraform_access.arn
 }
+
+
+
+
+
+# ------------------------------------------------------------
+# IAM Role for AWS Glue ETL Job
+# This role is assumed by Glue Job to read/write data in S3
+# and publish logs to CloudWatch.
+# ------------------------------------------------------------
+
+resource "aws_iam_role" "glue_job_role" {
+  name = "glue-job-role-${var.environment}"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "glue.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+  tags = {
+    Project     = "amazon-review-analytics"
+    Environment = var.environment
+    Service     = "glue"
+    RoleType    = "glue-job"
+  }
+}
+
+# ------------------------------------------------------------
+# IAM Policy for Glue Job
+# ------------------------------------------------------------
+resource "aws_iam_policy" "glue_job_policy" {
+  name        = "glue-job-policy-${var.environment}"
+  description = "Permissions for Glue ETL job to access S3 and CloudWatch logs"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+
+      # ------------------------------------------------------
+      # Allow Glue Job to read raw data from S3
+      # ------------------------------------------------------
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          var.raw_bucket_arn,
+          "${var.raw_bucket_arn}/*"
+        ]
+      },
+
+      # ------------------------------------------------------
+      # Allow Glue Job to write processed data to S3
+      # ------------------------------------------------------
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ]
+        Resource = [
+          "${var.processed_bucket_arn}/*"
+        ]
+      },
+
+      # ------------------------------------------------------
+      # Allow Glue Job to write logs to CloudWatch
+      # ------------------------------------------------------
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+# ------------------------------------------------------------
+# Attach policy to Glue Job role
+# ------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "glue_job_policy_attachment" {
+  role       = aws_iam_role.glue_job_role.name
+  policy_arn = aws_iam_policy.glue_job_policy.arn
+}
+
+
 
 
 
