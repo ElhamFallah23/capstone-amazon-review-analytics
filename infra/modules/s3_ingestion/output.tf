@@ -31,4 +31,3 @@ output "raw_bucket_arn" {
   description = "ARN of raw ingestion bucket"
   value       = aws_s3_bucket.ingestion.arn
 }
-glue_scripts_bucket_name
