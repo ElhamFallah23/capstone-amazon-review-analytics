@@ -52,7 +52,7 @@ module "glue" {
 # schedule_expression = null #  "cron(0 12 * * ? *)"
 
   glue_job_name = "amazon-reviews-etl"               # Glue ETL Job configuration: This job flattens raw JSON and writes Parquet to processed zone
-  script_s3_path = "s3://${module.s3_ingestion.scripts_bucket_name}/glue_job/reviews_etl_job.py"
+  script_s3_path = "s3://${module.s3_ingestion.glue_scripts_bucket_name}/glue_job/reviews_etl_job.py"
   processed_s3_path = "s3://${module.s3_ingestion.processed_bucket_name}/processed/reviews/"
   iam_role_arn_glue_job = module.iam.glue_job_role_arn
 

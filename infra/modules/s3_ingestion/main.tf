@@ -76,5 +76,5 @@ resource "aws_s3_object" "glue_job_script" {
   source = "${path.module}/glue_job/reviews_etl_job.py"
 
   # Ensures Terraform detects script changes and re-uploads
-  etag = filemd5("${path.module}/glue_job/reviews_etl_job.py") # To track changes that occer in Python file; Glue Job always run the up-to-date script
+  etag = filemd5("${path.module}/glue/reviews_etl_job.py") # To track changes that occer in Python file; Glue Job always run the up-to-date script
 }
