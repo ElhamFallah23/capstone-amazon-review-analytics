@@ -84,6 +84,11 @@ module "iam" {
   project_tag          = "AmazonReviewAnalytics"
   sns_topic_arn        = module.sns.sns_topic_arn
   lambda_function_name = "glue_job_status_checker"
+
+
+  state_machine_name        = "reviews-etl-workflow"
+  glue_job_arn              = module.glue.glue_job_arn
+  lambda_status_checker_arn = module.iam.lambda_function_arn
 }
 
 module "sns" {
