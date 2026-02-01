@@ -32,11 +32,6 @@ variable "crawler_name" {
   type        = string
 }
 
-variable "raw_s3_path" {
-  description = "S3 path for the data to be crawled"
-  type        = string
-}
-
 variable "schedule_expression" {
   description = "Schedule for Glue crawler (e.g., cron)"
   type        = string
