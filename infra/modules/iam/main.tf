@@ -349,13 +349,13 @@ resource "aws_iam_role" "stepfunction_role" {
         Service = "states.amazonaws.com"
       }
       Action = "sts:AssumeRole"
-   }]
+    }]
   })
 
   tags = {
-    Project = var.project_tag
+    Project     = var.project_tag
     Environment = var.environment
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
@@ -367,7 +367,7 @@ resource "aws_iam_role" "stepfunction_role" {
 ############################################
 
 resource "aws_iam_policy" "stepfunction_policy" {
-  name = "policy-stepfunctions-${var.stepfunction_state_machine_name}-${var.environment}"
+  name        = "policy-stepfunctions-${var.stepfunction_state_machine_name}-${var.environment}"
   description = "Permissions for Step Functions to start Glue jobs and invoke Lambda"
 
   policy = jsonencode({
@@ -376,24 +376,24 @@ resource "aws_iam_policy" "stepfunction_policy" {
       [
         # Allow Step Functions to start only the specific Glue Job
         {
-          Sid = "StartSpecificGlueJob"
-          Effect = "Allow"
-          Action = ["glue:StartJobRun"]
+          Sid      = "StartSpecificGlueJob"
+          Effect   = "Allow"
+          Action   = ["glue:StartJobRun"]
           Resource = var.glue_job_arn
         },
 
         # Allow invoking only the status-checker Lambda
         {
-          Sid = "InvokeStatusCheckerLambda"
-          Effect = "Allow"
-          Action = ["lambda:InvokeFunction"]
+          Sid      = "InvokeStatusCheckerLambda"
+          Effect   = "Allow"
+          Action   = ["lambda:InvokeFunction"]
           Resource = var.lambda_status_checker_arn
         }
       ],
       var.enable_stepfunction_logging ? [
         # Step Functions uses log delivery APIs to push execution logs to CloudWatch
         {
-          Sid = "AllowStepFunctionsLoggingDelivery"
+          Sid    = "AllowStepFunctionsLoggingDelivery"
           Effect = "Allow"
           Action = [
             "logs:CreateLogDelivery",
@@ -409,11 +409,11 @@ resource "aws_iam_policy" "stepfunction_policy" {
         }
       ] : []
     )
- })
+  })
 }
 
 resource "aws_iam_role_policy_attachment" "stepfunction_attach" {
-  role = aws_iam_role.stepfunction_role.name
+  role       = aws_iam_role.stepfunction_role.name
   policy_arn = aws_iam_policy.stepfunction_policy.arn
 }
 
