@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   terraform-checks:
@@ -33,7 +34,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
           aws-region: eu-central-1 
-          
+
      # Step 3 
       - name: Terraform Init
         run: terraform init -input=false
