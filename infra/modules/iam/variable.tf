@@ -36,3 +36,8 @@ variable "sns_topic_arn" {
   description = "SNS Topic ARN"
   type        = string
 }
+
+variable "lambda_function_name" {
+  description = "The name of lambda function"
+  type        = string
+}

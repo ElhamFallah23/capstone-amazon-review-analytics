@@ -81,8 +81,9 @@ module "iam" {
   raw_bucket_arn       = module.s3_ingestion.raw_bucket_arn       # ok
   processed_bucket_arn = module.s3_ingestion.processed_bucket_arn # okkk
 
-  project_tag   = "AmazonReviewAnalytics"
-  sns_topic_arn = module.sns.topic_arn
+  project_tag          = "AmazonReviewAnalytics"
+  sns_topic_arn        = module.sns.sns_topic_arn
+  lambda_function_name = "glue_job_status_checker"
 }
 
 module "sns" {
@@ -115,7 +116,7 @@ module "glue_status_lambda" {
   lambda_role_arn = module.iam.lambda_role_arn
 
   # SNS integration for notifications
-  sns_topic_arn = module.sns.topic_arn
+  sns_topic_arn = module.sns.sns_topic_arn
 
   project_tag = "AmazonReviewAnalytics"
 }
