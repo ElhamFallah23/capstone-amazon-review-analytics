@@ -17,10 +17,10 @@ variable "database_name" {
   type        = string
 }
 
-variable "glue_database_name" {
-  description = "Name of the Glue database"
-  type        = string
-}
+#variable "glue_database_name" {
+ # description = "Name of the Glue database"
+  #type        = string
+#}
 
 variable "glue_table_name" {
   description = "Glue Catalog table created by crawler"
