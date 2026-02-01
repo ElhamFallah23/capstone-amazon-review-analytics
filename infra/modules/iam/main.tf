@@ -255,7 +255,7 @@ resource "aws_iam_role_policy_attachment" "glue_job_policy_attachment" {
 # ------------------------------------------------------------
 
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.lambda_name}-role-${var.environment}"
+  name = "${var.lambda_function_name}-role-${var.environment}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -282,7 +282,7 @@ resource "aws_iam_role" "lambda_role" {
 
 
 resource "aws_iam_policy" "lambda_policy" {
-  name = "${var.lambda_name}-policy-${var.environment}"
+  name = "${var.lambda_function_name}-policy-${var.environment}"
 
   policy = jsonencode({
     Version = "2012-10-17"

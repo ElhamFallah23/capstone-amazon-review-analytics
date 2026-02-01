@@ -24,3 +24,15 @@ variable "processed_bucket_arn" {
   description = "ARN of the S3 bucket for processed/flattened output data"
   type        = string
 }
+
+
+variable "project_tag" {
+  description = "Project Tag"
+  type        = string
+}
+
+
+variable "sns_topic_arn" {
+  description = "SNS Topic ARN"
+  type        = string
+}
