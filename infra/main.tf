@@ -86,7 +86,7 @@ module "iam" {
   github_branch = var.github_branch
 
   raw_bucket_arn       = module.s3_ingestion.raw_bucket_arn              # ok
-  processed_bucket_arn = module.s3_ingestion.processed_bucket_arn        # ok
+  processed_bucket_arn = module.s3_ingestion.processed_bucket_arn        # okkk
 }
 
 module "sns" {
