@@ -38,10 +38,10 @@ resource "aws_cloudwatch_log_group" "sfn_logs" {
 ############################################
 # State Machine definition (ASL)
 # Flow:
-# 1) Start Glue Job
-# 2) Wait
-# 3) Invoke Lambda to check status (and notify)
-# 4) Loop until SUCCEEDED or FAIL
+# 1- Start Glue Job
+# 2- Wait
+# 3- Invoke Lambda to check status (and notify)
+# 4- Loop until SUCCEEDED or FAIL
 ############################################
 locals {
   definition = jsonencode({

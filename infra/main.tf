@@ -129,11 +129,13 @@ module "stepfunction" {
   environment = var.environment
   project_tag = "AmazonReviewAnalytics"
 
-  state_machine_name    = "reviews-etl-workflow"
-  stepfunction_role_arn = module.iam.stepfunction_role_arn
+
+  stepfunction_state_machine_name = "reviews-etl-workflow"
+  stepfunction_role_arn           = module.iam.stepfunction_role_arn
 
   glue_job_name             = module.glue.glue_job_name
-  lambda_status_checker_arn = module.glue_status_lambda.lambda_arn
+  glue_job_arn              = module.glue.glue_job_arn
+  lambda_status_checker_arn = module.lambda.lambda_function_arn
 
   poll_interval_seconds = 60
   enable_logging        = true
