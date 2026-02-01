@@ -18,7 +18,7 @@ output "glue_scripts_bucket_name" {
 
 
 #output "glue_script_s3_object_id" {
- # value = aws_s3_object.glue_job_script.id
+# value = aws_s3_object.glue_job_script.id
 #}
 
 output "processed_bucket_arn" {
