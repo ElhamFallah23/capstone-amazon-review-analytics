@@ -78,7 +78,7 @@ variable "script_s3_path" {
   type        = string
 }
 
-variable "temp_s3_path" { # ??? why it is needed
+variable "temp_s3_path" {                       # ??? why it is needed
   description = "Temporary S3 directory used by Glue during execution"
   type        = string
 }
@@ -93,7 +93,8 @@ variable "processed_s3_path" {
   type        = string
 }
 
-variable "pglue_script_s3_object_dependency" {
-  description = "SUsed only to enforce creation orderbetween s3 object and Glue job"
+variable "glue_script_s3_object_dependency" {
+  description = "Used only to enforce creation order between s3 object and Glue job"
   type        = any
 }
+

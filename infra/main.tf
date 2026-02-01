@@ -41,11 +41,11 @@ module "glue" {
   source = "./modules/glue"
   environment = var.environment
 
-  glue_script_s3_object_dependency = module.s3_ingestion.glue_script_object_id
+  glue_script_s3_object_dependency = module.s3_ingestion.glue_script_s3_object_id
 
   database_name = "amazon_reviews_crawler"          # Glue Catalog Database: This database will hold tables created by the crawler
   crawler_name = "amazon-reviews-raw-crawler"       # The crawler scans raw S3 data and creates catalog tables
-  raw_s3_path = "s3://amazon-ingestion-dev/reviews/"    #^ "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/raw/reviews/"      # "s3://amazon-ingestion-dev/reviews/"
+  raw_s3_path = "s3://amazon-ingestion-dev/reviews/"    # "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/raw/reviews/"      # "s3://amazon-ingestion-dev/reviews/"
   iam_role_arn_crawler = module.iam.glue_crawler_role_arn
 
 # Optional: run crawler on schedule (can be null for manual runs)
@@ -54,8 +54,9 @@ module "glue" {
   glue_job_name = "amazon-reviews-etl"               # Glue ETL Job configuration: This job flattens raw JSON and writes Parquet to processed zone
   script_s3_path = "s3://${module.s3_ingestion.scripts_bucket_name}/glue_job/reviews_etl_job.py"
   processed_s3_path = "s3://${module.s3_ingestion.processed_bucket_name}/processed/reviews/"
-  iam_role_arn_job = module.iam.glue_job_role_arn
+  iam_role_arn_glue_job = module.iam.glue_job_role_arn
 
+  temp_s3_path = "s3://${module.s3_ingestion.glue_scripts_bucket_name}/glue-temp/${var.environment}/"
 
   # ------------------------------------------------------------
   # Glue Catalog table name
