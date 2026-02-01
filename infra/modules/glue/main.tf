@@ -99,6 +99,9 @@ resource "aws_glue_job" "reviews_etl_job" {
     # Temp directory used by Glue
     "--TempDir" = var.temp_s3_path
 
+    "--glue_database_name" = var.glue_database_name
+    "--glue_table_name"    = var.glue_table_name
+
     # Custom job parameters
     "--raw_input_path"        = var.raw_s3_path
     "--processed_output_path" = var.processed_s3_path
