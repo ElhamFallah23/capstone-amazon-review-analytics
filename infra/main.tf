@@ -43,7 +43,7 @@ module "glue" {
 
   glue_script_s3_object_dependency = module.s3_ingestion.glue_script_s3_object_id
 
-  database_name = "amazon_reviews_crawler"          # Glue Catalog Database: This database will hold tables created by the crawler
+  glue_database_name = "amazon_reviews_crawler"          # Glue Catalog Database: This database will hold tables created by the crawler
   crawler_name = "amazon-reviews-raw-crawler"       # The crawler scans raw S3 data and creates catalog tables
   raw_s3_path = "s3://amazon-ingestion-dev/reviews/"    # "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/raw/reviews/"      # "s3://amazon-ingestion-dev/reviews/"
   iam_role_arn_crawler = module.iam.glue_crawler_role_arn

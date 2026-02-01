@@ -1,6 +1,6 @@
 # Create database to hold crawled tables
 resource "aws_glue_catalog_database" "reviews_db" {
-  name = "${var.database_name}_${var.environment}"
+  name = "${var.glue_database_name}_${var.environment}"
 }
 
 # Define a Glue Crawler to scan data in S3 and create table in the above database
