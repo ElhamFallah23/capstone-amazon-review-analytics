@@ -79,7 +79,7 @@ variable "script_s3_path" {
   type        = string
 }
 
-variable "temp_s3_path" {                       # ??? why it is needed
+variable "temp_s3_path" { # ??? why it is needed
   description = "Temporary S3 directory used by Glue during execution"
   type        = string
 }
