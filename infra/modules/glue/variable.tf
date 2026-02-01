@@ -12,7 +12,7 @@ variable "environment" {
 #############################################
 # Glue Catalog Database configuration
 #############################################
-variable "glue_database_name" {
+variable "database_name" {
   description = "Name of the Glue database"
   type        = string
 }
