@@ -7,7 +7,7 @@ resource "aws_glue_catalog_database" "reviews_db" {
 resource "aws_glue_crawler" "reviews_crawler" {
   name               = "${var.crawler_name}_${var.environment}"
   role               = var.iam_role_arn_crawler # IAM Role with permissions to access S3 and Glue
-  glue_database_name = aws_glue_catalog_database.reviews_db.name
+  glue_database_name = aws_glue_catalog_database.reviews_db.name        #!!!!
 
   # Define the S3 location where the data to crawl stored
   s3_target {
