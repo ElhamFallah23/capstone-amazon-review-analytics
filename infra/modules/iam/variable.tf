@@ -41,3 +41,35 @@ variable "lambda_function_name" {
   description = "The name of lambda function"
   type        = string
 }
+
+
+
+
+############################################
+# Step Functions IAM inputs
+############################################
+
+variable "state_machine_name" {
+  description = "Base name of the Step Functions state machine (env suffix may be appended in root)"
+  type        = string
+}
+
+variable "lambda_status_checker_arn" {
+  description = "ARN of the Lambda function that Step Functions will invoke"
+  type        = string
+}
+
+variable "glue_job_arn" {
+  description = "ARN of the Glue job that Step Functions will start"
+  type        = string
+}
+
+variable "enable_stepfunction_logging" {
+  description = "Whether Step Functions logging permissions should be included"
+  type        = bool
+  default     = true
+}
+
+
+
+

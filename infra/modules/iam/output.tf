@@ -23,3 +23,13 @@ output "lambda_role_arn" {
   description = "IAM role ARN for Lambda"
   value       = aws_iam_role.lambda_role.arn
 }
+
+
+
+############################################
+# Step Functions IAM outputs
+############################################
+output "stepfunction_role_arn" {
+  description = "IAM Role ARN assumed by Step Functions state machine"
+  value       = aws_iam_role.stepfunction_role.arn
+}

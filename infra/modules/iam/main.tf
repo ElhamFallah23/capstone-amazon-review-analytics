@@ -31,6 +31,9 @@ resource "aws_iam_role_policy_attachment" "glue_s3_access" {
   role       = aws_iam_role.glue_crawler_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
+#######################
+
+
 
 # Create IAM Policy for SNS permissions
 resource "aws_iam_policy" "sns_full_access" {
@@ -63,6 +66,9 @@ resource "aws_iam_policy" "sns_full_access" {
     Environment = var.environment
   }
 }
+
+
+
 
 # -----------------
 
@@ -327,6 +333,94 @@ resource "aws_iam_policy" "lambda_policy" {
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = aws_iam_policy.lambda_policy.arn
+}
+
+
+
+
+############################################
+# IAM Role for Step Functions
+############################################
+
+resource "aws_iam_role" "stepfunction_role" {
+  # A clear and unique role name helps operations & debugging
+  name = "role-stepfunctions-${var.state_machine_name}-${var.environment}"
+
+  # Step Functions service assumes this role at runtime
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Service = "states.amazonaws.com"
+      }
+      Action = "sts:AssumeRole"
+    }]
+  })
+
+  tags = {
+    Project     = var.project_tag
+    Environment = var.environment
+    ManagedBy   = "Terraform"
+  }
+}
+
+############################################
+# IAM Policy for Step Functions
+# - Start Glue job
+# - Invoke Lambda status checker
+# - (Optional) Allow logging delivery permissions for Step Functions
+############################################
+
+resource "aws_iam_policy" "stepfunction_policy" {
+  name        = "policy-stepfunctions-${var.state_machine_name}-${var.environment}"
+  description = "Permissions for Step Functions to start Glue jobs and invoke Lambda"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = concat(
+      [
+        # Allow Step Functions to start only the specific Glue Job
+        {
+          Sid      = "StartSpecificGlueJob"
+          Effect   = "Allow"
+          Action   = ["glue:StartJobRun"]
+          Resource = var.glue_job_arn
+        },
+
+        # Allow invoking only the status-checker Lambda
+        {
+          Sid      = "InvokeStatusCheckerLambda"
+          Effect   = "Allow"
+          Action   = ["lambda:InvokeFunction"]
+          Resource = var.lambda_status_checker_arn
+        }
+      ],
+      var.enable_stepfunction_logging ? [
+        # Step Functions uses log delivery APIs to push execution logs to CloudWatch
+        {
+          Sid    = "AllowStepFunctionsLoggingDelivery"
+          Effect = "Allow"
+          Action = [
+            "logs:CreateLogDelivery",
+            "logs:GetLogDelivery",
+            "logs:UpdateLogDelivery",
+            "logs:DeleteLogDelivery",
+            "logs:ListLogDeliveries",
+            "logs:PutResourcePolicy",
+            "logs:DescribeResourcePolicies",
+            "logs:DescribeLogGroups"
+          ]
+          Resource = "*"
+        }
+      ] : []
+    )
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "stepfunction_attach" {
+  role       = aws_iam_role.stepfunction_role.name
+  policy_arn = aws_iam_policy.stepfunction_policy.arn
 }
 
 
