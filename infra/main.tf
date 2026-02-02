@@ -138,8 +138,8 @@ module "stepfunction" {
   state_machine_name    = "reviews-etl-workflow"
   stepfunction_role_arn = module.iam.stepfunction_role_arn
 
-  glue_job_name             = module.glue.glue_job_name
-  glue_job_arn              = module.iam.glue_job_role_arn
+  glue_job_name = module.glue.glue_job_name
+  #glue_job_arn              = module.iam.glue_job_role_arn
   lambda_status_checker_arn = module.iam.lambda_role_arn
 
   poll_interval_seconds = 60
