@@ -174,6 +174,13 @@ module "stepfunction" {
 module "snowflake" {
   source = "./modules/snowflake"
 
+  providers = {
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
+  }
+
+
+
   # -------------------------------
   # Environment & naming
   # -------------------------------
