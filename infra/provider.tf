@@ -1,7 +1,6 @@
 
 
 terraform {
-  required_version = ">= 1.5.0"
   required_providers {
     snowflake = {
       source  = "Snowflakedb/snowflake"
@@ -9,8 +8,6 @@ terraform {
     }
   }
 }
-
-
 
 ########################################
 # Snowflake provider
@@ -28,7 +25,6 @@ provider "snowflake" {
 
   private_key_path = var.snowflake_private_key_path
 }
-
 ########################################
 # SECURITYADMIN provider:
 # - Used for roles and grants
