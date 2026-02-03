@@ -29,9 +29,19 @@ lambda_environment_variables = {
 }
 
 
-############################
-# snowflake 
-############################
+########################################
+# Snowflake provider configuration
+########################################
+
+
+snowflake_account  = "KEMXMAE-OW63667"
+snowflake_username = "TERRAFORM_USER"
+snowflake_region   = "eu-central-1"
+
+# Local path to private key used by Terraform
+snowflake_private_key_path = ".../public_private_key_snowflake/snowflake_tf_private_key.pem"
+
+
 
 
 ########################################

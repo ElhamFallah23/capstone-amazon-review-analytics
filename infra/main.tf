@@ -161,17 +161,6 @@ module "stepfunction" {
 # This file orchestrates all infrastructure modules
 ########################################
 
-terraform {
-  required_version = ">= 1.5.0"
-
-  required_providers {
-    snowflake = {
-      source  = "Snowflake-Labs/snowflake"
-      version = "~> 0.90"
-    }
-  }
-}
-
 ########################################
 # Snowflake module
 # This module is responsible for:
@@ -183,7 +172,7 @@ terraform {
 ########################################
 
 module "snowflake" {
-  source = "../modules/snowflake"
+  source = "./modules/snowflake"
 
   # -------------------------------
   # Environment & naming
@@ -208,7 +197,7 @@ module "snowflake" {
 }
 
 
-############################
+###########################################
 
 
 

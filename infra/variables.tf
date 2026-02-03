@@ -80,3 +80,41 @@ variable "snowflake_service_user_rsa_public_key" {
 
 
 ############################
+
+
+
+########################################
+# Snowflake provider authentication
+########################################
+
+variable "snowflake_account" {
+  description = "Snowflake account identifier (e.g. xy12345.eu-central-1)"
+  type        = string
+}
+
+variable "snowflake_region" {
+  description = "Snowflake region"
+  type        = string
+}
+
+variable "snowflake_username" {
+  description = "Snowflake admin username used by Terraform"
+  type        = string
+}
+
+variable "snowflake_role" {
+  description = "Snowflake role used by Terraform (SYSADMIN / SECURITYADMIN)"
+  type        = string
+}
+
+variable "snowflake_private_key_path" {
+  description = "Path to Snowflake private key file (PEM)"
+  type        = string
+}
+
+
+
+
+
+
+
