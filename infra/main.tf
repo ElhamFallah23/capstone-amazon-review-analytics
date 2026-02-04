@@ -199,8 +199,8 @@ module "snowflake" {
   # -------------------------------
   # Service user (runtime user)
   # -------------------------------
-  service_user_name           = var.snowflake_service_user_name
-  service_user_rsa_public_key = var.snowflake_service_user_rsa_public_key
+  #service_user_name           = var.snowflake_service_user_name
+  #service_user_rsa_public_key = var.snowflake_service_user_rsa_public_key
 }
 
 
