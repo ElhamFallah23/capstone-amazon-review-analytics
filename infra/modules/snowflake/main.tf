@@ -1,13 +1,11 @@
-
-
-
 ########################################
 # Naming helpers
 ########################################
 locals {
   env_upper = upper(var.environment)
-  db_name   = "${var.database_name}_${local.env_upper}"
-  wh_name   = "${var.warehouse_name}_${local.env_upper}"
+
+  db_name = "${var.database_name}_${local.env_upper}"
+  wh_name = "${var.warehouse_name}_${local.env_upper}"
 
   role_raw       = "${var.role_prefix}_RAW_${local.env_upper}"
   role_transform = "${var.role_prefix}_TRANSFORM_${local.env_upper}"
@@ -32,7 +30,7 @@ resource "snowflake_schema" "raw" {
 
   database = snowflake_database.this.name
   name     = "RAW"
-  comment  = "Raw data layer"
+  comment  = "Raw ingestion layer"
 }
 
 resource "snowflake_schema" "stage" {
@@ -40,7 +38,7 @@ resource "snowflake_schema" "stage" {
 
   database = snowflake_database.this.name
   name     = "STAGE"
-  comment  = "Staging / intermediate transformations"
+  comment  = "Staging / transformation layer"
 }
 
 resource "snowflake_schema" "mart" {
@@ -48,12 +46,11 @@ resource "snowflake_schema" "mart" {
 
   database = snowflake_database.this.name
   name     = "MART"
-  comment  = "Business-ready analytics marts"
+  comment  = "Analytics / BI layer"
 }
 
 ########################################
 # Warehouse (SYSADMIN)
-# Needed for DBT/Airflow/BI queries
 ########################################
 resource "snowflake_warehouse" "this" {
   provider = snowflake.sysadmin
@@ -64,138 +61,167 @@ resource "snowflake_warehouse" "this" {
   auto_suspend = var.warehouse_auto_suspend
   auto_resume  = var.warehouse_auto_resume
 
-  comment = "Compute warehouse for Amazon Review Analytics workloads"
+  comment = "Compute warehouse for DBT, Airflow and BI workloads"
 }
 
 ########################################
 # Roles (SECURITYADMIN)
 ########################################
-resource "snowflake_role" "raw" {
+resource "snowflake_account_role" "raw" {
   provider = snowflake.securityadmin
 
   name    = local.role_raw
-  comment = "Role for reading/writing RAW layer objects"
+  comment = "Role for RAW layer access"
 }
 
-resource "snowflake_role" "transform" {
+resource "snowflake_account_role" "transform" {
   provider = snowflake.securityadmin
 
   name    = local.role_transform
-  comment = "Role for transforming data from RAW -> STAGE -> MART (DBT/Airflow)"
+  comment = "Role for DBT / Airflow transformations"
 }
 
-resource "snowflake_role" "analytics" {
+resource "snowflake_account_role" "analytics" {
   provider = snowflake.securityadmin
 
   name    = local.role_analytics
-  comment = "Role for BI/analytics read-only access (QuickSight/analysts)"
+  comment = "Read-only analytics / BI role"
 }
 
 ########################################
-# Role hierarchy (SECURITYADMIN)
-# analytics can read marts, transform can build stage/mart, raw is lowest layer.
-# You can choose whether to inherit or keep separate. Here we keep them separate
-# to enforce least privilege.
+# Role hierarchy
+# TRANSFORM inherits RAW
 ########################################
+resource "snowflake_grant" "transform_inherits_raw" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
 
-# OPTIONAL: if you want TRANSFORM to also read RAW easily, you can grant RAW to TRANSFORM:
-resource "snowflake_role_grants" "transform_inherits_raw" {
-  provider = snowflake.securityadmin
+  on_role {
+    name = snowflake_account_role.raw.name
+  }
 
-  role_name = snowflake_role.transform.name
-  roles     = [snowflake_role.raw.name]
-}
-
-# OPTIONAL: if you want ANALYTICS to read MART but not RAW/STAGE, do NOT inherit transform.
-# We keep analytics isolated.
-
-########################################
-# Grants: Database usage (SECURITYADMIN)
-########################################
-resource "snowflake_database_grant" "db_usage_raw" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.raw.name]
-}
-
-resource "snowflake_database_grant" "db_usage_transform" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.transform.name]
-}
-
-resource "snowflake_database_grant" "db_usage_analytics" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.analytics.name]
+  roles = [snowflake_account_role.transform.name]
 }
 
 ########################################
-# Grants: Schema usage (SECURITYADMIN)
+# Database USAGE grants
 ########################################
-resource "snowflake_schema_grant" "raw_schema_usage" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  schema_name   = snowflake_schema.raw.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.raw.name, snowflake_role.transform.name]
+resource "snowflake_grant" "db_usage_raw" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    database_name = snowflake_database.this.name
+  }
+
+  roles = [snowflake_account_role.raw.name]
 }
 
-resource "snowflake_schema_grant" "stage_schema_usage" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  schema_name   = snowflake_schema.stage.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.transform.name]
+resource "snowflake_grant" "db_usage_transform" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    database_name = snowflake_database.this.name
+  }
+
+  roles = [snowflake_account_role.transform.name]
 }
 
-resource "snowflake_schema_grant" "mart_schema_usage" {
-  provider      = snowflake.securityadmin
-  database_name = snowflake_database.this.name
-  schema_name   = snowflake_schema.mart.name
-  privilege     = "USAGE"
-  roles         = [snowflake_role.transform.name, snowflake_role.analytics.name]
+resource "snowflake_grant" "db_usage_analytics" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    database_name = snowflake_database.this.name
+  }
+
+  roles = [snowflake_account_role.analytics.name]
 }
 
 ########################################
-# Grants: Warehouse usage (SECURITYADMIN)
-# - TRANSFORM needs USAGE + OPERATE (DBT runs queries)
-# - ANALYTICS typically needs USAGE only
+# Schema USAGE grants
 ########################################
-resource "snowflake_warehouse_grant" "wh_usage_transform" {
-  provider       = snowflake.securityadmin
-  warehouse_name = snowflake_warehouse.this.name
-  privilege      = "USAGE"
-  roles          = [snowflake_role.transform.name]
+resource "snowflake_grant" "raw_schema_usage" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    schema {
+      database_name = snowflake_database.this.name
+      schema_name   = snowflake_schema.raw.name
+    }
+  }
+
+  roles = [
+    snowflake_account_role.raw.name,
+    snowflake_account_role.transform.name
+  ]
 }
 
-resource "snowflake_warehouse_grant" "wh_operate_transform" {
-  provider       = snowflake.securityadmin
-  warehouse_name = snowflake_warehouse.this.name
-  privilege      = "OPERATE"
-  roles          = [snowflake_role.transform.name]
+resource "snowflake_grant" "stage_schema_usage" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    schema {
+      database_name = snowflake_database.this.name
+      schema_name   = snowflake_schema.stage.name
+    }
+  }
+
+  roles = [snowflake_account_role.transform.name]
 }
 
-resource "snowflake_warehouse_grant" "wh_usage_analytics" {
-  provider       = snowflake.securityadmin
-  warehouse_name = snowflake_warehouse.this.name
-  privilege      = "USAGE"
-  roles          = [snowflake_role.analytics.name]
+resource "snowflake_grant" "mart_schema_usage" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
+
+  on {
+    schema {
+      database_name = snowflake_database.this.name
+      schema_name   = snowflake_schema.mart.name
+    }
+  }
+
+  roles = [
+    snowflake_account_role.transform.name,
+    snowflake_account_role.analytics.name
+  ]
 }
 
+########################################
+# Warehouse grants
+########################################
+resource "snowflake_grant" "wh_usage_transform" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
 
+  on {
+    warehouse_name = snowflake_warehouse.this.name
+  }
 
+  roles = [snowflake_account_role.transform.name]
+}
 
+resource "snowflake_grant" "wh_operate_transform" {
+  provider  = snowflake.securityadmin
+  privilege = "OPERATE"
 
+  on {
+    warehouse_name = snowflake_warehouse.this.name
+  }
 
+  roles = [snowflake_account_role.transform.name]
+}
 
+resource "snowflake_grant" "wh_usage_analytics" {
+  provider  = snowflake.securityadmin
+  privilege = "USAGE"
 
+  on {
+    warehouse_name = snowflake_warehouse.this.name
+  }
 
-
-
-
-
-
+  roles = [snowflake_account_role.analytics.name]
+}
