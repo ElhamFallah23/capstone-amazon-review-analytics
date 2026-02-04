@@ -4,38 +4,7 @@
 # Snowflake connection
 ############################
 
-variable "snowflake_account" {
-  description = "Snowflake account identifier"
-  type        = string
-}
 
-variable "snowflake_username" {
-  description = "Snowflake username"
-  type        = string
-}
-
-variable "snowflake_password" {
-  description = "Snowflake password (store in GitHub Secrets / TF vars securely)"
-  type        = string
-  sensitive   = true
-}
-
-variable "snowflake_region" {
-  description = "Snowflake region"
-  type        = string
-}
-
-variable "snowflake_sysadmin_role" {
-  description = "Role used for creating DB/Schema/Warehouse (usually SYSADMIN)"
-  type        = string
-  default     = "SYSADMIN"
-}
-
-variable "snowflake_securityadmin_role" {
-  description = "Role used for creating Roles/Grants (usually SECURITYADMIN)"
-  type        = string
-  default     = "SECURITYADMIN"
-}
 
 ############################
 # Project configuration
