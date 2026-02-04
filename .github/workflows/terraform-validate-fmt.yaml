@@ -40,6 +40,12 @@ jobs:
         run: terraform init -input=false
         working-directory: ./infra
 
+
+      # Step 4.1: Show resolved Terraform providers (debug)
+      - name: Show Terraform providers
+        run: terraform providers
+        working-directory: ./infra
+
       # Step 4: Run 'terraform fmt' to check formatting
       - name: Check Terraform formatting
         run: terraform fmt -check -recursive

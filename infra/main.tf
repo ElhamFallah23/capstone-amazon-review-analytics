@@ -151,3 +151,66 @@ module "stepfunction" {
 
 
 
+
+
+
+
+
+########################################
+# Root Terraform configuration
+# This file orchestrates all infrastructure modules
+########################################
+
+########################################
+# Snowflake module
+# This module is responsible for:
+# - Database
+# - Schemas (RAW / STAGE / MART)
+# - Warehouse
+# - Roles
+# - Grants
+########################################
+
+module "snowflake" {
+  source = "./modules/snowflake"
+
+  providers = {
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
+  }
+
+
+
+  # -------------------------------
+  # Environment & naming
+  # -------------------------------
+  environment    = var.environment
+  database_name  = var.snowflake_database_name
+  warehouse_name = var.snowflake_warehouse_name
+  role_prefix    = var.snowflake_role_prefix
+
+  # -------------------------------
+  # Warehouse configuration
+  # -------------------------------
+  warehouse_size         = var.snowflake_warehouse_size
+  warehouse_auto_suspend = var.snowflake_warehouse_auto_suspend
+  warehouse_auto_resume  = var.snowflake_warehouse_auto_resume
+
+  # -------------------------------
+  # Service user (runtime user)
+  # -------------------------------
+  #service_user_name           = var.snowflake_service_user_name
+  #service_user_rsa_public_key = var.snowflake_service_user_rsa_public_key
+}
+
+
+###########################################
+
+
+
+
+
+
+
+
+
