@@ -24,7 +24,7 @@ provider "snowflake" {
   region  = var.snowflake_region
 
   authenticator = "SNOWFLAKE_JWT"
-  private_key   = file(var.snowflake_private_key_path)
+  private_key   = var.snowflake_private_key_path
 }
 
 ########################################
@@ -40,7 +40,7 @@ provider "snowflake" {
   region  = var.snowflake_region
 
   authenticator = "SNOWFLAKE_JWT"
-  private_key   = file(var.snowflake_private_key_path)
+  private_key   = var.snowflake_private_key_path
 }
 
 
