@@ -46,8 +46,9 @@ jobs:
 
       - name: Export Snowflake private key
         run: |
-          echo "TF_VAR_snowflake_private_key=${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
-
+          echo "TF_VAR_snowflake_private_key<<EOF" >> $GITHUB_ENV
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
 
       - name: Test AWS Identity 
