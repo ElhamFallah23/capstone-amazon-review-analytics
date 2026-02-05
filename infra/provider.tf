@@ -10,7 +10,6 @@ terraform {
     }
   }
 }
-
 ########################################
 # SYSADMIN provider
 # - Used for databases, schemas, warehouses, user defaults
@@ -21,12 +20,11 @@ provider "snowflake" {
   account = var.snowflake_account
   user    = var.snowflake_username
   role    = "SYSADMIN"
-  #region  = var.snowflake_region
+  region  = var.snowflake_region
 
   authenticator = "SNOWFLAKE_JWT"
   private_key   = var.snowflake_private_key
 }
-
 ########################################
 # SECURITYADMIN provider
 # - Used for roles, grants, service user
@@ -37,7 +35,7 @@ provider "snowflake" {
   account = var.snowflake_account
   user    = var.snowflake_username
   role    = "SECURITYADMIN"
-  #region  = var.snowflake_region
+  region  = var.snowflake_region
 
   authenticator = "SNOWFLAKE_JWT"
   private_key   = var.snowflake_private_key

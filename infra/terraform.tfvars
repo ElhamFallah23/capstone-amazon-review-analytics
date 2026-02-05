@@ -40,9 +40,9 @@ lambda_environment_variables = {
 ########################################
 # Snowflake connection
 ########################################
-snowflake_account  = "kemxmae-ow63667.eu-central-1" # "KEMXMAE-OW63667.eu-central-1" 
+snowflake_account  = "kemxmae-ow63667" # "KEMXMAE-OW63667.eu-central-1" 
 snowflake_username = "TERRAFORM_USER"
-#snowflake_region   = "eu-central-1"
+snowflake_region   = "eu-central-1"
 #snowflake_private_key_path = ".../public_private_key_snowflake/snowflake_tf_private_key.pem"
 
 ########################################
@@ -64,6 +64,15 @@ service_user_rsa_public_key = <<EOF
 "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsQgsjwKAXOw3WoQ5XY3qyKaIfMYbWJTG/+jTLc41gtBBhNDLSRKQCzUght0EG72V8VwitAkTmAXTNvQiaKxRlz/qACCosWY9sK/0ghvMONhMdLrBmpct4wImzYLX3IZkHaNYpTahiinHGSJn1l2i8fLOBJThu9oVU2pYnRsKotKkUr+N1i108m/CHi7vB14Albw97A2awIUo11EoGw6ZSUEs4VmBOwRhT5Jd+zTOIC8pPnN809yz2WmLI1YQq3C5Mrk9B/Es5mT7Q0BNOznqGzJH+HNe1ex4NG85RwankEgZQl7Ji2clCZMvWDTQAdjI5nvm9oYhn2ieIBj3IHsEcwIDAQAB"
 -----END PUBLIC KEY-----
 EOF
+
+
+
+
+
+
+
+
+
 
 ###ioLKLKJUUGUGUGHIKHKJHGGZZHHLKKHGZFkhjghfhv
 
