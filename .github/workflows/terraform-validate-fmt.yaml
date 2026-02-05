@@ -35,12 +35,7 @@ jobs:
           role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
           aws-region: eu-central-1 
 
-      - name: Export Snowflake private key
-        run: |
-          echo "TF_VAR_snowflake_private_key<<EOF" >> $GITHUB_ENV
-          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
+      
      # Step 3 
       - name: Terraform Init
         run: terraform init -input=false

@@ -82,4 +82,3 @@ variable "service_user_default_warehouse" {
 
 
 
-

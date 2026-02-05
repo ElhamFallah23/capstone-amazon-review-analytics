@@ -47,7 +47,7 @@ variable "snowflake_region" {
   type        = string
 }
 
-variable "snowflake_private_key" {
+variable "SNOWFLAKE_PRIVATE_KEY" {
   description = "Path to RSA private key used for JWT authentication"
   type        = string
   sensitive   = true
