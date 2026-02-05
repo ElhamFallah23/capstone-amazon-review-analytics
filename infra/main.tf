@@ -156,41 +156,41 @@ module "stepfunction" {
 # Snowflake infrastructure (Phase 1)
 ########################################
 module "snowflake" {
-source = "./modules/snowflake"
+  source = "./modules/snowflake"
 
-####################################
-# Providers
-####################################
-providers = {
-snowflake.sysadmin = snowflake.sysadmin
-snowflake.securityadmin = snowflake.securityadmin
-}
+  ####################################
+  # Providers
+  ####################################
+  providers = {
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
+  }
 
-####################################
-# Environment
-####################################
-environment = var.environment
+  ####################################
+  # Environment
+  ####################################
+  environment = var.environment
 
-####################################
-# Core objects
-####################################
-database_name = var.database_name
-warehouse_name = var.warehouse_name
+  ####################################
+  # Core objects
+  ####################################
+  database_name  = var.database_name
+  warehouse_name = var.warehouse_name
 
-####################################
-# Roles
-####################################
-role_prefix = "ARA"
+  ####################################
+  # Roles
+  ####################################
+  role_prefix = "ARA"
 
-####################################
-# Service user
-####################################
-service_user_name = var.service_user_name
-service_user_login_name = var.service_user_login_name
-service_user_display_name = "DBT + Airflow Service User"
-service_user_rsa_public_key = var.service_user_rsa_public_key
+  ####################################
+  # Service user
+  ####################################
+  service_user_name           = var.service_user_name
+  service_user_login_name     = var.service_user_login_name
+  service_user_display_name   = "DBT + Airflow Service User"
+  service_user_rsa_public_key = var.service_user_rsa_public_key
 
-# DBT/Airflow should operate & transform
-service_user_default_role = "TRANSFORM"
+  # DBT/Airflow should operate & transform
+  service_user_default_role = "TRANSFORM"
 }
 
