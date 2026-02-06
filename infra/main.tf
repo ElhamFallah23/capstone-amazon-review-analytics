@@ -194,3 +194,10 @@ module "snowflake" {
   service_user_default_role = "TRANSFORM"
 }
 
+
+
+
+
+
+
+
