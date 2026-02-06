@@ -1,5 +1,3 @@
-
-
 terraform {
   required_version = ">= 1.5.0"
 
@@ -30,13 +28,11 @@ provider "snowflake" {
 # - Used for roles, grants, service user
 ########################################
 provider "snowflake" {
-  alias = "securityadmin"
-
-  account = var.snowflake_account
-  user    = var.snowflake_username
-  role    = "SECURITYADMIN"
-  region  = var.snowflake_region
-
+  alias         = "securityadmin"
+  account       = var.snowflake_account
+  user          = var.snowflake_username
+  role          = "SECURITYADMIN"
+  region        = var.snowflake_region
   authenticator = "SNOWFLAKE_JWT"
   private_key   = var.snowflake_private_key
 }

@@ -40,7 +40,7 @@ lambda_environment_variables = {
 ########################################
 # Snowflake connection
 ########################################
-snowflake_account  = "kemxmae-ow63667" # "KEMXMAE-OW63667.eu-central-1" 
+snowflake_account  = "KEMXMAE-OW63667" # "KEMXMAE-OW63667.eu-central-1" 
 snowflake_username = "TERRAFORM_USER"
 snowflake_region   = "eu-central-1"
 #snowflake_private_key_path = ".../public_private_key_snowflake/snowflake_tf_private_key.pem"
