@@ -42,10 +42,10 @@ variable "snowflake_username" {
   type        = string
 }
 
-variable "snowflake_region" {
-  description = "Snowflake region (e.g. eu-central-1)"
-  type        = string
-}
+#variable "snowflake_region" {
+# description = "Snowflake region (e.g. eu-central-1)"
+#type        = string
+#}
 
 variable "snowflake_private_key" {
   description = "Path to RSA private key used for JWT authentication"
