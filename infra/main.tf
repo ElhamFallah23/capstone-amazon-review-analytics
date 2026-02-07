@@ -202,6 +202,11 @@ module "snowflake" {
 module "snowflake_integration_role" {
   source = "./modules/snowflake-integration-role"
 
+
+  integration_aws_iam_user_arn = var.integration_aws_iam_user_arn
+  integration_external_id      = var.integration_external_id
+
+
   role_name = "snowflake-s3-integration-role"
   s3_bucket_arn = [
     module.s3_ingestion.raw_bucket_arn,
@@ -227,6 +232,7 @@ module "snowflake_storage_integration" {
   integration_name = "ARA_S3_INTEGRATION"
 
   aws_role_arn = module.snowflake_integration_role.role_arn
+
 
   allowed_locations = [
     "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/",
