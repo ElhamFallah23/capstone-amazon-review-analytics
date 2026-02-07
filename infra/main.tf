@@ -203,8 +203,8 @@ module "snowflake_integration_role" {
   source = "./modules/snowflake-integration-role"
 
 
-  integration_aws_iam_user_arn = module.snowflake_storage_integration.integration_aws_iam_user_arn
-  integration_external_id      = module.snowflake_storage_integration.integration_external_id
+  integration_aws_iam_user_arn = var.integration_aws_iam_user_arn
+  integration_external_id      = var.integration_external_id
 
 
   role_name = "snowflake-s3-integration-role"

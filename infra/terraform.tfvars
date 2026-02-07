@@ -72,6 +72,9 @@ EOF
 
 
 
+integration_aws_iam_user_arn = "arn:aws:iam::115005006440:user/aqef1000-s"
+integration_external_id      = "NW13989_SFCRole=4_RXhx+v72sZ4uUV9AksdhlYnRd28="
+
 
 
 ###ioLKLKJUUGUGUGHIKHKJHGGZZHHLKKHGZFkhjghfhvhgugjzftz
