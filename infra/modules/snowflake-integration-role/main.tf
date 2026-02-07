@@ -46,7 +46,7 @@ resource "aws_iam_policy" "s3_read" {
           "s3:GetObjectVersion"
         ]
         Resource = flatten([
-          for arn in var.s3_bucket_arns : [
+          for arn in var.s3_bucket_arn : [
             arn,
             "${arn}/*"
           ]
