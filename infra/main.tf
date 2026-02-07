@@ -229,7 +229,7 @@ module "snowflake_storage_integration" {
   aws_role_arn = module.snowflake_integration_role.role_arn
 
   allowed_locations = [
-    "s3://${module.s3_ingestion.raw_bucket_name}/",
+    "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/",
     "s3://${module.s3_ingestion.processed_bucket_name}/"
   ]
 
