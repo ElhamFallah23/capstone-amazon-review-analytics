@@ -19,4 +19,14 @@ variable "tags" {
   default     = {}
 }
 
+variable "integration_aws_iam_user_arn" {
+  description = "Snowflake AWS IAM User ARN DESC INTEGRATION"
+  type        = list(string)
+}
+
+variable "integration_external_id" {
+  description = "Snowflake external ID from DESC INTEGRATION"
+  type        = list(string)
+}
+
 
