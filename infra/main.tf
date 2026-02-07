@@ -199,8 +199,8 @@ module "snowflake" {
 # snowflake_integration_role
 ####################################
 
-module "snowflake-integration-role" {
-  source = "./modules/snowflake_integration_role"
+module "snowflake_integration_role" {
+  source = "./modules/snowflake-integration-role"
 
   role_name = "snowflake-s3-integration-role"
   s3_bucket_arns = [
