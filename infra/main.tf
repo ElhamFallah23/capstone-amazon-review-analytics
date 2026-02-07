@@ -195,9 +195,19 @@ module "snowflake" {
 }
 
 
+####################################
+# snowflake_integration_role
+####################################
 
+module "snowflake_integration_role" {
+  source = "./modules/iam/snowflake_integration_role"
 
-
+  role_name = "snowflake-s3-integration-role"
+  s3_bucket_arns = [
+    module.s3_ingestion.raw_bucket_arn,
+    module.s3_ingestion.processed_bucket_arn
+  ]
+}
 
 
 

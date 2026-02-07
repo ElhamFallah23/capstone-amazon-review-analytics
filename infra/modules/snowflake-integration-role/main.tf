@@ -19,7 +19,7 @@ resource "aws_iam_role" "this" {
       {
         Effect = "Allow"
         Principal = {
-          AWS = "*"
+          AWS = "*" # AWS = "*"  : Bootstrap
         }
         Action = "sts:AssumeRole"
       }
