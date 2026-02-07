@@ -20,12 +20,13 @@ resource "aws_iam_role" "this" {
         Effect = "Allow"
         Principal = {
           #AWS = "*" # AWS = "*"  : Bootstrap
-          type        = "AWS"
-          identifiers = [var.integration_aws_iam_user_arn]
+          AWS = var.integration_aws_iam_user_arn
         }
         Action = "sts:AssumeRole"
-        condition = {
-          values = [var.integration_external_id]
+        Condition = {
+          StringEquals = {
+            "sts:ExternalId" = var.integration_external_id
+          }
         }
       }
     ]
