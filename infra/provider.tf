@@ -37,6 +37,20 @@ provider "snowflake" {
   private_key   = var.snowflake_private_key
 }
 
+########################################
+# ACCOUNTADMIN provider
+# - Used for roles, grants, service user
+########################################
+
+provider "snowflake" {
+  alias   = "ACCOUNTadmin"
+  account = var.snowflake_account
+  user    = var.snowflake_username
+  role    = "ACCOUNTADMIN"
+
+  authenticator = "SNOWFLAKE_JWT"
+  private_key   = var.snowflake_private_key
+}
 
 
 

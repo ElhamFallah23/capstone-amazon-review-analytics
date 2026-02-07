@@ -1,7 +1,7 @@
 
 
 resource "snowflake_storage_integration" "this" {
-  provider = snowflake.securityadmin
+  provider = snowflake.accountadmin
 
   name    = var.integration_name
   type    = "EXTERNAL_STAGE"
