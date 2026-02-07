@@ -194,3 +194,46 @@ module "snowflake" {
   service_user_default_role = "TRANSFORM"
 }
 
+
+####################################
+# snowflake_integration_role
+####################################
+
+module "snowflake_integration_role" {
+  source = "./modules/snowflake-integration-role"
+
+  role_name = "snowflake-s3-integration-role"
+  s3_bucket_arn = [
+    module.s3_ingestion.raw_bucket_arn,
+    module.s3_ingestion.processed_bucket_arn
+  ]
+  s3_prefixes = [
+    "raw/",
+    "stage/"
+  ]
+
+}
+
+
+
+
+####################################
+# snowflake_integration
+####################################
+
+module "snowflake_storage_integration" {
+  source = "./modules/snowflake-integration"
+
+  integration_name = "ARA_S3_INTEGRATION"
+
+  aws_role_arn = module.snowflake_integration_role.role_arn
+
+  allowed_locations = [
+    "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/",
+    "s3://${module.s3_ingestion.processed_bucket_name}/"
+  ]
+
+  providers = {
+    snowflake.securityadmin = snowflake.securityadmin
+  }
+}

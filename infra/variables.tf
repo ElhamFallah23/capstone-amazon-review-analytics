@@ -87,3 +87,7 @@ variable "service_user_rsa_public_key" {
   sensitive   = true
 }
 
+########################################
+# Snoflake-Integration
+########################################
+
