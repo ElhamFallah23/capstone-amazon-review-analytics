@@ -43,7 +43,7 @@ provider "snowflake" {
 ########################################
 
 provider "snowflake" {
-  alias   = "ACCOUNTadmin"
+  alias   = "accountadmin"
   account = var.snowflake_account
   user    = var.snowflake_username
   role    = "ACCOUNTADMIN"
@@ -52,5 +52,7 @@ provider "snowflake" {
   private_key   = var.snowflake_private_key
 }
 
+
+#JNJBJ
 
 
