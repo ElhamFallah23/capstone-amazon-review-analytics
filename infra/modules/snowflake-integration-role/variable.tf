@@ -5,7 +5,7 @@ variable "role_name" {
 
 variable "s3_bucket_arn" {
   description = "ARN of the S3 bucket Snowflake will access"
-  type        = string
+  type        = list(string)
 }
 
 variable "s3_prefixes" {
