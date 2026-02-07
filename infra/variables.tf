@@ -87,3 +87,16 @@ variable "service_user_rsa_public_key" {
   sensitive   = true
 }
 
+########################################
+# Snoflake-Integration
+########################################
+
+variable "s3_bucket_arn" {
+  description = ""
+  type        = string
+}
+
+variable "s3_prefixes" {
+  description = ""
+  type        = list(string)
+}

@@ -203,10 +203,15 @@ module "snowflake_integration_role" {
   source = "./modules/snowflake-integration-role"
 
   role_name = "snowflake-s3-integration-role"
-  s3_bucket_arns = [
+  s3_bucket_arn = [
     module.s3_ingestion.raw_bucket_arn,
     module.s3_ingestion.processed_bucket_arn
   ]
+  s3_prefixes = [
+    "raw/",
+    "stage/"
+  ]
+
 }
 
 
