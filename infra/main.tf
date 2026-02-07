@@ -199,7 +199,7 @@ module "snowflake" {
 # snowflake_integration_role
 ####################################
 
-module "snowflake_integration_role" {
+module "snowflake-integration-role" {
   source = "./modules/iam/snowflake_integration_role"
 
   role_name = "snowflake-s3-integration-role"
@@ -211,3 +211,7 @@ module "snowflake_integration_role" {
 
 
 
+
+####################################
+# snowflake_integration
+####################################
