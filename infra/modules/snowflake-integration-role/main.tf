@@ -45,10 +45,12 @@ resource "aws_iam_policy" "s3_read" {
           "s3:GetObject",
           "s3:GetObjectVersion"
         ]
-        Resource = [
-          for prefix in var.s3_prefixes :
-          "${var.s3_bucket_arn}/${prefix}*"
-        ]
+        Resource = flatten([
+          for arn in var.s3_bucket_arns : [
+            arn,
+            "${arn}/*"
+          ]
+        ])
       },
       {
         Effect = "Allow"

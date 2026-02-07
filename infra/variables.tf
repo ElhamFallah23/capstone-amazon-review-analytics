@@ -92,8 +92,8 @@ variable "service_user_rsa_public_key" {
 ########################################
 
 variable "s3_bucket_arn" {
-  description = ""
-  type        = string
+  description = "List of S3 bucket ARNs Snowflake can access"
+  type        = list(string)
 }
 
 variable "s3_prefixes" {
