@@ -234,6 +234,6 @@ module "snowflake_storage_integration" {
   ]
 
   providers = {
-    snowflake.securityadmin = snowflake.accountadmin
+    snowflake.accountadmin = snowflake.accountadmin
   }
 }
