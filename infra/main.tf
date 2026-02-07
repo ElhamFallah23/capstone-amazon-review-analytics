@@ -221,6 +221,19 @@ module "snowflake_integration_role" {
 # snowflake_integration
 ####################################
 
+module "snowflake_storage_integration" {
+  source = "./modules/snowflake-integration"
 
+  integration_name = "ARA_S3_INTEGRATION"
 
-####################################
+  aws_role_arn = module.snowflake_integration_role.role_arn
+
+  allowed_locations = [
+    "s3://${module.s3_ingestion.raw_bucket_name}/",
+    "s3://${module.s3_ingestion.processed_bucket_name}/"
+  ]
+
+  providers = {
+    snowflake.securityadmin = snowflake.securityadmin
+  }
+}
