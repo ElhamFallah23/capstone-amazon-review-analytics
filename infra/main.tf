@@ -200,7 +200,7 @@ module "snowflake" {
 ####################################
 
 module "snowflake-integration-role" {
-  source = "./modules/iam/snowflake_integration_role"
+  source = "./modules/snowflake_integration_role"
 
   role_name = "snowflake-s3-integration-role"
   s3_bucket_arns = [
