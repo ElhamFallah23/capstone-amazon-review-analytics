@@ -331,7 +331,7 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
   account_role_name = snowflake_account_role.transform.name
 }
 
-
+####### ljoj
 
 ########################################
 # Phase 1 note:
