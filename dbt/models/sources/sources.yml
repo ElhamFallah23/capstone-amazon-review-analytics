@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: amazon_raw
+# database: AMAZON_REVIEW_ANALYTICS_DEV
+    description: "Raw Amazon datasets exposed via Snowflake external tables"
+    schema: RAW
+
+    tables: 
+      - name: CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+        description: "External table for Amazon product reviews (raw data from S3)"
+    
+  #  columns:
+  #    - name: REVIEW_ID
+  #      description: "Unique identifier of the review"
+  #    - name: PRODUCT_ID
+   #     description: "ASIN of the product"
+   #   - name: REVIEWER_ID
+    #    description: "Reviewer identifier"
+     # - name: RATING
+      #  description: "Rating score given by the user"
+     # - name: REVIEW_TEXT
+        #description: "Text of the review"
+    #  - name: REVIEW_TIME
+     #   description: "Timestamp of the review"
+     
+
+      - name: CAPSTONE_AMAZON_META_RAW_TABLE
+        description: "External table for Amazon product metadata (raw data from S3)"
+ #   columns:
+  #    - name: PRODUCT_ID
+   #     description: "ASIN of the product"
+   #   - name: TITLE
+    #    description: "Product title"
+    #  - name: BRAND
+    #    description: "Brand name"
+    #  - name: CATEGORY
+    #    description: "Product category"
+    #  - name: PRICE
+     #   description: "Product price"
