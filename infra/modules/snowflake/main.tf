@@ -294,13 +294,15 @@ resource "snowflake_grant_privileges_to_account_role" "wh_usage_analytics" {
   account_role_name = snowflake_account_role.analytics.name
 }
 
-################## extra objects that are needed according to dbt needs and errors ########
+############# extra objects that are needed according to dbt needs and errors #############
+###########################################################################################
+###########################################################################################
 
-#grant usage on database 
+### grant usage on database 
 
 
 
-#grant usage on schema staging 
+### grant usage on schema staging 
 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_stage_transform" {
@@ -316,7 +318,7 @@ resource "snowflake_grant_privileges_to_account_role" "schema_stage_transform" {
 
 
 
-### grant create review on schema staging 
+### grant create view on schema staging 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transform" {
   provider   = snowflake.securityadmin
