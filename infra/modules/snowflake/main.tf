@@ -331,6 +331,20 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
   account_role_name = snowflake_account_role.transform.name
 }
 
+### grant on wharehouse 
+resource "snowflake_grant_privileges_to_account_role" "warehouse_usage_transform" {
+  provider   = snowflake.securityadmin
+  privileges = ["USAGE"]
+
+  on_account_object {
+    object_type = "WAREHOUSE"
+    object_name = snowflake_warehouse.dev.name
+  }
+
+  account_role_name = snowflake_account_role.transform.name
+}
+
+
 ####### ljojljljljljljljlj
 
 ########################################
