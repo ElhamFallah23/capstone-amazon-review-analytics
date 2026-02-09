@@ -3073,3 +3073,188 @@ Database Error
 [0m18:02:12.778534 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1068d0b80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1120f42e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112189bd0>]}
 [0m18:02:12.778913 [debug] [MainThread]: Flushing usage events
 [0m18:02:13.530097 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:44:48.052196 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1059bcc10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a98430>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a98580>]}
+
+
+============================== 18:44:48.055865 | cf18ddf4-47f2-4ee7-9089-23c4d6923432 ==============================
+[0m18:44:48.055865 [info ] [MainThread]: Running with dbt=1.11.3
+[0m18:44:48.056206 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'indirect_selection': 'eager', 'profiles_dir': '/Users/elham/.dbt', 'debug': 'False', 'warn_error': 'None', 'invocation_command': 'dbt debug', 'cache_selected_only': 'False', 'log_path': '/Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/logs', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'static_parser': 'True', 'log_format': 'default', 'use_colors': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'printer_width': '80', 'introspect': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'log_cache_events': 'False', 'no_print': 'None', 'version_check': 'True'}
+[0m18:44:48.064941 [info ] [MainThread]: dbt version: 1.11.3
+[0m18:44:48.065162 [info ] [MainThread]: python version: 3.10.19
+[0m18:44:48.065326 [info ] [MainThread]: python path: /opt/miniconda3/envs/capstone-dbt/bin/python3.10
+[0m18:44:48.065490 [info ] [MainThread]: os info: macOS-26.0-arm64-arm-64bit
+[0m18:44:48.275680 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m18:44:48.276014 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m18:44:48.276190 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m18:44:48.307386 [info ] [MainThread]: Using profiles dir at /Users/elham/.dbt
+[0m18:44:48.307650 [info ] [MainThread]: Using profiles.yml file at /Users/elham/.dbt/profiles.yml
+[0m18:44:48.307820 [info ] [MainThread]: Using dbt_project.yml file at /Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/dbt_project.yml
+[0m18:44:48.308145 [info ] [MainThread]: adapter type: snowflake
+[0m18:44:48.308343 [info ] [MainThread]: adapter version: 1.11.1
+[0m18:44:48.361768 [info ] [MainThread]: Configuration:
+[0m18:44:48.362098 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m18:44:48.362271 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m18:44:48.362424 [info ] [MainThread]: Required dependencies:
+[0m18:44:48.362619 [debug] [MainThread]: Executing "git --help"
+[0m18:44:48.379623 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:44:48.380278 [debug] [MainThread]: STDERR: "b''"
+[0m18:44:48.380509 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:44:48.380702 [info ] [MainThread]: Connection:
+[0m18:44:48.380914 [info ] [MainThread]:   account: KEMXMAE-OW63667
+[0m18:44:48.381062 [info ] [MainThread]:   user: DBT_AIRFLOW_SVC
+[0m18:44:48.381208 [info ] [MainThread]:   database: AMAZON_REVIEW_ANALYTICS_DEV
+[0m18:44:48.381354 [info ] [MainThread]:   warehouse: ARA_WH_DEV
+[0m18:44:48.381494 [info ] [MainThread]:   role: ARA_TRANSFORM_DEV
+[0m18:44:48.381631 [info ] [MainThread]:   schema: RAW
+[0m18:44:48.381769 [info ] [MainThread]:   authenticator: jwt
+[0m18:44:48.381908 [info ] [MainThread]:   oauth_client_id: None
+[0m18:44:48.382045 [info ] [MainThread]:   query_tag: None
+[0m18:44:48.382182 [info ] [MainThread]:   client_session_keep_alive: False
+[0m18:44:48.382317 [info ] [MainThread]:   host: None
+[0m18:44:48.382454 [info ] [MainThread]:   port: None
+[0m18:44:48.382588 [info ] [MainThread]:   proxy_host: None
+[0m18:44:48.382724 [info ] [MainThread]:   proxy_port: None
+[0m18:44:48.382859 [info ] [MainThread]:   protocol: None
+[0m18:44:48.382995 [info ] [MainThread]:   connect_retries: 1
+[0m18:44:48.383128 [info ] [MainThread]:   connect_timeout: None
+[0m18:44:48.383264 [info ] [MainThread]:   retry_on_database_errors: False
+[0m18:44:48.383532 [info ] [MainThread]:   retry_all: False
+[0m18:44:48.383728 [info ] [MainThread]:   insecure_mode: False
+[0m18:44:48.383891 [info ] [MainThread]:   reuse_connections: True
+[0m18:44:48.384042 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m18:44:48.384187 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m18:44:48.384577 [info ] [MainThread]: Registered adapter: snowflake=1.11.1
+[0m18:44:48.448406 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m18:44:48.476225 [debug] [MainThread]: Using snowflake connection "debug"
+[0m18:44:48.476496 [debug] [MainThread]: On debug: select 1 as id
+[0m18:44:48.476652 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m18:44:49.077952 [debug] [MainThread]: SQL status: SUCCESS 1 in 0.601 seconds
+[0m18:44:49.080985 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m18:44:49.081641 [info ] [MainThread]: [32mAll checks passed![0m
+[0m18:44:49.086119 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 1.0784332, "process_in_blocks": "0", "process_kernel_time": 0.219657, "process_mem_max_rss": "152076288", "process_out_blocks": "0", "process_user_time": 1.148574}
+[0m18:44:49.086677 [debug] [MainThread]: Command `dbt debug` succeeded at 18:44:49.086550 after 1.08 seconds
+[0m18:44:49.087066 [debug] [MainThread]: Connection 'debug' was left open.
+[0m18:44:49.087513 [debug] [MainThread]: On debug: Close
+[0m18:44:49.173876 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1059bcc10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105c1f0d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10772f1f0>]}
+[0m18:44:49.174396 [debug] [MainThread]: Flushing usage events
+[0m18:44:49.701742 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:45:07.225564 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e60c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108f38430>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108f38580>]}
+
+
+============================== 18:45:07.229151 | 74ffd18e-1312-4995-9026-318246426a7a ==============================
+[0m18:45:07.229151 [info ] [MainThread]: Running with dbt=1.11.3
+[0m18:45:07.229484 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'introspect': 'True', 'fail_fast': 'False', 'log_path': '/Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'cache_selected_only': 'False', 'debug': 'False', 'version_check': 'True', 'invocation_command': 'dbt run --select staging', 'use_colors': 'True', 'no_print': 'None', 'empty': 'False', 'indirect_selection': 'eager', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'log_format': 'default', 'warn_error': 'None', 'partial_parse': 'True', 'profiles_dir': '/Users/elham/.dbt'}
+[0m18:45:07.434312 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m18:45:07.434628 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m18:45:07.434808 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m18:45:07.528322 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '74ffd18e-1312-4995-9026-318246426a7a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1064bef50>]}
+[0m18:45:07.559178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '74ffd18e-1312-4995-9026-318246426a7a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1088026e0>]}
+[0m18:45:07.559790 [info ] [MainThread]: Registered adapter: snowflake=1.11.1
+[0m18:45:07.628659 [debug] [MainThread]: checksum: 97dbd983c77ef3cec7304d97135f72c53ee20ea7ab68d67bae8e0876ff0fcdb6, vars: {}, profile: , target: , version: 1.11.3
+[0m18:45:07.706631 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m18:45:07.706891 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m18:45:07.707052 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m18:45:07.727226 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '74ffd18e-1312-4995-9026-318246426a7a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a181480>]}
+[0m18:45:07.771634 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/target/manifest.json
+[0m18:45:07.773334 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/target/semantic_manifest.json
+[0m18:45:07.783892 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '74ffd18e-1312-4995-9026-318246426a7a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a0f4f70>]}
+[0m18:45:07.784192 [info ] [MainThread]: Found 4 models, 2 sources, 522 macros
+[0m18:45:07.784389 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '74ffd18e-1312-4995-9026-318246426a7a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a128550>]}
+[0m18:45:07.785098 [info ] [MainThread]: 
+[0m18:45:07.785290 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m18:45:07.785447 [info ] [MainThread]: 
+[0m18:45:07.785714 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m18:45:07.788206 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m18:45:07.821087 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m18:45:07.821447 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+[0m18:45:07.821618 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m18:45:08.287807 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 0.466 seconds
+[0m18:45:08.289723 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE)
+[0m18:45:08.290241 [debug] [ThreadPool]: Creating schema "database: "AMAZON_REVIEW_ANALYTICS_DEV"
+schema: "RAW_STAGE"
+"
+[0m18:45:08.294766 [debug] [ThreadPool]: Using snowflake connection "create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE"
+[0m18:45:08.295131 [debug] [ThreadPool]: On create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE: create schema if not exists AMAZON_REVIEW_ANALYTICS_DEV.RAW_STAGE
+/* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE"} */
+[0m18:45:08.389361 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01c24d49-0306-09f2-0004-85da0002dd06
+[0m18:45:08.389765 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on database 'AMAZON_REVIEW_ANALYTICS_DEV'.
+[0m18:45:08.390168 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro create_schema
+[0m18:45:08.390440 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m18:45:08.391057 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m18:45:08.391342 [debug] [MainThread]: Connection 'create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE' was left open.
+[0m18:45:08.391613 [debug] [MainThread]: On create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE: Close
+[0m18:45:08.504835 [info ] [MainThread]: 
+[0m18:45:08.506155 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.72 seconds (0.72s).
+[0m18:45:08.506786 [error] [MainThread]: Encountered an error:
+Database Error
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on database 'AMAZON_REVIEW_ANALYTICS_DEV'.
+[0m18:45:08.510837 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 1.3252668, "process_in_blocks": "0", "process_kernel_time": 0.221115, "process_mem_max_rss": "159285248", "process_out_blocks": "0", "process_user_time": 1.328381}
+[0m18:45:08.511398 [debug] [MainThread]: Command `dbt run` failed at 18:45:08.511279 after 1.33 seconds
+[0m18:45:08.511835 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e60c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1835b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1c5b10>]}
+[0m18:45:08.512251 [debug] [MainThread]: Flushing usage events
+[0m18:45:09.020904 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:21:34.548300 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e40c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108f18580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108f186d0>]}
+
+
+============================== 20:21:34.551941 | c2d6b18c-e115-467c-8e6e-46e0a57a6620 ==============================
+[0m20:21:34.551941 [info ] [MainThread]: Running with dbt=1.11.3
+[0m20:21:34.552284 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'profiles_dir': '/Users/elham/.dbt', 'fail_fast': 'False', 'log_path': '/Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'cache_selected_only': 'False', 'invocation_command': 'dbt run --select staging', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'no_print': 'None', 'empty': 'False', 'indirect_selection': 'eager', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'log_format': 'default', 'introspect': 'True', 'partial_parse': 'True', 'warn_error': 'None'}
+[0m20:21:34.772456 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m20:21:34.772792 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m20:21:34.772978 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m20:21:34.866476 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c2d6b18c-e115-467c-8e6e-46e0a57a6620', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1078588e0>]}
+[0m20:21:34.897153 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c2d6b18c-e115-467c-8e6e-46e0a57a6620', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108d0bc40>]}
+[0m20:21:34.897690 [info ] [MainThread]: Registered adapter: snowflake=1.11.1
+[0m20:21:34.969897 [debug] [MainThread]: checksum: 97dbd983c77ef3cec7304d97135f72c53ee20ea7ab68d67bae8e0876ff0fcdb6, vars: {}, profile: , target: , version: 1.11.3
+[0m20:21:35.048379 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:21:35.048658 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m20:21:35.048811 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:21:35.069013 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c2d6b18c-e115-467c-8e6e-46e0a57a6620', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a161480>]}
+[0m20:21:35.113307 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/target/manifest.json
+[0m20:21:35.114567 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/elham/neueFische/Capstone Project/capstone-amazon-review-analytics/dbt/target/semantic_manifest.json
+[0m20:21:35.125684 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c2d6b18c-e115-467c-8e6e-46e0a57a6620', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a0d0c70>]}
+[0m20:21:35.125995 [info ] [MainThread]: Found 4 models, 2 sources, 522 macros
+[0m20:21:35.126195 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c2d6b18c-e115-467c-8e6e-46e0a57a6620', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a108700>]}
+[0m20:21:35.126913 [info ] [MainThread]: 
+[0m20:21:35.127100 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m20:21:35.127251 [info ] [MainThread]: 
+[0m20:21:35.127510 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m20:21:35.130019 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m20:21:35.163406 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m20:21:35.163847 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+[0m20:21:35.164032 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:21:35.921973 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 0.758 seconds
+[0m20:21:35.926247 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE)
+[0m20:21:35.926954 [debug] [ThreadPool]: Creating schema "database: "AMAZON_REVIEW_ANALYTICS_DEV"
+schema: "RAW_STAGE"
+"
+[0m20:21:35.932327 [debug] [ThreadPool]: Using snowflake connection "create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE"
+[0m20:21:35.932740 [debug] [ThreadPool]: On create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE: create schema if not exists AMAZON_REVIEW_ANALYTICS_DEV.RAW_STAGE
+/* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE"} */
+[0m20:21:36.072657 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01c24da9-0306-1054-0004-85da00036a26
+[0m20:21:36.073900 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on database 'AMAZON_REVIEW_ANALYTICS_DEV'.
+[0m20:21:36.075016 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro create_schema
+[0m20:21:36.075379 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m20:21:36.076080 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:21:36.076390 [debug] [MainThread]: Connection 'create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE' was left open.
+[0m20:21:36.076666 [debug] [MainThread]: On create_AMAZON_REVIEW_ANALYTICS_DEV_RAW_STAGE: Close
+[0m20:21:36.213445 [info ] [MainThread]: 
+[0m20:21:36.214759 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 1.09 seconds (1.09s).
+[0m20:21:36.215916 [error] [MainThread]: Encountered an error:
+Database Error
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on database 'AMAZON_REVIEW_ANALYTICS_DEV'.
+[0m20:21:36.219450 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 1.7152492, "process_in_blocks": "0", "process_kernel_time": 0.24305, "process_mem_max_rss": "158384128", "process_out_blocks": "0", "process_user_time": 1.348507}
+[0m20:21:36.219968 [debug] [MainThread]: Command `dbt run` failed at 20:21:36.219876 after 1.72 seconds
+[0m20:21:36.220338 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e40c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a163580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1a5570>]}
+[0m20:21:36.220704 [debug] [MainThread]: Flushing usage events
+[0m20:21:36.756055 [debug] [MainThread]: An error was encountered while trying to flush usage events
