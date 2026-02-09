@@ -322,7 +322,7 @@ resource "snowflake_grant_privileges_to_account_role" "schema_stage_transform" {
 
 resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transform" {
   provider   = snowflake.securityadmin
-  privileges = ["USAGE", "SELECT"]
+  privileges = ["USAGE"]
 
   on_schema {
     schema_name = "${snowflake_database.this.name}.${local.schema_raw}"
@@ -331,7 +331,7 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
   account_role_name = snowflake_account_role.transform.name
 }
 
-####### ljoj
+####### ljojljljljljljljlj
 
 ########################################
 # Phase 1 note:
