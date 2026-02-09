@@ -298,32 +298,20 @@ resource "snowflake_grant_privileges_to_account_role" "wh_usage_analytics" {
 
 #grant usage on database 
 
-resource "snowflake_grant_privileges_to_account_role" "db_usage_transform" {
-provider = snowflake.securityadmin
-privileges = ["USAGE"]
-
-on_account_object {
-object_type = "DATABASE"
-object_name = snowflake_database.this.name
-}
-
-account_role_name = snowflake_account_role.transform.name
-}
-
 
 
 #grant usage on schema staging 
 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_stage_transform" {
-provider = snowflake.securityadmin
-privileges = ["USAGE", "CREATE TABLE", "CREATE VIEW"]
+  provider   = snowflake.securityadmin
+  privileges = ["USAGE", "CREATE TABLE", "CREATE VIEW"]
 
-on_schema {
-schema_name = "${snowflake_database.this.name}.${local.schema_stage}"
-}
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${local.schema_stage}"
+  }
 
-account_role_name = snowflake_account_role.transform.name
+  account_role_name = snowflake_account_role.transform.name
 }
 
 
@@ -331,14 +319,14 @@ account_role_name = snowflake_account_role.transform.name
 ### grant create review on schema staging 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transform" {
-provider = snowflake.securityadmin
-privileges = ["USAGE", "SELECT"]
+  provider   = snowflake.securityadmin
+  privileges = ["USAGE", "SELECT"]
 
-on_schema {
-schema_name = "${snowflake_database.this.name}.${local.schema_raw}"
-}
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${local.schema_raw}"
+  }
 
-account_role_name = snowflake_account_role.transform.name
+  account_role_name = snowflake_account_role.transform.name
 }
 
 
