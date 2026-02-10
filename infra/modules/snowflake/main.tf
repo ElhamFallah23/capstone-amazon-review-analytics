@@ -336,6 +336,46 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
 
 ####### ljojljljljljljljljKHKHKHKH
 
+
+
+
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "raw_tables_select_transform" {
+  provider   = snowflake.securityadmin
+  privileges = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      schema_name        = "${snowflake_database.analytics_dev.name}.RAW"
+    }
+  }
+
+  account_role_name = snowflake_account_role.ara_transform_dev.name
+}
+
+
+
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "raw_future_tables_select_transform" {
+  provider   = snowflake.securityadmin
+  privileges = ["SELECT"]
+
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      schema_name        = "${snowflake_database.analytics_dev.name}.RAW"
+    }
+  }
+
+  account_role_name = snowflake_account_role.ara_transform_dev.name
+}
+
+
 ########################################
 # Phase 1 note:
 # Table-level grants and future grants (e.g., SELECT on future tables) are usually
