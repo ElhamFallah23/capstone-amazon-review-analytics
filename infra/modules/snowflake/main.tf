@@ -336,6 +336,15 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
 
 ####### ljojljljljljljljljKHKHKHKH
 
+
+
+
+
+
+
+
+
+
 ########################################
 # Phase 1 note:
 # Table-level grants and future grants (e.g., SELECT on future tables) are usually
@@ -344,4 +353,144 @@ resource "snowflake_grant_privileges_to_account_role" "schema_raw_select_transfo
 
 
 
+########################################
+# DBT essentials - Database-level
+########################################
+resource "snowflake_grant_privileges_to_account_role" "db_create_temp_table_transform" {
+  provider          = snowflake.securityadmin
+  privileges        = ["CREATE TEMPORARY TABLE"]
+  account_role_name = snowflake_account_role.transform.name
+
+  on_account_object {
+    object_type = "DATABASE"
+    object_name = snowflake_database.this.name
+  }
+}
+
+
+
+
+
+########################################
+# DBT essentials - Schema-level (create objects)
+########################################
+resource "snowflake_grant_privileges_to_account_role" "stage_create_transform" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.transform.name
+  privileges        = ["CREATE TABLE", "CREATE VIEW"]
+
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${snowflake_schema.stage.name}"
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "mart_create_transform" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.transform.name
+  privileges        = ["CREATE TABLE", "CREATE VIEW"]
+
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+  }
+}
+
+
+
+
+
+
+########################################
+# DBT essentials - RAW read access (existing objects)
+########################################
+resource "snowflake_grant_privileges_to_account_role" "raw_select_all_tables_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "raw_select_all_views_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "VIEWS"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "raw_select_all_external_tables_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "EXTERNAL TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+########################################
+# DBT essentials - RAW read access (future objects)
+########################################
+resource "snowflake_grant_privileges_to_account_role" "raw_select_future_tables_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "raw_select_future_views_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    future {
+      object_type_plural = "VIEWS"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "raw_select_future_external_tables_raw" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.raw.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    future {
+      object_type_plural = "EXTERNAL TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+    }
+  }
+}
+
+
+
+#----------------------------------------------------------------------------------------
 

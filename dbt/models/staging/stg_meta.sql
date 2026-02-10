@@ -2,7 +2,7 @@
 with source as (
 
 select *
-from {{ source('amazon_raw', 'CAPSTONE_AMAZON_META_RAW_TABLE') }}
+from {{ source('amazon_raw', 'CAPSTONE_AMAZON_META_RAW_TABLE') }}     
 
 ),
 
@@ -12,7 +12,7 @@ select
 product_id as product_id,
 title as product_title,
 brand as brand,
-category as category,
+categories as categories,
 cast(price as float) as price
 from source
 
@@ -20,3 +20,5 @@ from source
 
 select *
 from renamed
+
+

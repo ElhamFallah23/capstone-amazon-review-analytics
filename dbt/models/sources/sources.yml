@@ -2,12 +2,12 @@ version: 2
 
 sources:
   - name: amazon_raw
-# database: AMAZON_REVIEW_ANALYTICS_DEV
+    database: AMAZON_REVIEW_ANALYTICS_DEV
     description: "Raw Amazon datasets exposed via Snowflake external tables"
     schema: RAW
 
     tables: 
-      - name: CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+      - name: CAPSTONE_AMAZON_REVIEW_RAW_TABLE 
         description: "External table for Amazon product reviews (raw data from S3)"
     
   #  columns:
