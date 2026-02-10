@@ -1,0 +1,42 @@
+
+version: 2
+
+models:
+  - name: dim_products
+    description: "Product dimension table"
+
+    columns:
+      - name: product_id
+        description: "Primary key of the product dimension"
+        tests:
+          - not_null
+          - unique
+      - name: categories
+        description: "Main product category"
+
+  - name: fct_reviews
+    description: "Fact table containing individual product reviews"
+
+    columns:
+      - name: review_id
+        description: "Primary key of the fact table"
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        description: "Foreign key to dim_products"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+
+      - name: rating
+        description: "Review rating score"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+
+    

@@ -493,3 +493,99 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_externa
 
 #----------------------------------------------------------------------------------------
 
+########################################
+# MART schema - TRANSFORM (DBT writes)
+########################################
+
+resource "snowflake_grant_privileges_to_account_role" "schema_mart_transform" {
+  provider   = snowflake.securityadmin
+  privileges = ["USAGE", "CREATE TABLE", "CREATE VIEW"]
+
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+  }
+
+  account_role_name = snowflake_account_role.transform.name
+}
+
+
+
+
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_select_all_tables_transform" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.transform.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+    }
+  }
+}
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_select_all_views_transform" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.transform.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "VIEWS"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+    }
+  }
+}
+
+
+########################################
+# MART schema - ANALYTICS (read only)
+########################################
+
+resource "snowflake_grant_privileges_to_account_role" "schema_mart_usage_analytics" {
+  provider   = snowflake.securityadmin
+  privileges = ["USAGE"]
+
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+  }
+
+  account_role_name = snowflake_account_role.analytics.name
+}
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_select_all_tables_analytics" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.analytics.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+    }
+  }
+}
+
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_select_all_views_analytics" {
+  provider          = snowflake.securityadmin
+  account_role_name = snowflake_account_role.analytics.name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "VIEWS"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.mart.name}"
+    }
+  }
+}
+
+

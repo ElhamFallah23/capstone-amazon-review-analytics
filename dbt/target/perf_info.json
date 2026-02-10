@@ -1,0 +1,51 @@
+{
+    "path_count": 160,
+    "parsed_path_count": 160,
+    "static_analysis_path_count": 4,
+    "static_analysis_parsed_path_count": 4,
+    "is_partial_parse_enabled": true,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.029277583118528128,
+    "load_macros_elapsed": 0.3756812079809606,
+    "parse_project_elapsed": 0.3071763748303056,
+    "patch_sources_elapsed": 0.010652207769453526,
+    "process_manifest_elapsed": 0.01872841687873006,
+    "load_all_elapsed": 0.7852994166314602,
+    "projects": [
+        {
+            "project_name": "capstone_amazon_analytics",
+            "elapsed": 0.30172149976715446,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.11539908312261105,
+                    "parsed_path_count": 4
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.14916454115882516,
+                    "parsed_path_count": 3
+                }
+            ],
+            "parsed_path_count": 7
+        },
+        {
+            "project_name": "dbt_snowflake",
+            "elapsed": 0.0023093330673873425,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0.003072709310799837,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 0.0001399591565132141,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        }
+    ]
+}
