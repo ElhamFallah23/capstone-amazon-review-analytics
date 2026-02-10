@@ -12,7 +12,7 @@ select
 product_id as product_id,
 title as product_title,
 brand as brand,
-categories as categories,
+main_category as categories,
 cast(price as float) as price
 from source
 

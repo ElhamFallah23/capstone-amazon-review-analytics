@@ -6,7 +6,7 @@ select
 product_id,
 product_title,
 brand,
-category,
+main_category, 
 price
 from {{ ref('stg_meta') }}
 
