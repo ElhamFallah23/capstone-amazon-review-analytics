@@ -494,37 +494,3 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_externa
 
 #----------------------------------------------------------------------------------------
 
-resource "snowflake_grant_privileges_to_schema_object" "raw_external_tables_select_transform" {
-  provider = snowflake.securityadmin
-
-  privileges = ["SELECT"]
-
-  on_schema_object {
-    database_name = snowflake_database.this.name
-    schema_name   = snowflake_schema.raw.name
-    object_type   = "EXTERNAL TABLE"
-    object_name   = "ALL"
-  }
-
-  account_role_name = snowflake_account_role.transform.name
-}
-
-
-
-
-
-resource "snowflake_grant_privileges_to_schema_object" "raw_future_external_tables_select_transform" {
-  provider = snowflake.securityadmin
-
-  privileges = ["SELECT"]
-
-  on_schema_object {
-    database_name = snowflake_database.this.name
-    schema_name   = snowflake_schema.raw.name
-    object_type   = "EXTERNAL TABLE"
-    future        = true
-  }
-
-  account_role_name = snowflake_account_role.transform.name
-}
-
