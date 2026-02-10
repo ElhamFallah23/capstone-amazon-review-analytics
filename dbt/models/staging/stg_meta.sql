@@ -2,7 +2,7 @@
 with source as (
 
 select *
-from {{ source('amazon_raw', 'CAPSTONE_AMAZON_META_RAW_TABLE') }}
+from {{ source('amazon_raw', 'CAPSTONE_AMAZON_META_RAW_TABLE') }}     
 
 ),
 
