@@ -410,7 +410,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_all_tables_raw
   on_schema_object {
     all {
       object_type_plural = "TABLES"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
@@ -423,7 +423,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_all_views_raw"
   on_schema_object {
     all {
       object_type_plural = "VIEWS"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
@@ -436,7 +436,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_all_external_t
   on_schema_object {
     all {
       object_type_plural = "EXTERNAL TABLES"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
@@ -459,7 +459,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_tables_
   on_schema_object {
     future {
       object_type_plural = "TABLES"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
@@ -472,7 +472,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_views_r
   on_schema_object {
     future {
       object_type_plural = "VIEWS"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
@@ -485,7 +485,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_externa
   on_schema_object {
     future {
       object_type_plural = "EXTERNAL TABLES"
-      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      object_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
