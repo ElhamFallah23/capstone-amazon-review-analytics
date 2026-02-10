@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_reviews
+    description: "Cleaned and typed Amazon product reviews from raw external tables"
+
+    columns:
+      - name: review_id
+        description: "Unique identifier for each review"
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        description: "ASIN of the reviewed product"
+        tests:
+          - not_null
+
+      - name: rating
+        description: "Rating score given by the reviewer (1-5)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+
+  - name: stg_meta
+    description: "Cleaned product metadata from raw product information"
+
+    columns:
+      - name: product_id
+        description: "ASIN of the product"
+        tests:
+          - not_null
+          - unique
+
+      - name: categories
+        description: "Product category hierarchy"
+
+
+
+
+

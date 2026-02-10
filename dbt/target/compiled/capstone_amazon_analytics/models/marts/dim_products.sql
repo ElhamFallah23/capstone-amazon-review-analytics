@@ -1,5 +1,3 @@
-
-
 with products as (
 
 select
@@ -8,10 +6,9 @@ product_title,
 brand,
 categories, 
 price
-from {{ ref('stg_meta') }}
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
 
 )
 
 select *
 from products
-
