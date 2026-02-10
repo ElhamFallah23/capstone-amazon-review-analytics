@@ -361,9 +361,8 @@ resource "snowflake_grant_privileges_to_account_role" "db_create_temp_table_tran
   privileges        = ["CREATE TEMPORARY TABLE"]
   account_role_name = snowflake_account_role.transform.name
 
-  on_account_object {
-    object_type = "DATABASE"
-    object_name = snowflake_database.this.name
+  on_schema {
+    schema_name = "${snowflake_database.this.name}.RAW"
   }
 }
 
