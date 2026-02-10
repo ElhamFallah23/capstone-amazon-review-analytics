@@ -7,7 +7,7 @@ sources:
     schema: RAW
 
     tables: 
-      - name: CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+      - name: CAPSTONE_AMAZON_REVIEW_RAW_TABLE 
         description: "External table for Amazon product reviews (raw data from S3)"
     
   #  columns:

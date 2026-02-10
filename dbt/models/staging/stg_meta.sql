@@ -20,3 +20,5 @@ from source
 
 select *
 from renamed
+
+

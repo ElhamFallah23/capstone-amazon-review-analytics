@@ -493,4 +493,65 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_future_externa
 
 
 
+# ----------------------------------------
+# Schema USAGE - RAW
+# ----------------------------------------
+resource "snowflake_grant_privileges_to_account_role" "raw_schema_usage_transform" {
+  provider = snowflake.securityadmin
+
+  privileges = ["USAGE"]
+
+  on_account_object {
+    object_type = "SCHEMA"
+    object_name = "${snowflake_database.this.name}.RAW"
+  }
+
+  account_role_name = snowflake_account_role.transform.name
+}
+
+
+
+
+
+
+
+# ----------------------------------------
+# Read access on existing External Tables (RAW)
+# ----------------------------------------
+resource "snowflake_grant_privileges_to_account_role" "raw_external_tables_select_transform" {
+  provider = snowflake.securityadmin
+
+  privileges = ["SELECT"]
+
+  on_schema_object {
+    schema_name = "${snowflake_database.this.name}.RAW"
+    object_type = "EXTERNAL TABLE"
+    object_name = "ALL"
+  }
+
+  account_role_name = snowflake_account_role.transform.name
+}
+
+
+
+
+
+
+
+# ----------------------------------------
+# Read access on future External Tables (RAW)
+# ----------------------------------------
+resource "snowflake_grant_privileges_to_account_role" "raw_future_external_tables_select_transform" {
+  provider = snowflake.securityadmin
+
+  privileges = ["SELECT"]
+
+  on_schema_object {
+    schema_name = "${snowflake_database.this.name}.RAW"
+    object_type = "EXTERNAL TABLE"
+    future      = true
+  }
+
+  account_role_name = snowflake_account_role.transform.name
+}
 
