@@ -78,6 +78,12 @@ EOF
 
 
 
+enable_transform_inherits_raw = true
+
+
+
+
+
 #########
 # lock policy for Role Snowflake
 integration_aws_iam_user_arn = "arn:aws:iam::115005006440:user/aqef1000-s"
