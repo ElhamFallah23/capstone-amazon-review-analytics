@@ -410,7 +410,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_select_all_tables_raw
   on_schema_object {
     all {
       object_type_plural = "TABLES"
-      schema_name        = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
+      in_schema          = "${snowflake_database.this.name}.${snowflake_schema.raw.name}"
     }
   }
 }
