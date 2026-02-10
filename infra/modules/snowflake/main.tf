@@ -130,8 +130,9 @@ resource "snowflake_user" "service" {
   # Key-pair auth (preferred for automation)
   rsa_public_key = var.service_user_rsa_public_key
 
-  disabled = false
-  comment  = "Service user for DBT + Airflow (Terraform-managed)"
+  default_warehouse = local.wh_name
+  disabled          = false
+  comment           = "Service user for DBT + Airflow (Terraform-managed)"
 }
 
 ########################################
@@ -200,7 +201,7 @@ resource "snowflake_grant_privileges_to_account_role" "db_usage_raw" {
 
 resource "snowflake_grant_privileges_to_account_role" "db_usage_transform" {
   provider   = snowflake.securityadmin
-  privileges = ["USAGE"]
+  privileges = ["USAGE", "CREATE SCHEMA"]
 
   on_account_object {
     object_type = "DATABASE"
