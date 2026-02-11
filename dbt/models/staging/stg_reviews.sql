@@ -15,6 +15,7 @@ cast(rating as integer) as rating,
 review_text as review_text,
 cast(review_time as timestamp) as review_timestamp
 from source
+where review_id is not null
 
 )
 

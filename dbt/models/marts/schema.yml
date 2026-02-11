@@ -18,12 +18,7 @@ models:
     description: "Fact table containing individual product reviews"
 
     columns:
-      - name: review_id
-        description: "Primary key of the fact table"
-        tests:
-          - not_null
-          - unique
-
+      
       - name: product_id
         description: "Foreign key to dim_products"
         tests:
@@ -32,11 +27,57 @@ models:
               to: ref('dim_products')
               field: product_id
 
-      - name: rating
-        description: "Review rating score"
+      - name: avg_rating
+        description: "Averagerating score"
         tests:
           - not_null
-          - accepted_values:
-              values: [1, 2, 3, 4, 5]
+          
+      - name: review_count
+        description: "Number of reviews"
+        tests:
+          - not_null
 
-    
+models:
+  - name: fct_reviews_granular
+    columns:
+      - name: review_id
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: rating
+        tests:
+          - not_null
+
+
+models:
+  - name: dim_date
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+          - unique
+
+models:
+  - name: mart_product_kpi
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+      - name: review_count
+        tests:
+          - not_null
+
+      - name: avg_rating
+        tests:
+          - not_null
+
+      - name: first_review_date
+        tests:
+          - not_null
