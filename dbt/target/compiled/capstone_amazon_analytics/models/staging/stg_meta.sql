@@ -14,6 +14,7 @@ brand as brand,
 categories as categories,
 cast(price as float) as price
 from source
+where product_id is not null
 
 )
 

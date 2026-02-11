@@ -588,4 +588,3 @@ resource "snowflake_grant_privileges_to_account_role" "mart_select_all_views_ana
   }
 }
 
-
