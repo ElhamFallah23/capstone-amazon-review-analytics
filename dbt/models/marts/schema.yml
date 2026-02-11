@@ -81,3 +81,13 @@ models:
       - name: first_review_date
         tests:
           - not_null
+
+models:
+  - name: mart_avg_rating_by_year_brand
+    columns:
+      - name: brand
+        tests:
+         - not_null
+      - name: review_year
+        tests:
+          - not_null
