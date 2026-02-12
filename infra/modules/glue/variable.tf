@@ -23,13 +23,16 @@ variable "glue_table_name" {
   type        = string
 }
 
-
+variable "meta_glue_table_name" {
+  description = "Glue Catalog table created by crawler"
+  type        = string
+}
 #############################################
 # Glue Crawler configuration
 #############################################
 
 variable "crawler_name" {
-  description = "Name of the Glue crawler"
+  description = "Name of the Glue crawler for Amazon reviews data"
   type        = string
 }
 
@@ -44,6 +47,11 @@ variable "iam_role_arn_crawler" {
   type        = string
 }
 
+
+variable "crawler_name_meta" {
+  description = "Name of the Glue crawler for Amazon meta data "
+  type        = string
+}
 #############################################
 # Glue Job configuration
 #############################################
@@ -68,6 +76,11 @@ variable "job_timeout" {
   description = "Maximum execution time for the Glue Job in minutes"
   type        = number
   default     = 60
+}
+
+variable "glue_job_name_meta" {
+  description = "Base name of the Glue ETL job"
+  type        = string
 }
 
 #############################################
@@ -99,3 +112,17 @@ variable "glue_script_s3_object_dependency" {
   type        = any
 }
 
+variable "script_s3_path_meta" {
+  description = "S3 path where the Glue ETL Python script is stored"
+  type        = string
+}
+
+variable "raw_s3_path_meta" {
+  description = "S3 path containing raw Amazon meta data" # Both Glue Job (read from this) and Crawler (crawl) use this main source 
+  type        = string
+}
+
+variable "processed_s3_path_meta" {
+  description = "S3 path where processed/flattened data for meta will be written"
+  type        = string
+}

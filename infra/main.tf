@@ -48,6 +48,7 @@ module "glue" {
   raw_s3_path          = "s3://amazon-ingestion-dev/reviews/" # "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/raw/reviews/"      # "s3://amazon-ingestion-dev/reviews/"
   iam_role_arn_crawler = module.iam.glue_crawler_role_arn
 
+
   # Optional: run crawler on schedule (can be null for manual runs)
   # schedule_expression = null #  "cron(0 12 * * ? *)"
 
@@ -63,6 +64,22 @@ module "glue" {
   # This table is created by the crawler and later read by the Glue job
   # ------------------------------------------------------------
   glue_table_name = "reviews"
+
+
+
+  ######## Add crawler for meta input file #########
+  ##################################################
+  crawler_name_meta = "amazon-meta-raw-crawler"         # The crawler scans raw S3 data and creates catalog tables
+  raw_s3_path_meta  = "s3://amazon-ingestion-dev/meta/" # "s3://${module.s3_ingestion.s3_ingestion_bucket_name}/raw/reviews/"      # "s3://amazon-ingestion-dev/reviews/"
+
+  glue_job_name_meta     = "amazon-meta-etl" # Glue ETL Job configuration: This job flattens raw JSON and writes Parquet to processed zone
+  script_s3_path_meta    = "s3://${module.s3_ingestion.glue_scripts_bucket_name}/glue_job/meta_etl_job.py"
+  processed_s3_path_meta = "s3://${module.s3_ingestion.processed_bucket_name}/processed/meta/"
+
+  meta_glue_table_name = "meta"
+
+  ##################################################
+
 }
 
 
