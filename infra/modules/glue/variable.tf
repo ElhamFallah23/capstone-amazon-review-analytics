@@ -18,7 +18,7 @@ variable "glue_database_name" {
   type        = string
 }
 
-variable "glue_table_name" {
+variable "review_glue_table_name" {
   description = "Glue Catalog table created by crawler"
   type        = string
 }

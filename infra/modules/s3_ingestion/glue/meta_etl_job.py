@@ -53,6 +53,11 @@ clean_meta_df = meta_df.select(
     .parquet(args["processed_output_path"])
 )
 
+
+
+print("===============META DF SCHEMA==========")
+meta_df.printSchema()
+
 job.commit()
 
 
