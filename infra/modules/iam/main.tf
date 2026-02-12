@@ -253,7 +253,7 @@ resource "aws_iam_policy" "glue_job_policy" {
           "s3:ListBucket"
         ]
         Resource = [
-          var.raw_bucket_arn,
+          var.scripts_bucket_arn,
           "${var.scripts_bucket_arn}/*"
         ]
       }
