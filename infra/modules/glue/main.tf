@@ -17,7 +17,9 @@ resource "aws_glue_crawler" "reviews_crawler" {
   # Crawler will run on daily schedue
   schedule = var.schedule_expression
 
-  classifiers = []
+  classifiers = [
+    aws_glue_classifier.review_json_classifier.name
+  ]
 
   schema_change_policy {
     delete_behavior = "LOG"
@@ -35,6 +37,20 @@ resource "aws_glue_crawler" "reviews_crawler" {
   })
 }
 
+
+
+
+########################################
+# JSON Classifier for review file
+########################################
+resource "aws_glue_classifier" "review_json_classifier" {
+  name = "review-json-classifier-${var.environment}"
+
+  json_classifier {
+    # json_path is optional. When omitted, Glue infers schema.
+    json_path = "$"
+  }
+}
 
 
 #      NENW       ######## Define a Glue Crawler for "meta" Data ###############
