@@ -36,33 +36,34 @@ job.init(args["JOB_NAME"], args)
 # Spark automatically handles compressed JSON (.json.gz)
 # -------------------------------------------------------------------
 #raw_df = spark.read.json(args["raw_input_path"])
-raw_dyf = glue_context.create_dynamic_frame.from_catalog(
+reviews_dyf = glue_context.create_dynamic_frame.from_catalog(
     database=args["glue_database_name"],
     table_name=args["glue_table_name"]
 )
 # Convert DynamicFrame to Spark DataFrame for transformations
-raw_df = raw_dyf.toDF()
+
+reviews_df = reviews_dyf.toDF()
 
 # -------------------------------------------------------------------
 # Flatten and normalize the raw JSON structure
 # This prepares the data for analytics and downstream systems
 # -------------------------------------------------------------------
-flattened_df = raw_df.select(
-    col("reviewerID").alias("reviewer_id"),
-    col("asin").alias("product_id"),
-    col("reviewText").alias("review_text"),
-    col("overall").alias("rating"),
-    col("unixReviewTime").alias("review_timestamp"),
-    col("verified").alias("is_verified"),
-    col("reviewerName").alias("reviewer_name")
+clean_reviews_df = reviews_df.select(
+    col("review_id"),
+    col("asin"),
+    col("reviewerID"),
+    col("overall"),
+    col("reviewText"),
+    col("reviewTime")
 )
+
 
 # -------------------------------------------------------------------
 # Write the processed data to S3 in Parquet format
 # Parquet is optimized for analytical workloads and Snowflake
 # -------------------------------------------------------------------
 (
-    flattened_df
+    clean_reviews_df
         .write
         .mode("overwrite")
         .parquet(args["processed_output_path"])
@@ -73,3 +74,10 @@ flattened_df = raw_df.select(
 # This marks the job as SUCCESS in AWS Glue
 # -------------------------------------------------------------------
 job.commit()
+
+
+#-------------------------
+
+
+
+
