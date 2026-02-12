@@ -27,6 +27,10 @@ variable "environment" {
 
 
 
+variable "scripts_bucket_arn" {
+  description = "arn for scripts bucket"
+  type        = string
+}
 
 
 ########################################

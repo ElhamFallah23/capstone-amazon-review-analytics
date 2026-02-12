@@ -202,7 +202,7 @@ resource "aws_iam_policy" "glue_job_policy" {
     Statement = [
 
       # ------------------------------------------------------
-      # Allow Glue Job to read raw data from S3
+      # Allow Glue Job to read raw data from S3 and access to script bucket to read glue job scripts
       # ------------------------------------------------------
       {
         Effect = "Allow"
@@ -242,16 +242,18 @@ resource "aws_iam_policy" "glue_job_policy" {
         ]
         Resource = "*"
       },
-
+      # ------------------------------------------------------
+      # Allow access to script bucket to read glue job scripts
+      # ------------------------------------------------------
       {
-        Sid    = "AllowGlueToReadScripts"
+        #Sid    = "AllowGlueToReadScripts"
         Effect = "Allow"
         Action = [
           "s3:GetObject",
           "s3:ListBucket"
         ]
         Resource = [
-          var.scripts_bucket_arn,
+          var.raw_bucket_arn,
           "${var.scripts_bucket_arn}/*"
         ]
       }
