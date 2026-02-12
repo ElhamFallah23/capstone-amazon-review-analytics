@@ -13,7 +13,7 @@ args = getResolvedOptions(
     sys.argv,
     [
         "JOB_NAME",
-        "glue_datbase_name",
+        "glue_database_name",
         "glue_table_name"
         "processed_output_path",
         "environment"
