@@ -53,7 +53,9 @@ resource "aws_glue_crawler" "meta_crawler" {
   # Crawler will run on daily schedue
   schedule = var.schedule_expression
 
-  classifiers = []
+  classifiers = [
+    aws_glue_classifier.meta_csv_classifier.name
+  ]
 
   schema_change_policy {
     delete_behavior = "LOG"
@@ -70,6 +72,25 @@ resource "aws_glue_crawler" "meta_crawler" {
     }
   })
 }
+
+
+
+
+#############################################
+# CSV Classifier for META file
+#############################################
+
+resource "aws_glue_classifier" "meta_csv_classifier" {
+  name = "meta-csv-classifier-${var.environment}"
+
+  csv_classifier {
+    delimiter           = ","
+    quote_symbol        = "\""
+    contains_header     = "PRESENT"
+    allow_single_column = false
+  }
+}
+
 
 # finish NEW ##########
 
