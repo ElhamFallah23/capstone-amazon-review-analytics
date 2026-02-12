@@ -241,7 +241,21 @@ resource "aws_iam_policy" "glue_job_policy" {
           "logs:PutLogEvents"
         ]
         Resource = "*"
+      },
+
+      {
+        Sid    = "AllowGlueToReadScripts"
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          var.scripts_bucket_arn,
+          "${var.scripts_bucket_arn}/*"
+        ]
       }
+
     ]
   })
 }
