@@ -168,7 +168,7 @@ resource "aws_glue_job" "reviews_etl_job" {
     "--TempDir" = var.temp_s3_path
 
     "--glue_database_name" = "${var.glue_database_name}_${var.environment}"
-    "--glue_table_name"    = "reviews" # var.review_glue_table_name # table that crawler make for Amazon review data 
+    "--glue_table_name"    = var.review_glue_table_name # table that crawler make for Amazon review data 
 
 
     # Custom job parameters
