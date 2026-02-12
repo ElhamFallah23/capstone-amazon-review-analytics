@@ -81,9 +81,8 @@ resource "aws_glue_classifier" "meta_json_classifier" {
   name = "meta-json-classifier-${var.environment}"
 
   json_classifier {
-    name = "meta-json-classifier-${var.environment}"
     # json_path is optional. When omitted, Glue infers schema.
-    # json_path = "$"
+    json_path = "$"
   }
 }
 
