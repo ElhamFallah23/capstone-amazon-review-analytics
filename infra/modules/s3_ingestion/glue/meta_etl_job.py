@@ -34,25 +34,27 @@ meta_dyf = glue_context.create_dynamic_frame.from_catalog(
 
 meta_df = meta_dyf.toDF()
 
-# Flatten & select important columns
-flattened_meta_df = meta_df.select(
-    col("asin").alias("product_id"),
+# Select ONLY required columns (NO RENAME)
+clean_meta_df = meta_df.select(
+    col("asin"),
     col("title"),
     col("brand"),
     col("price"),
     col("description"),
-    col("category")
+    col("categories"),
+    col("main_cat")
 )
 
 # Write to S3 (processed/meta/)
 (
-    flattened_meta_df
+    clean_meta_df
     .write
     .mode("overwrite")
     .parquet(args["processed_output_path"])
 )
 
 job.commit()
+
 
 
 
