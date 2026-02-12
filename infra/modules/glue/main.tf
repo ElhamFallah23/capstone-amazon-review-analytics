@@ -54,7 +54,7 @@ resource "aws_glue_crawler" "meta_crawler" {
   schedule = var.schedule_expression
 
   classifiers = [
-    aws_glue_classifier.meta_csv_classifier.name
+    aws_glue_classifier.meta_json_classifier.name
   ]
 
   schema_change_policy {
@@ -74,20 +74,16 @@ resource "aws_glue_crawler" "meta_crawler" {
 }
 
 
+########################################
+# JSON Classifier for META file
+########################################
+resource "aws_glue_classifier" "meta_json_classifier" {
+  name = "meta-json-classifier-${var.environment}"
 
-
-#############################################
-# CSV Classifier for META file
-#############################################
-
-resource "aws_glue_classifier" "meta_csv_classifier" {
-  name = "meta-csv-classifier-${var.environment}"
-
-  csv_classifier {
-    delimiter           = ","
-    quote_symbol        = "\""
-    contains_header     = "ABSENT"
-    allow_single_column = false
+  json_classifier {
+    name = "meta-json-classifier-${var.environment}"
+    # json_path is optional. When omitted, Glue infers schema.
+    # json_path = "$"
   }
 }
 
