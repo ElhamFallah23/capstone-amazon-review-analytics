@@ -256,7 +256,23 @@ resource "aws_iam_policy" "glue_job_policy" {
           var.scripts_bucket_arn,
           "${var.scripts_bucket_arn}/*"
         ]
+      },
+
+      {
+        Sid    = "AllowGlueCatalogAccess"
+        Effect = "Allow"
+        Action = [
+          "glue:GetDatabase",
+          "glue:GetDatabases",
+          "glue:GetTable",
+          "glue:GetTables",
+          "glue:GetPartition",
+          "glue:GetPartitions"
+        ]
+        Resource = "*"
       }
+
+
 
     ]
   })
