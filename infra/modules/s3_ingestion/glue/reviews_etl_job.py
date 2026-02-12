@@ -14,7 +14,7 @@ args = getResolvedOptions(
     [
         "JOB_NAME",
         "glue_database_name",
-        "glue_table_name"
+        "glue_table_name",
         "processed_output_path",
         "environment"
     ]
