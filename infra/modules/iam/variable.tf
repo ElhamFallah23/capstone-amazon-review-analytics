@@ -26,6 +26,13 @@ variable "processed_bucket_arn" {
 }
 
 
+
+variable "scripts_bucket_arn" {
+  description = "ARN of the S3 bucket for scripts of glue jobs"
+  type        = string
+}
+
+
 variable "project_tag" {
   description = "Project Tag"
   type        = string

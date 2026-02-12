@@ -31,3 +31,9 @@ output "raw_bucket_arn" {
   description = "ARN of raw ingestion bucket"
   value       = aws_s3_bucket.ingestion.arn
 }
+
+
+output "scripts_bucket_arn" {
+  description = "ARN of scripts bucket that contain scripts for glue job"
+  value       = aws_s3_bucket.glue_scripts.arn
+}

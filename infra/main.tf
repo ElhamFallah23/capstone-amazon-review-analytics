@@ -76,6 +76,7 @@ module "glue" {
   script_s3_path_meta    = "s3://${module.s3_ingestion.glue_scripts_bucket_name}/glue-scripts/meta-job/meta_etl_job.py"
   processed_s3_path_meta = "s3://${module.s3_ingestion.processed_bucket_name}/processed/meta/"
 
+
   meta_glue_table_name = "meta"
   ##################################################
 
@@ -96,6 +97,7 @@ module "iam" {
 
   raw_bucket_arn       = module.s3_ingestion.raw_bucket_arn       # ok
   processed_bucket_arn = module.s3_ingestion.processed_bucket_arn # okkk
+  scripts_bucket_arn   = module.s3_ingestion.scripts_bucket_arn
 
   project_tag          = "AmazonReviewAnalytics"
   sns_topic_arn        = module.sns.sns_topic_arn
@@ -105,6 +107,8 @@ module "iam" {
   state_machine_name        = "reviews-etl-workflow"
   glue_job_arn              = module.glue.glue_job_arn
   lambda_status_checker_arn = module.iam.lambda_role_arn
+
+
 }
 
 module "sns" {
