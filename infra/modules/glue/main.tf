@@ -86,7 +86,7 @@ resource "aws_glue_classifier" "meta_csv_classifier" {
   csv_classifier {
     delimiter           = ","
     quote_symbol        = "\""
-    contains_header     = "PRESENT"
+    contains_header     = "ABSENT"
     allow_single_column = false
   }
 }
