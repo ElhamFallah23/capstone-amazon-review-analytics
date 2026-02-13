@@ -275,11 +275,13 @@ module "snowflake_quicksight_access" {
 
   providers = {
     snowflake.securityadmin = snowflake.securityadmin
+    snowflake.sysadmin      = snowflake.sysadmin
+
   }
 
   quicksight_role_name     = var.quicksight_role_name
   quicksight_user_name     = var.quicksight_user_name
-  quicksight_user_password = var.quicksight_user_password
+  quicksight_user_password = var.TF_VAR_QUICKSIGHT_USER_NAME
 
   warehouse_name = var.warehouse_name
   database_name  = var.database_name
