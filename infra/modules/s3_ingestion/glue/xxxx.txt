@@ -15,3 +15,45 @@ col("asin"),
     col("overall"),
     col("reviewText"),
     col("reviewTime")
+
+################ Meta ####################
+
+    {"title": "Slime Time Fall Fest [With CDROM and Collector Cards and Neutron Balls, Incredi-Ball and Glow Stick Necklace, Paper Fram",
+     "brand": "Group Publishing (CO)",
+      "feature": ["Product Dimensions:\n  \n8.7 x 3.6 x 11.4 inches", "Shipping Weight:\n      \n2.4 pounds"], 
+      "rank": "13,052,976inClothing,Shoesamp;Jewelry(",
+       "date": "8.70 inches", "asin": "0764443682", "imageURL": ["https://images-na.ssl-images-amazon.com/images/I/51bSrINiWpL._US40_.jpg"],
+        "imageURLHighRes": ["https://images-na.ssl-images-amazon.com/images/I/51bSrINiWpL.jpg"]}
+
+
+
+
+{"title": "365 Affirmations for a Year of Love, Peace & Prosperity", 
+"rank": "16,179,013inClothing,Shoesamp;Jewelry(", 
+"date": "5 star",
+ "asin": "1942705034",
+  "imageURL": ["https://images-na.ssl-images-amazon.com/images/I/41XfVtdsiJL._SR38,50_.jpg", "https://images-na.ssl-images-amazon.com/images/I/41%2BNbtV5c5L._SR38,50_.jpg", "https://images-na.ssl-images-amazon.com/images/I/41DvPo37jNL._SR38,50_.jpg", "https://images-na.ssl-images-amazon.com/images/I/41KvxNrHleL._SR38,50_.jpg"], 
+  "imageURLHighRes": ["https://images-na.ssl-images-amazon.com/images/I/41XfVtdsiJL.jpg", "https://images-na.ssl-images-amazon.com/images/I/41%2BNbtV5c5L.jpg", "https://images-na.ssl-images-amazon.com/images/I/41DvPo37jNL.jpg", "https://images-na.ssl-images-amazon.com/images/I/41KvxNrHleL.jpg"]
+  }
+
+
+{"title": "Sevendayz Men's Shady Records Eminem Hoodie Hoody Black Medium", 
+"brand": "sevendayz",
+ "rank": "16,147,550inClothing,Shoesamp;Jewelry(", 
+ "date": "5 star", 
+ "asin": "6041002984", "imageURL": ["https://images-na.ssl-images-amazon.com/images/I/41gMYeiNASL._SR38,50_.jpg"],
+  "imageURLHighRes": ["https://images-na.ssl-images-amazon.com/images/I/41gMYeiNASL.jpg"]}
+
+
+product_id STRING AS (VALUE:asin::STRING),
+title STRING AS (VALUE:title::STRING),
+brand STRING AS (VALUE:brand::STRING),
+
+price NUMBER AS (VALUE:price::NUMBER),
+description STRING AS (VALUE:description::STRING),
+categories VARIANT AS (VALUE:categories),
+main_category STRING AS (VALUE:main_cat::STRING)
+
+
+
+

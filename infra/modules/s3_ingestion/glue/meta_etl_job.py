@@ -41,8 +41,8 @@ clean_meta_df = meta_df.select(
     col("brand"),
     col("price"),
     col("description"),
-    col("categories"),
-    col("main_cat")
+    # col("categories"),
+    # col("main_cat")
 )
 
 # Write to S3 (processed/meta/)

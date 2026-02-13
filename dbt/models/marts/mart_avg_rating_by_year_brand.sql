@@ -14,7 +14,8 @@ aggregated as (
 
 select
 brand,
-extract(year from review_timestamp) as review_year,
+--extract(year from review_timestamp) as review_year,
+review_year
 count(*) as review_count,
 avg(rating) as avg_rating
 from reviews_enriched
