@@ -95,6 +95,10 @@ integration_external_id      = "NW13989_SFCRole=4_RXhx+v72sZ4uUV9AksdhlYnRd28="
 ###########################################
 # Snowflake- Quicksight Connection 
 
-quicksight_user_name = "QS_READER_USER_DEV"
-
-################################################jbljvl
+mart_schema_name = "MART"
+#database_name = "AMAZON_REVIEW_ANALYTICS_DEV"
+#warehouse_name = "COMPUTE_WH"
+#quicksight_user_password = var.TF_VAR_QUICKSIGHT_USER_NAME
+quicksight_user_name = "QS_USER_DEV"
+quicksight_role_name = "QS_ROLE_DEV"
+############################################

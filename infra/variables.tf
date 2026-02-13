@@ -100,3 +100,48 @@ variable "integration_external_id" {
   type        = string
 }
 
+
+
+
+
+
+###########################################
+# Snowflake- Quicksight Connection 
+###########################################
+variable "quicksight_role_name" {
+  type = string
+}
+
+variable "quicksight_user_name" {
+  type = string
+}
+
+variable "quicksight_user_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "warehouse_name" {
+  type = string
+}
+
+variable "database_name" {
+  type = string
+}
+
+variable "mart_schema_name" {
+  type = string
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

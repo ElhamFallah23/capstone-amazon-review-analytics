@@ -271,20 +271,18 @@ module "snowflake_storage_integration" {
 ####################################################
 
 module "snowflake_quicksight_access" {
-  source = "./modules/snowflake-quicksight-access"
+  source = "./modules/snowflake_quicksight_access"
 
-  snowflake_database = "AMAZON_REVIEW_ANALYTICS_DEV"
-  snowflake_schema   = "STAGE_MART"
-  warehouse_name     = "COMPUTE_WH"
+  providers = {
+    snowflake.securityadmin = snowflake.securityadmin
+  }
 
-  quicksight_role_name     = "QS_READER_ROLE_DEV"
+  quicksight_role_name     = var.quicksight_role_name
   quicksight_user_name     = var.quicksight_user_name
   quicksight_user_password = var.quicksight_user_password
 
-  providers = {
-    snowflake.sysadmin      = snowflake.sysadmin
-    snowflake.securityadmin = snowflake.securityadmin
-  }
+  warehouse_name = var.warehouse_name
+  database_name  = var.database_name
+  schema_name    = var.mart_schema_name
 }
-
 
