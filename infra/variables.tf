@@ -116,10 +116,6 @@ variable "quicksight_user_name" {
   type = string
 }
 
-variable "quicksight_user_password" {
-  type      = string
-  sensitive = true
-}
 
 
 
