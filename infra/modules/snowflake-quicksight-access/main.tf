@@ -85,4 +85,4 @@ resource "snowflake_warehouse_grant" "warehouse_usage" {
 
 
 
-
+#khihi
