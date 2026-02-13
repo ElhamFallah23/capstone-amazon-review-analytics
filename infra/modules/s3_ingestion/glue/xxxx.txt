@@ -55,5 +55,11 @@ categories VARIANT AS (VALUE:categories),
 main_category STRING AS (VALUE:main_cat::STRING)
 
 
-
+--{{ dbt_utils.generate_surrogate_key([
+--'reviewer_id', 
+--'product_id',
+--'review_time',
+--'review_text',
+--'rating'
+--]) }} as review_id,
 

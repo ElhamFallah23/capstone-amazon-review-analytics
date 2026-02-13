@@ -4,7 +4,17 @@
 with dates as (
 
 select distinct
-cast(review_timestamp as date) as date_day
+--cast(review_time as date) as date_day
+
+review_time as review_time,
+
+-- parse date safely (force string!)
+    coalesce(
+      try_to_date(review_time::string, 'MM DD, YYYY'),
+      try_to_date(review_time::string, 'MM D, YYYY')
+    ) as date_day,
+   
+
 from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART.fct_reviews_granular
 
 ),

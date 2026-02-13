@@ -8,52 +8,31 @@ from {{ source('amazon_raw', 'CAPSTONE_AMAZON_REVIEW_RAW_TABLE') }}
 renamed as (
 
 select
-{{ dbt_utils.generate_surrogate_key([
-'reviewer_id',
-'product_id',
-'review_time'
-]) }} as review_id,
+
+
+
 product_id as product_id,
 reviewer_id as reviewer_id,
+
 cast(rating as integer) as rating,
 review_text as review_text,
   
-  
--- keep raw string
-
-    review_time as review_time_raw,
-
-
-
+    -- keep raw string
+    review_time as review_time,
     -- parse date safely (force string!)
-
     coalesce(
-
       try_to_date(review_time::string, 'MM DD, YYYY'),
-
       try_to_date(review_time::string, 'MM D, YYYY')
-
     ) as review_date,
-
-
-
     year(
-
       coalesce(
-
         try_to_date(review_time::string, 'MM DD, YYYY'),
-
         try_to_date(review_time::string, 'MM D, YYYY')
-
       )
-
     ) as review_year
 
-
-
-
 from source
-where review_id is not null
+--where review_id is not null
 
 )
 

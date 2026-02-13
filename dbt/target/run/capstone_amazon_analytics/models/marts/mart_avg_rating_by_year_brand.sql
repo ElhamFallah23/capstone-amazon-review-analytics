@@ -8,7 +8,8 @@
 select
 r.product_id,
 r.rating,
-r.review_timestamp,
+r.review_time,
+r.review_year,
 p.brand
 from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART.fct_reviews_granular r
 left join AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART.dim_products p
@@ -20,7 +21,8 @@ aggregated as (
 
 select
 brand,
-extract(year from review_timestamp) as review_year,
+--extract(year from review_timestamp) as review_year,
+review_year,
 count(*) as review_count,
 avg(rating) as avg_rating
 from reviews_enriched

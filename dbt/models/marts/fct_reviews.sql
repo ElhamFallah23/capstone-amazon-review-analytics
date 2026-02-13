@@ -3,10 +3,10 @@
 with reviews as (
 
 select
-review_id,
+reviewer_id,
 product_id,
 rating,
-review_timestamp
+review_time
 from {{ ref('stg_reviews') }}
 
 ),
