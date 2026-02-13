@@ -76,27 +76,25 @@ DwIDAQAB
 EOF
 
 
-
+##########################################
 
 enable_transform_inherits_raw = true
 
+###########################################
 
 
-
-
-#########
+###########################################
 # lock policy for Role Snowflake
 integration_aws_iam_user_arn = "arn:aws:iam::115005006440:user/aqef1000-s"
 integration_external_id      = "NW13989_SFCRole=4_RXhx+v72sZ4uUV9AksdhlYnRd28="
-
-#######
-
+###########################################
 
 
 
 
+###########################################
+# Snowflake- Quicksight Connection 
 
+ quicksight_user_name =  "QS_READER_USER_DEV"
 
-
-
-
+###########################################

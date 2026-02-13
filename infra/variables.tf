@@ -100,3 +100,9 @@ variable "integration_external_id" {
   type        = string
 }
 
+variable "quicksight_user_password" {
+  description = "Password for QuickSight user (if using password auth)"
+  type        = string
+  sensitive   = true
+}
+

@@ -278,8 +278,9 @@ module "snowflake_quicksight_access" {
   warehouse_name     = "COMPUTE_WH"
 
   quicksight_role_name = "QS_READER_ROLE_DEV"
-  quicksight_user_name = "QS_READER_USER_DEV"
-
+  quicksight_user_name = var.quicksight_user_name           
+  quicksight_user_password = var.quicksight_user_password
+ environment = var.environment
 
 }
 
