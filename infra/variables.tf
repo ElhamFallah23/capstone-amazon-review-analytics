@@ -121,13 +121,7 @@ variable "quicksight_user_password" {
   sensitive = true
 }
 
-variable "warehouse_name" {
-  type = string
-}
 
-variable "database_name" {
-  type = string
-}
 
 variable "mart_schema_name" {
   type = string
