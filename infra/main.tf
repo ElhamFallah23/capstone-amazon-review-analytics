@@ -283,7 +283,8 @@ module "snowflake_quicksight_access" {
   environment              = var.environment
 
   providers = {
-    snowflake.accountadmin = snowflake.accountadmin
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
   }
 }
 
