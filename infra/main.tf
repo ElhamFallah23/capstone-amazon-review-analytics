@@ -282,6 +282,9 @@ module "snowflake_quicksight_access" {
   quicksight_user_password = var.quicksight_user_password
   environment              = var.environment
 
+  providers = {
+    snowflake.accountadmin = snowflake.accountadmin
+  }
 }
 
 
