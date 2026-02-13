@@ -13,7 +13,41 @@ product_id as product_id,
 reviewer_id as reviewer_id,
 cast(rating as integer) as rating,
 review_text as review_text,
-cast(review_time as timestamp) as review_timestamp
+  
+  
+-- keep raw string
+
+    review_time as review_time_raw,
+
+
+
+    -- parse date safely (force string!)
+
+    coalesce(
+
+      try_to_date(review_time::string, 'MM DD, YYYY'),
+
+      try_to_date(review_time::string, 'MM D, YYYY')
+
+    ) as review_date,
+
+
+
+    year(
+
+      coalesce(
+
+        try_to_date(review_time::string, 'MM DD, YYYY'),
+
+        try_to_date(review_time::string, 'MM D, YYYY')
+
+      )
+
+    ) as review_year
+
+
+
+
 from source
 where review_id is not null
 

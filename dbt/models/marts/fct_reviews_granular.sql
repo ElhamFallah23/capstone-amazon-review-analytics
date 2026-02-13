@@ -10,7 +10,8 @@ select
 review_id,
 product_id,
 rating,
-review_timestamp
+--review_timestamp
+review_year
 
 from {{ ref('stg_reviews') }}
 

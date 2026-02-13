@@ -28,7 +28,7 @@ select
 p.product_id,
 p.product_title,
 p.brand,
-p.categories,
+--p.categories,
 p.price,
 a.review_count,
 a.avg_rating,
