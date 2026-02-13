@@ -7,10 +7,10 @@
 with reviews as (
 
 select
-review_id,
+reviewer_id,
 product_id,
 rating,
---review_timestamp
+review_time,
 review_year
 
 from {{ ref('stg_reviews') }}

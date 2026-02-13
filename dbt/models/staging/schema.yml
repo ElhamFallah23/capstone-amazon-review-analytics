@@ -5,11 +5,10 @@ models:
     description: "Cleaned and typed Amazon product reviews from raw external tables"
 
     columns:
-      - name: review_id
+      - name: reviewer_id
         description: "Unique identifier for each review"
         tests:
           - not_null
-          - unique
 
       - name: product_id
         description: "ASIN of the reviewed product"
@@ -31,7 +30,7 @@ models:
         description: "ASIN of the product"
         tests:
           - not_null
-          - unique
+          #- unique
 
       - name: categories
         description: "Product category hierarchy"

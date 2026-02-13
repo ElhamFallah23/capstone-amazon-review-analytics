@@ -15,8 +15,8 @@ select
 product_id,
 count(*) as review_count,
 avg(rating) as avg_rating,
-min(review_timestamp) as first_review_date,
-max(review_timestamp) as last_review_date
+min(review_time) as first_review_date,
+max(review_time) as last_review_date
 from reviews
 group by product_id
 
@@ -28,7 +28,6 @@ select
 p.product_id,
 p.product_title,
 p.brand,
-p.categories,
 p.price,
 a.review_count,
 a.avg_rating,

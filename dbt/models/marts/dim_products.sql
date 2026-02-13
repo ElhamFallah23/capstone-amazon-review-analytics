@@ -1,17 +1,19 @@
 
-
 with products as (
+
+select *,
+row_number() over (
+partition by product_id
+order by product_id
+) as rn
+from {{ ref('stg_meta') }}
+
+)
 
 select
 product_id,
 product_title,
 brand,
---categories, 
 price
-from {{ ref('stg_meta') }}
-
-)
-
-select *
 from products
-
+where rn = 1

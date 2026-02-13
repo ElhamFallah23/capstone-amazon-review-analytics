@@ -48,3 +48,4 @@ models:
     marts:
       +schema: MART         # means: final_schema = target.schema+ "_" + custom_schema  # target.schema is what we have written in profiles.yml
       +materialized: table    # So: staging = STAGE_STAGE , marts = MSTAGE_MART
+      

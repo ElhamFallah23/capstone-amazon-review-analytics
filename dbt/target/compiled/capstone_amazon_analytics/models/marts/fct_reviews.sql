@@ -1,10 +1,10 @@
 with reviews as (
 
 select
-review_id,
+reviewer_id,
 product_id,
 rating,
-review_timestamp
+review_time
 from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
 
 ),

@@ -15,8 +15,7 @@ select
 product_id as product_id,
 title as product_title,
 brand as brand,
---categories as categories,
-cast(price as float) as price
+try_to_number(regexp_replace(price, '[^0-9.]', '')) as price
 from source
 where product_id is not null
 

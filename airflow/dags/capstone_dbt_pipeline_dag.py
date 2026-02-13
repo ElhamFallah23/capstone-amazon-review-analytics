@@ -53,7 +53,7 @@ with DAG(
         task_id="dbt_run_marts",
         bash_command="""
         cd /opt/airflow/dbt &&
-        dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/marts
+        dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/marts --full-refresh
         """
     )
 
