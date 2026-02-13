@@ -266,4 +266,29 @@ module "snowflake_storage_integration" {
 
 
 
+####################################################
+# QuickSight Snowflake Access (BI Layer)
+####################################################
+
+module "snowflake_quicksight_access" {
+  source = "./modules/snowflake-quicksight-access"
+
+  snowflake_database = "AMAZON_REVIEW_ANALYTICS_DEV"
+  snowflake_schema   = "STAGE_MART"
+  warehouse_name     = "COMPUTE_WH"
+
+  quicksight_role_name = "QS_READER_ROLE_DEV"
+  quicksight_user_name = "QS_READER_USER_DEV"
+
+  quicksight_user_password = var.quicksight_user_password
+  terraform {
+    required_providers {
+      snowflake = {
+        source  = "snowflakedb/snowflake"
+        version = "~> 0.90"
+      }
+    }
+  }
+}
+
 
