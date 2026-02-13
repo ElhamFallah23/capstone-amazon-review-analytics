@@ -270,12 +270,12 @@ module "snowflake_storage_integration" {
 # QuickSight Snowflake Access (BI Layer)
 ####################################################
 
-module "snowflake_quicksight_access" {
+module "snowflake-quicksight-access" {
   source = "./modules/snowflake_quicksight_access"
-
   providers = {
     snowflake.securityadmin = snowflake.securityadmin
     snowflake.sysadmin      = snowflake.sysadmin
+
 
   }
 
