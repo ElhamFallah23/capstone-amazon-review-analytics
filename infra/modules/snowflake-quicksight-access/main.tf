@@ -1,3 +1,14 @@
+quicksight_user_password = var.quicksight_user_password
+terraform {
+  required_providers {
+    snowflake = {
+      source  = "snowflakedb/snowflake"
+      version = "~> 0.90"
+    }
+  }
+}
+
+
 
 ##############################################
 # Create Role for QuickSight

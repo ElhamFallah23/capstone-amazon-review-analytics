@@ -280,15 +280,7 @@ module "snowflake_quicksight_access" {
   quicksight_role_name = "QS_READER_ROLE_DEV"
   quicksight_user_name = "QS_READER_USER_DEV"
 
-  quicksight_user_password = var.quicksight_user_password
-  terraform {
-    required_providers {
-      snowflake = {
-        source  = "snowflakedb/snowflake"
-        version = "~> 0.90"
-      }
-    }
-  }
+
 }
 
 
