@@ -223,7 +223,9 @@ resource "aws_iam_policy" "glue_job_policy" {
         Effect = "Allow"
         Action = [
           "s3:PutObject",
-          "s3:DeleteObject"
+          "s3:DeleteObject",
+          "s3:GetObject",
+          "s3:ListBucket"
         ]
         Resource = [
           "${var.processed_bucket_arn}/*"
