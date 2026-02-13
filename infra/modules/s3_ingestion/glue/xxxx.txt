@@ -1,0 +1,17 @@
+{"overall": 5.0,
+ "verified": true, 
+ "reviewTime": "10 20, 2014", 
+ "reviewerID": "A1D4G1SNUZWQOT",  
+ "asin": "7106116521", 
+ "reviewerName": "Tracy",
+ "reviewText": "Exactly what I needed.",
+ "summary": "perfect replacements!!",
+ "unixReviewTime": 1413763200}
+
+
+
+col("asin"),
+    col("reviewerID"),
+    col("overall"),
+    col("reviewText"),
+    col("reviewTime")

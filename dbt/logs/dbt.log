@@ -19879,3 +19879,998 @@ with tables as (
 [0m20:13:35.947384 [debug] [MainThread]: Connection 'AMAZON_REVIEW_ANALYTICS_DEV.information_schema' was properly closed.
 [0m20:13:35.947708 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb17a1060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb15e0340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff959693c0>]}
 [0m20:13:35.948131 [debug] [MainThread]: Flushing usage events
+[0m00:57:15.005397 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d7103a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bb22230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bb221d0>]}
+
+
+============================== 00:57:15.011370 | dcb51053-a4b8-4b85-84f3-a22358c0465e ==============================
+[0m00:57:15.011370 [info ] [MainThread]: Running with dbt=1.8.3
+[0m00:57:15.011897 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/airflow/dbt/logs', 'profiles_dir': '/opt/airflow/dbt-profiles', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/staging', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m00:57:16.619325 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff702b2f50>]}
+[0m00:57:16.653109 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff70487a30>]}
+[0m00:57:16.654074 [info ] [MainThread]: Registered adapter: snowflake=1.8.2
+[0m00:57:16.744206 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m00:57:16.987887 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m00:57:16.988498 [debug] [MainThread]: Partial parsing: updated file: capstone_amazon_analytics://models/staging/stg_reviews.sql
+[0m00:57:17.155801 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m00:57:17.156363 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6bfc7be0>]}
+[0m00:57:17.329955 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6bb28d60>]}
+[0m00:57:17.426084 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff701ad090>]}
+[0m00:57:17.426554 [info ] [MainThread]: Found 8 models, 9 data tests, 2 sources, 459 macros
+[0m00:57:17.426919 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff701ad060>]}
+[0m00:57:17.428296 [info ] [MainThread]: 
+[0m00:57:17.428833 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m00:57:17.431901 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m00:57:17.447428 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m00:57:17.447867 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+[0m00:57:17.448191 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:57:18.600044 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 1.151 seconds
+[0m00:57:18.603743 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: Close
+[0m00:57:18.720170 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE)
+[0m00:57:18.722019 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART'
+[0m00:57:18.734131 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"
+[0m00:57:18.737808 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"
+[0m00:57:18.738431 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE limit 10000
+[0m00:57:18.738970 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART limit 10000
+[0m00:57:18.739501 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m00:57:18.739993 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:57:19.233321 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.493 seconds
+[0m00:57:19.236119 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: Close
+[0m00:57:19.274346 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.535 seconds
+[0m00:57:19.277126 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: Close
+[0m00:57:19.350151 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d8227d0>]}
+[0m00:57:19.351397 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m00:57:19.352000 [info ] [MainThread]: 
+[0m00:57:19.387397 [debug] [Thread-1 (]: Began running node model.capstone_amazon_analytics.stg_meta
+[0m00:57:19.387993 [debug] [Thread-2 (]: Began running node model.capstone_amazon_analytics.stg_reviews
+[0m00:57:19.388716 [info ] [Thread-1 (]: 1 of 2 START sql view model STAGE_STAGE.stg_meta ............................... [RUN]
+[0m00:57:19.389369 [info ] [Thread-2 (]: 2 of 2 START sql view model STAGE_STAGE.stg_reviews ............................ [RUN]
+[0m00:57:19.390030 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE, now model.capstone_amazon_analytics.stg_meta)
+[0m00:57:19.391029 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART, now model.capstone_amazon_analytics.stg_reviews)
+[0m00:57:19.391570 [debug] [Thread-1 (]: Began compiling node model.capstone_amazon_analytics.stg_meta
+[0m00:57:19.392157 [debug] [Thread-2 (]: Began compiling node model.capstone_amazon_analytics.stg_reviews
+[0m00:57:19.400774 [debug] [Thread-1 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_meta"
+[0m00:57:19.406502 [debug] [Thread-1 (]: Began executing node model.capstone_amazon_analytics.stg_meta
+[0m00:57:19.430847 [debug] [Thread-1 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_meta"
+[0m00:57:19.432865 [debug] [Thread-1 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_meta"
+[0m00:57:19.433219 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_meta"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_META_RAW_TABLE     
+
+),
+
+renamed as (
+
+select
+product_id as product_id,
+title as product_title,
+brand as brand,
+categories as categories,
+cast(price as float) as price
+from source
+where product_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m00:57:19.433621 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m00:57:19.444072 [debug] [Thread-2 (]: Compilation Error in model stg_reviews (models/staging/stg_reviews.sql)
+  'dbt_utils' is undefined. This can happen when calling a macro that does not exist. Check for typos and/or install package dependencies with "dbt deps".
+[0m00:57:19.446590 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6b029300>]}
+[0m00:57:19.447433 [error] [Thread-2 (]: 2 of 2 ERROR creating sql view model STAGE_STAGE.stg_reviews ................... [[31mERROR[0m in 0.05s]
+[0m00:57:19.448283 [debug] [Thread-2 (]: Finished running node model.capstone_amazon_analytics.stg_reviews
+[0m00:57:20.041627 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.607 seconds
+[0m00:57:20.071102 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: Close
+[0m00:57:20.135354 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'dcb51053-a4b8-4b85-84f3-a22358c0465e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff70486650>]}
+[0m00:57:20.136349 [info ] [Thread-1 (]: 1 of 2 OK created sql view model STAGE_STAGE.stg_meta .......................... [[32mSUCCESS 1[0m in 0.75s]
+[0m00:57:20.137313 [debug] [Thread-1 (]: Finished running node model.capstone_amazon_analytics.stg_meta
+[0m00:57:20.139133 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m00:57:20.139670 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_meta' was properly closed.
+[0m00:57:20.140206 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_reviews' was properly closed.
+[0m00:57:20.140773 [info ] [MainThread]: 
+[0m00:57:20.141353 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.71 seconds (2.71s).
+[0m00:57:20.142491 [debug] [MainThread]: Command end result
+[0m00:57:20.197608 [info ] [MainThread]: 
+[0m00:57:20.198170 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m00:57:20.198661 [info ] [MainThread]: 
+[0m00:57:20.205935 [error] [MainThread]:   Compilation Error in model stg_reviews (models/staging/stg_reviews.sql)
+  'dbt_utils' is undefined. This can happen when calling a macro that does not exist. Check for typos and/or install package dependencies with "dbt deps".
+[0m00:57:20.206311 [info ] [MainThread]: 
+[0m00:57:20.206774 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=1 SKIP=0 TOTAL=2
+[0m00:57:20.210200 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 5.237906, "process_user_time": 3.596983, "process_kernel_time": 2.091456, "process_mem_max_rss": "203784", "process_in_blocks": "16", "process_out_blocks": "4879", "command_success": false}
+[0m00:57:20.210756 [debug] [MainThread]: Command `dbt run` failed at 00:57:20.210690 after 5.24 seconds
+[0m00:57:20.211145 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d7103a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6b0c7760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6b0c70a0>]}
+[0m00:57:20.211484 [debug] [MainThread]: Flushing usage events
+[0m01:00:23.524666 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffba984340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb8d3a020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb8d39fc0>]}
+
+
+============================== 01:00:23.529677 | 4dcfb7aa-75f8-49de-830a-dd7a40538fcd ==============================
+[0m01:00:23.529677 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:00:23.530236 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt-profiles', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt deps --profiles-dir /opt/airflow/dbt-profiles', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m01:00:23.603920 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4dcfb7aa-75f8-49de-830a-dd7a40538fcd', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb8e6fd60>]}
+[0m01:00:23.613864 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m01:00:23.619883 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m01:00:23.620757 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.12976742, "process_user_time": 1.070738, "process_kernel_time": 0.167645, "process_mem_max_rss": "92932", "process_out_blocks": "3", "process_in_blocks": "0"}
+[0m01:00:23.621203 [debug] [MainThread]: Command `dbt deps` succeeded at 01:00:23.621145 after 0.13 seconds
+[0m01:00:23.621490 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffba984340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb8e6fd60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb8e6e530>]}
+[0m01:00:23.621806 [debug] [MainThread]: Flushing usage events
+[0m01:07:56.447786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c3b43a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9a73e0b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9a73e050>]}
+
+
+============================== 01:07:56.454383 | dd6f5df2-b19d-4c75-ba65-0a1b642bff74 ==============================
+[0m01:07:56.454383 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:07:56.455030 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt-profiles', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt deps --profiles-dir /opt/airflow/dbt-profiles', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m01:07:56.535108 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'dd6f5df2-b19d-4c75-ba65-0a1b642bff74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9a8e7cd0>]}
+[0m01:07:56.560018 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m01:07:56.562281 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m01:07:56.563070 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.14812033, "process_user_time": 1.152343, "process_kernel_time": 0.303191, "process_mem_max_rss": "94496", "process_out_blocks": "323", "process_in_blocks": "0"}
+[0m01:07:56.563460 [debug] [MainThread]: Command `dbt deps` succeeded at 01:07:56.563405 after 0.15 seconds
+[0m01:07:56.563750 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c3b43a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9a8e7cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9a6a3580>]}
+[0m01:07:56.564085 [debug] [MainThread]: Flushing usage events
+[0m01:13:15.182228 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90456a70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bf32020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bf31fc0>]}
+
+
+============================== 01:13:15.203300 | f527fe7f-4f5d-4d3a-a1ff-fb70e6f811ca ==============================
+[0m01:13:15.203300 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:13:15.203726 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/opt/airflow/dbt-profiles', 'log_path': '/opt/airflow/dbt/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt deps --profiles-dir /opt/airflow/dbt-profiles', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m01:13:15.282831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f527fe7f-4f5d-4d3a-a1ff-fb70e6f811ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8dc1aec0>]}
+[0m01:13:15.305961 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-i668dvk5'
+[0m01:13:15.306392 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m01:13:15.513649 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m01:13:15.516109 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m01:13:15.592500 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m01:13:15.605289 [info ] [MainThread]: Updating lock file in file path: /opt/airflow/dbt/package-lock.yml
+[0m01:13:15.608226 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-mzjbavl8'
+[0m01:13:15.611435 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m01:13:16.060406 [info ] [MainThread]: Installed from version 1.1.1
+[0m01:13:16.061067 [info ] [MainThread]: Updated version available: 1.3.3
+[0m01:13:16.061735 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'f527fe7f-4f5d-4d3a-a1ff-fb70e6f811ca', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d54b730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bf17be0>]}
+[0m01:13:16.062153 [info ] [MainThread]: 
+[0m01:13:16.062606 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m01:13:16.063998 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.91331196, "process_user_time": 1.321417, "process_kernel_time": 0.618599, "process_mem_max_rss": "97804", "process_out_blocks": "4231", "process_in_blocks": "0"}
+[0m01:13:16.064587 [debug] [MainThread]: Command `dbt deps` succeeded at 01:13:16.064509 after 0.91 seconds
+[0m01:13:16.064936 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90456a70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d54b730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8c139c30>]}
+[0m01:13:16.065302 [debug] [MainThread]: Flushing usage events
+[0m01:14:09.192462 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffae130370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffac53e1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffac53e170>]}
+
+
+============================== 01:14:09.197849 | b1045edd-7556-4b05-8c77-af5181890b3b ==============================
+[0m01:14:09.197849 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:14:09.198520 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt-profiles', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/staging', 'send_anonymous_usage_stats': 'True'}
+[0m01:14:10.520758 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff913e2440>]}
+[0m01:14:10.552041 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffacb50e20>]}
+[0m01:14:10.552771 [info ] [MainThread]: Registered adapter: snowflake=1.8.2
+[0m01:14:10.625615 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m01:14:10.711457 [info ] [MainThread]: Unable to do partial parsing because a project dependency has been added
+[0m01:14:10.712001 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff929c5e70>]}
+[0m01:14:11.408284 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m01:14:11.408844 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90edfee0>]}
+[0m01:14:11.642103 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9297d030>]}
+[0m01:14:11.724021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff915b2b00>]}
+[0m01:14:11.724528 [info ] [MainThread]: Found 8 models, 9 data tests, 2 sources, 573 macros
+[0m01:14:11.724863 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff915b3a00>]}
+[0m01:14:11.726210 [info ] [MainThread]: 
+[0m01:14:11.726726 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:14:11.729782 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m01:14:11.738708 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m01:14:11.739087 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+[0m01:14:11.739354 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:14:12.745485 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 1.006 seconds
+[0m01:14:12.749100 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: Close
+[0m01:14:12.859789 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE)
+[0m01:14:12.862264 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART'
+[0m01:14:12.872939 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"
+[0m01:14:12.878641 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"
+[0m01:14:12.879546 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE limit 10000
+[0m01:14:12.880084 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART limit 10000
+[0m01:14:12.881036 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:14:12.881992 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:14:13.419072 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.538 seconds
+[0m01:14:13.422875 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: Close
+[0m01:14:13.426015 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.544 seconds
+[0m01:14:13.428378 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: Close
+[0m01:14:13.506394 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffae243e20>]}
+[0m01:14:13.507507 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:14:13.508211 [info ] [MainThread]: 
+[0m01:14:13.529958 [debug] [Thread-1 (]: Began running node model.capstone_amazon_analytics.stg_meta
+[0m01:14:13.530338 [debug] [Thread-2 (]: Began running node model.capstone_amazon_analytics.stg_reviews
+[0m01:14:13.531380 [info ] [Thread-1 (]: 1 of 2 START sql view model STAGE_STAGE.stg_meta ............................... [RUN]
+[0m01:14:13.531906 [info ] [Thread-2 (]: 2 of 2 START sql view model STAGE_STAGE.stg_reviews ............................ [RUN]
+[0m01:14:13.532418 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART, now model.capstone_amazon_analytics.stg_meta)
+[0m01:14:13.533109 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE, now model.capstone_amazon_analytics.stg_reviews)
+[0m01:14:13.533425 [debug] [Thread-1 (]: Began compiling node model.capstone_amazon_analytics.stg_meta
+[0m01:14:13.533777 [debug] [Thread-2 (]: Began compiling node model.capstone_amazon_analytics.stg_reviews
+[0m01:14:13.540224 [debug] [Thread-1 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:14:13.543154 [debug] [Thread-2 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:14:13.544756 [debug] [Thread-1 (]: Began executing node model.capstone_amazon_analytics.stg_meta
+[0m01:14:13.545068 [debug] [Thread-2 (]: Began executing node model.capstone_amazon_analytics.stg_reviews
+[0m01:14:13.565113 [debug] [Thread-1 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:14:13.568343 [debug] [Thread-2 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:14:13.570348 [debug] [Thread-1 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_meta"
+[0m01:14:13.571305 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_meta"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_META_RAW_TABLE     
+
+),
+
+renamed as (
+
+select
+product_id as product_id,
+title as product_title,
+brand as brand,
+categories as categories,
+cast(price as float) as price
+from source
+where product_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:14:13.571632 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:14:13.571062 [debug] [Thread-2 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_reviews"
+[0m01:14:13.572099 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_reviews"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+
+),
+
+renamed as (
+
+select
+md5(cast(coalesce(cast(reviewer_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(product_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(unixReviewTime as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as review_id,
+product_id as product_id,
+reviewer_id as reviewer_id,
+cast(rating as integer) as rating,
+review_text as review_text,
+cast(review_time as timestamp) as review_timestamp
+from source
+where review_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:14:13.576187 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:14:14.081529 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.509 seconds
+[0m01:14:14.124075 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: Close
+[0m01:14:14.349572 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff91dfba90>]}
+[0m01:14:14.350968 [info ] [Thread-1 (]: 1 of 2 OK created sql view model STAGE_STAGE.stg_meta .......................... [[32mSUCCESS 1[0m in 0.82s]
+[0m01:14:14.352059 [debug] [Thread-1 (]: Finished running node model.capstone_amazon_analytics.stg_meta
+[0m01:14:14.463177 [debug] [Thread-2 (]: Snowflake adapter: Snowflake query id: 01c25fea-0306-1845-0004-85da0005a026
+[0m01:14:14.463939 [debug] [Thread-2 (]: Snowflake adapter: Snowflake error: 000904 (42000): SQL compilation error: error line 14 at position 182
+invalid identifier 'UNIXREVIEWTIME'
+[0m01:14:14.464688 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: Close
+[0m01:14:14.533685 [debug] [Thread-2 (]: Database Error in model stg_reviews (models/staging/stg_reviews.sql)
+  000904 (42000): SQL compilation error: error line 14 at position 182
+  invalid identifier 'UNIXREVIEWTIME'
+  compiled code at target/run/capstone_amazon_analytics/models/staging/stg_reviews.sql
+[0m01:14:14.534994 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b1045edd-7556-4b05-8c77-af5181890b3b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffae241690>]}
+[0m01:14:14.536177 [error] [Thread-2 (]: 2 of 2 ERROR creating sql view model STAGE_STAGE.stg_reviews ................... [[31mERROR[0m in 1.00s]
+[0m01:14:14.537355 [debug] [Thread-2 (]: Finished running node model.capstone_amazon_analytics.stg_reviews
+[0m01:14:14.540747 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:14:14.541400 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_reviews' was properly closed.
+[0m01:14:14.541978 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_meta' was properly closed.
+[0m01:14:14.543211 [info ] [MainThread]: 
+[0m01:14:14.544050 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.82 seconds (2.82s).
+[0m01:14:14.546410 [debug] [MainThread]: Command end result
+[0m01:14:14.596721 [info ] [MainThread]: 
+[0m01:14:14.597231 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m01:14:14.597665 [info ] [MainThread]: 
+[0m01:14:14.598108 [error] [MainThread]:   Database Error in model stg_reviews (models/staging/stg_reviews.sql)
+  000904 (42000): SQL compilation error: error line 14 at position 182
+  invalid identifier 'UNIXREVIEWTIME'
+  compiled code at target/run/capstone_amazon_analytics/models/staging/stg_reviews.sql
+[0m01:14:14.598515 [info ] [MainThread]: 
+[0m01:14:14.598906 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=1 SKIP=0 TOTAL=2
+[0m01:14:14.600736 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 5.4461927, "process_user_time": 5.374572, "process_kernel_time": 0.978386, "process_mem_max_rss": "206664", "process_out_blocks": "21217", "command_success": false, "process_in_blocks": "0"}
+[0m01:14:14.601622 [debug] [MainThread]: Command `dbt run` failed at 01:14:14.601530 after 5.45 seconds
+[0m01:14:14.602152 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff92843df0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffacb50e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff901cbb80>]}
+[0m01:14:14.602597 [debug] [MainThread]: Flushing usage events
+[0m01:24:01.899320 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff963b4370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9473a140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9473a0b0>]}
+
+
+============================== 01:24:01.908233 | 3e5f5ccb-0fa6-457a-8256-b27af4af3ec0 ==============================
+[0m01:24:01.908233 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:24:01.908771 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'profiles_dir': '/opt/airflow/dbt-profiles', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt deps --profiles-dir /opt/airflow/dbt-profiles', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m01:24:01.982063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '3e5f5ccb-0fa6-457a-8256-b27af4af3ec0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff963dfeb0>]}
+[0m01:24:02.043770 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-5hk7y2og'
+[0m01:24:02.044335 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m01:24:03.219629 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m01:24:03.243922 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m01:24:03.542021 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m01:24:03.575961 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m01:24:04.184236 [info ] [MainThread]: Installed from version 1.1.1
+[0m01:24:04.185142 [info ] [MainThread]: Updated version available: 1.3.3
+[0m01:24:04.185931 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '3e5f5ccb-0fa6-457a-8256-b27af4af3ec0', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d094e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff94693d00>]}
+[0m01:24:04.186567 [info ] [MainThread]: 
+[0m01:24:04.187003 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m01:24:04.193336 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 2.3245728, "process_user_time": 2.000672, "process_kernel_time": 0.551276, "process_mem_max_rss": "94948", "process_out_blocks": "742", "process_in_blocks": "0"}
+[0m01:24:04.194291 [debug] [MainThread]: Command `dbt deps` succeeded at 01:24:04.194170 after 2.33 seconds
+[0m01:24:04.194810 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff963b4370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d60160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d094e0>]}
+[0m01:24:04.195117 [debug] [MainThread]: Flushing usage events
+[0m01:24:48.628937 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9dd84370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c1462c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c146230>]}
+
+
+============================== 01:24:48.634426 | d0092e65-94cf-424e-9748-e1c576edeac8 ==============================
+[0m01:24:48.634426 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:24:48.634997 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt-profiles', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/staging', 'send_anonymous_usage_stats': 'True'}
+[0m01:24:49.306846 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9ddb3eb0>]}
+[0m01:24:49.341582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80b28940>]}
+[0m01:24:49.342216 [info ] [MainThread]: Registered adapter: snowflake=1.8.2
+[0m01:24:49.420860 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m01:24:49.577563 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:24:49.578169 [debug] [MainThread]: Partial parsing: updated file: capstone_amazon_analytics://models/staging/stg_reviews.sql
+[0m01:24:49.726396 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m01:24:49.726963 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80719c00>]}
+[0m01:24:49.841881 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8026c130>]}
+[0m01:24:49.924127 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff806243d0>]}
+[0m01:24:49.924950 [info ] [MainThread]: Found 8 models, 9 data tests, 2 sources, 573 macros
+[0m01:24:49.925419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80624460>]}
+[0m01:24:49.927065 [info ] [MainThread]: 
+[0m01:24:49.927723 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:24:49.932616 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m01:24:49.946056 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m01:24:49.946653 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+[0m01:24:49.946974 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:24:50.525033 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.578 seconds
+[0m01:24:50.529370 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: Close
+[0m01:24:50.618725 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART)
+[0m01:24:50.620068 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE'
+[0m01:24:50.630726 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"
+[0m01:24:50.634061 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"
+[0m01:24:50.634704 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART limit 10000
+[0m01:24:50.635308 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE limit 10000
+[0m01:24:50.636058 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:24:50.636587 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:24:51.033465 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.397 seconds
+[0m01:24:51.035421 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.399 seconds
+[0m01:24:51.038153 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: Close
+[0m01:24:51.039960 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: Close
+[0m01:24:51.129641 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80419780>]}
+[0m01:24:51.130647 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:24:51.131524 [info ] [MainThread]: 
+[0m01:24:51.151891 [debug] [Thread-1 (]: Began running node model.capstone_amazon_analytics.stg_meta
+[0m01:24:51.152722 [debug] [Thread-2 (]: Began running node model.capstone_amazon_analytics.stg_reviews
+[0m01:24:51.153616 [info ] [Thread-1 (]: 1 of 2 START sql view model STAGE_STAGE.stg_meta ............................... [RUN]
+[0m01:24:51.154486 [info ] [Thread-2 (]: 2 of 2 START sql view model STAGE_STAGE.stg_reviews ............................ [RUN]
+[0m01:24:51.155292 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART, now model.capstone_amazon_analytics.stg_meta)
+[0m01:24:51.156366 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE, now model.capstone_amazon_analytics.stg_reviews)
+[0m01:24:51.156971 [debug] [Thread-1 (]: Began compiling node model.capstone_amazon_analytics.stg_meta
+[0m01:24:51.157549 [debug] [Thread-2 (]: Began compiling node model.capstone_amazon_analytics.stg_reviews
+[0m01:24:51.167227 [debug] [Thread-1 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:24:51.172284 [debug] [Thread-2 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:24:51.174590 [debug] [Thread-1 (]: Began executing node model.capstone_amazon_analytics.stg_meta
+[0m01:24:51.175205 [debug] [Thread-2 (]: Began executing node model.capstone_amazon_analytics.stg_reviews
+[0m01:24:51.202947 [debug] [Thread-2 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:24:51.205973 [debug] [Thread-1 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:24:51.208211 [debug] [Thread-2 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_reviews"
+[0m01:24:51.208944 [debug] [Thread-1 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_meta"
+[0m01:24:51.209215 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_reviews"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+
+),
+
+renamed as (
+
+select
+md5(cast(coalesce(cast(reviewer_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(product_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(review_time as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as review_id,
+product_id as product_id,
+reviewer_id as reviewer_id,
+cast(rating as integer) as rating,
+review_text as review_text,
+cast(review_time as timestamp) as review_timestamp
+from source
+where review_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:24:51.209629 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_meta"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_META_RAW_TABLE     
+
+),
+
+renamed as (
+
+select
+product_id as product_id,
+title as product_title,
+brand as brand,
+categories as categories,
+cast(price as float) as price
+from source
+where product_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:24:51.210050 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:24:51.210385 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:24:52.629316 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.410 seconds
+[0m01:24:52.625791 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.415 seconds
+[0m01:24:52.708956 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: Close
+[0m01:24:52.709456 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: Close
+[0m01:24:52.784778 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80aca620>]}
+[0m01:24:52.785566 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd0092e65-94cf-424e-9748-e1c576edeac8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9db2df30>]}
+[0m01:24:52.786734 [info ] [Thread-1 (]: 1 of 2 OK created sql view model STAGE_STAGE.stg_meta .......................... [[32mSUCCESS 1[0m in 1.63s]
+[0m01:24:52.787678 [info ] [Thread-2 (]: 2 of 2 OK created sql view model STAGE_STAGE.stg_reviews ....................... [[32mSUCCESS 1[0m in 1.62s]
+[0m01:24:52.790583 [debug] [Thread-1 (]: Finished running node model.capstone_amazon_analytics.stg_meta
+[0m01:24:52.791357 [debug] [Thread-2 (]: Finished running node model.capstone_amazon_analytics.stg_reviews
+[0m01:24:52.795812 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:24:52.796303 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_meta' was properly closed.
+[0m01:24:52.796659 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_reviews' was properly closed.
+[0m01:24:52.797291 [info ] [MainThread]: 
+[0m01:24:52.797795 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.87 seconds (2.87s).
+[0m01:24:52.799265 [debug] [MainThread]: Command end result
+[0m01:24:52.846384 [info ] [MainThread]: 
+[0m01:24:52.846886 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:24:52.847355 [info ] [MainThread]: 
+[0m01:24:52.847827 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m01:24:52.851172 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 4.2543855, "process_user_time": 3.983042, "process_kernel_time": 0.774966, "process_mem_max_rss": "204272", "process_out_blocks": "3690", "process_in_blocks": "0"}
+[0m01:24:52.852906 [debug] [MainThread]: Command `dbt run` succeeded at 01:24:52.852788 after 4.26 seconds
+[0m01:24:52.853877 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9dd84370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c725d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff80388b20>]}
+[0m01:24:52.854331 [debug] [MainThread]: Flushing usage events
+[0m01:25:12.173481 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8fe583a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e24a1a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e24a140>]}
+
+
+============================== 01:25:12.177174 | d203affc-a753-46d5-a92e-4d5d3470da2e ==============================
+[0m01:25:12.177174 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:25:12.177718 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'profiles_dir': '/opt/airflow/dbt-profiles', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt test --profiles-dir /opt/airflow/dbt-profiles', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m01:25:12.685464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8fe7be80>]}
+[0m01:25:12.714578 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6eb86620>]}
+[0m01:25:12.715156 [info ] [MainThread]: Registered adapter: snowflake=1.8.2
+[0m01:25:12.777957 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m01:25:12.962971 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:25:12.963391 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:25:12.994271 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6e5e9240>]}
+[0m01:25:13.098265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6e61fa30>]}
+[0m01:25:13.098983 [info ] [MainThread]: Found 8 models, 9 data tests, 2 sources, 573 macros
+[0m01:25:13.099386 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6e5bab00>]}
+[0m01:25:13.101073 [info ] [MainThread]: 
+[0m01:25:13.101845 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:25:13.105962 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE'
+[0m01:25:13.106986 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART'
+[0m01:25:13.119224 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"
+[0m01:25:13.121246 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"
+[0m01:25:13.121661 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE limit 10000
+[0m01:25:13.121982 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART limit 10000
+[0m01:25:13.122304 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:25:13.122637 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:25:13.645363 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.523 seconds
+[0m01:25:13.649130 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: Close
+[0m01:25:13.788852 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.666 seconds
+[0m01:25:13.791334 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: Close
+[0m01:25:13.900556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd203affc-a753-46d5-a92e-4d5d3470da2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6eb87850>]}
+[0m01:25:13.901771 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:25:13.902446 [info ] [MainThread]: 
+[0m01:25:13.919829 [debug] [Thread-1 (]: Began running node test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06
+[0m01:25:13.920480 [debug] [Thread-2 (]: Began running node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d
+[0m01:25:13.921030 [debug] [Thread-3 (]: Began running node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001
+[0m01:25:13.921604 [debug] [Thread-4 (]: Began running node test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c
+[0m01:25:13.922129 [info ] [Thread-1 (]: 1 of 9 START test accepted_values_stg_reviews_rating__1__2__3__4__5 ............ [RUN]
+[0m01:25:13.923043 [info ] [Thread-2 (]: 2 of 9 START test not_null_mart_avg_rating_by_year_brand_brand ................. [RUN]
+[0m01:25:13.923763 [info ] [Thread-3 (]: 3 of 9 START test not_null_mart_avg_rating_by_year_brand_review_year ........... [RUN]
+[0m01:25:13.924465 [info ] [Thread-4 (]: 4 of 9 START test not_null_stg_meta_product_id ................................. [RUN]
+[0m01:25:13.925366 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART, now test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06)
+[0m01:25:13.926025 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE, now test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d)
+[0m01:25:13.926755 [debug] [Thread-3 (]: Acquiring new snowflake connection 'test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001'
+[0m01:25:13.927409 [debug] [Thread-4 (]: Acquiring new snowflake connection 'test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c'
+[0m01:25:13.928017 [debug] [Thread-1 (]: Began compiling node test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06
+[0m01:25:13.928540 [debug] [Thread-2 (]: Began compiling node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d
+[0m01:25:13.929079 [debug] [Thread-3 (]: Began compiling node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001
+[0m01:25:13.929661 [debug] [Thread-4 (]: Began compiling node test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c
+[0m01:25:13.948107 [debug] [Thread-1 (]: Writing injected SQL for node "test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06"
+[0m01:25:13.956999 [debug] [Thread-2 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d"
+[0m01:25:13.961587 [debug] [Thread-3 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001"
+[0m01:25:13.965651 [debug] [Thread-4 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c"
+[0m01:25:13.969359 [debug] [Thread-1 (]: Began executing node test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06
+[0m01:25:13.976767 [debug] [Thread-3 (]: Began executing node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001
+[0m01:25:13.984859 [debug] [Thread-1 (]: Writing runtime sql for node "test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06"
+[0m01:25:13.985227 [debug] [Thread-4 (]: Began executing node test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c
+[0m01:25:13.987295 [debug] [Thread-3 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001"
+[0m01:25:13.987724 [debug] [Thread-2 (]: Began executing node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d
+[0m01:25:13.990430 [debug] [Thread-4 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c"
+[0m01:25:13.992834 [debug] [Thread-2 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d"
+[0m01:25:13.993645 [debug] [Thread-1 (]: Using snowflake connection "test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06"
+[0m01:25:13.994870 [debug] [Thread-4 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c"
+[0m01:25:13.995126 [debug] [Thread-1 (]: On test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        rating as value_field,
+        count(*) as n_records
+
+    from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+    group by rating
+
+)
+
+select *
+from all_values
+where value_field not in (
+    '1','2','3','4','5'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:13.995556 [debug] [Thread-3 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001"
+[0m01:25:13.996089 [debug] [Thread-2 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d"
+[0m01:25:13.996366 [debug] [Thread-4 (]: On test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select product_id
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+where product_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:13.996706 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:25:13.997047 [debug] [Thread-3 (]: On test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select review_year
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART.mart_avg_rating_by_year_brand
+where review_year is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:13.997362 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select brand
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART.mart_avg_rating_by_year_brand
+where brand is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:13.997672 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m01:25:13.998228 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:25:13.998720 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:25:14.823728 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.824 seconds
+[0m01:25:14.827680 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.830 seconds
+[0m01:25:14.841574 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.843 seconds
+[0m01:25:14.845063 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d: Close
+[0m01:25:14.846002 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.849 seconds
+[0m01:25:14.848102 [debug] [Thread-4 (]: On test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c: Close
+[0m01:25:14.850186 [debug] [Thread-3 (]: On test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001: Close
+[0m01:25:14.854930 [debug] [Thread-1 (]: On test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06: Close
+[0m01:25:14.926331 [info ] [Thread-2 (]: 2 of 9 PASS not_null_mart_avg_rating_by_year_brand_brand ....................... [[32mPASS[0m in 1.00s]
+[0m01:25:14.929467 [debug] [Thread-2 (]: Finished running node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d
+[0m01:25:14.930206 [debug] [Thread-2 (]: Began running node test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef
+[0m01:25:14.931056 [info ] [Thread-2 (]: 5 of 9 START test not_null_stg_reviews_product_id .............................. [RUN]
+[0m01:25:14.931854 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_brand.66d9c2825d, now test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef)
+[0m01:25:14.932430 [debug] [Thread-2 (]: Began compiling node test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef
+[0m01:25:14.938123 [debug] [Thread-2 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef"
+[0m01:25:14.939473 [debug] [Thread-2 (]: Began executing node test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef
+[0m01:25:14.943009 [debug] [Thread-2 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef"
+[0m01:25:14.945353 [info ] [Thread-4 (]: 4 of 9 PASS not_null_stg_meta_product_id ....................................... [[32mPASS[0m in 1.02s]
+[0m01:25:14.946495 [debug] [Thread-2 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef"
+[0m01:25:14.947244 [debug] [Thread-4 (]: Finished running node test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c
+[0m01:25:14.947807 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select product_id
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+where product_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:14.948357 [debug] [Thread-4 (]: Began running node test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e
+[0m01:25:14.948867 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:25:14.949380 [info ] [Thread-4 (]: 6 of 9 START test not_null_stg_reviews_rating .................................. [RUN]
+[0m01:25:14.950515 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.capstone_amazon_analytics.not_null_stg_meta_product_id.9fa0f11d0c, now test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e)
+[0m01:25:14.955032 [debug] [Thread-4 (]: Began compiling node test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e
+[0m01:25:14.960732 [debug] [Thread-4 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e"
+[0m01:25:14.966941 [debug] [Thread-4 (]: Began executing node test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e
+[0m01:25:14.971964 [debug] [Thread-4 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e"
+[0m01:25:14.972706 [info ] [Thread-3 (]: 3 of 9 PASS not_null_mart_avg_rating_by_year_brand_review_year ................. [[32mPASS[0m in 1.05s]
+[0m01:25:14.973900 [debug] [Thread-3 (]: Finished running node test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001
+[0m01:25:14.975122 [debug] [Thread-3 (]: Began running node test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4
+[0m01:25:14.975739 [debug] [Thread-4 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e"
+[0m01:25:14.976735 [info ] [Thread-3 (]: 7 of 9 START test not_null_stg_reviews_review_id ............................... [RUN]
+[0m01:25:14.978155 [debug] [Thread-4 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select rating
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+where rating is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:14.978777 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.capstone_amazon_analytics.not_null_mart_avg_rating_by_year_brand_review_year.47fb43c001, now test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4)
+[0m01:25:14.979413 [info ] [Thread-1 (]: 1 of 9 PASS accepted_values_stg_reviews_rating__1__2__3__4__5 .................. [[32mPASS[0m in 1.05s]
+[0m01:25:14.979826 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m01:25:14.980715 [debug] [Thread-3 (]: Began compiling node test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4
+[0m01:25:14.981836 [debug] [Thread-1 (]: Finished running node test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06
+[0m01:25:14.986078 [debug] [Thread-3 (]: Writing injected SQL for node "test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4"
+[0m01:25:14.986851 [debug] [Thread-1 (]: Began running node test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376
+[0m01:25:14.990734 [info ] [Thread-1 (]: 8 of 9 START test unique_stg_meta_product_id ................................... [RUN]
+[0m01:25:14.991515 [debug] [Thread-3 (]: Began executing node test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4
+[0m01:25:14.991933 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.capstone_amazon_analytics.accepted_values_stg_reviews_rating__1__2__3__4__5.0037ac3b06, now test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376)
+[0m01:25:14.995882 [debug] [Thread-3 (]: Writing runtime sql for node "test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4"
+[0m01:25:14.996337 [debug] [Thread-1 (]: Began compiling node test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376
+[0m01:25:15.001047 [debug] [Thread-1 (]: Writing injected SQL for node "test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376"
+[0m01:25:15.002031 [debug] [Thread-3 (]: Using snowflake connection "test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4"
+[0m01:25:15.003014 [debug] [Thread-3 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select review_id
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+where review_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:15.003376 [debug] [Thread-1 (]: Began executing node test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376
+[0m01:25:15.003577 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m01:25:15.005596 [debug] [Thread-1 (]: Writing runtime sql for node "test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376"
+[0m01:25:15.013205 [debug] [Thread-1 (]: Using snowflake connection "test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376"
+[0m01:25:15.013892 [debug] [Thread-1 (]: On test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    product_id as unique_field,
+    count(*) as n_records
+
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+where product_id is not null
+group by product_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:15.014300 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:25:15.553320 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.604 seconds
+[0m01:25:15.558347 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef: Close
+[0m01:25:15.604717 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.590 seconds
+[0m01:25:15.607548 [debug] [Thread-1 (]: On test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376: Close
+[0m01:25:15.646099 [info ] [Thread-2 (]: 5 of 9 PASS not_null_stg_reviews_product_id .................................... [[32mPASS[0m in 0.71s]
+[0m01:25:15.647245 [debug] [Thread-2 (]: Finished running node test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef
+[0m01:25:15.647976 [debug] [Thread-2 (]: Began running node test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c
+[0m01:25:15.648695 [info ] [Thread-2 (]: 9 of 9 START test unique_stg_reviews_review_id ................................. [RUN]
+[0m01:25:15.649457 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.capstone_amazon_analytics.not_null_stg_reviews_product_id.0f400ff2ef, now test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c)
+[0m01:25:15.650171 [debug] [Thread-2 (]: Began compiling node test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c
+[0m01:25:15.656187 [debug] [Thread-2 (]: Writing injected SQL for node "test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c"
+[0m01:25:15.657462 [debug] [Thread-2 (]: Began executing node test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c
+[0m01:25:15.661262 [debug] [Thread-2 (]: Writing runtime sql for node "test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c"
+[0m01:25:15.662957 [debug] [Thread-2 (]: Using snowflake connection "test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c"
+[0m01:25:15.663513 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    review_id as unique_field,
+    count(*) as n_records
+
+from AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+where review_id is not null
+group by review_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m01:25:15.664077 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:25:15.704961 [info ] [Thread-1 (]: 8 of 9 PASS unique_stg_meta_product_id ......................................... [[32mPASS[0m in 0.71s]
+[0m01:25:15.706148 [debug] [Thread-1 (]: Finished running node test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376
+[0m01:25:15.722175 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.742 seconds
+[0m01:25:15.727809 [debug] [Thread-4 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e: Close
+[0m01:25:15.759583 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.756 seconds
+[0m01:25:15.761602 [debug] [Thread-3 (]: On test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4: Close
+[0m01:25:15.841435 [info ] [Thread-4 (]: 6 of 9 PASS not_null_stg_reviews_rating ........................................ [[32mPASS[0m in 0.89s]
+[0m01:25:15.842439 [debug] [Thread-4 (]: Finished running node test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e
+[0m01:25:15.859979 [info ] [Thread-3 (]: 7 of 9 PASS not_null_stg_reviews_review_id ..................................... [[32mPASS[0m in 0.88s]
+[0m01:25:15.860853 [debug] [Thread-3 (]: Finished running node test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4
+[0m01:25:16.064911 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.400 seconds
+[0m01:25:16.068529 [debug] [Thread-2 (]: On test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c: Close
+[0m01:25:16.161951 [info ] [Thread-2 (]: 9 of 9 PASS unique_stg_reviews_review_id ....................................... [[32mPASS[0m in 0.51s]
+[0m01:25:16.163782 [debug] [Thread-2 (]: Finished running node test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c
+[0m01:25:16.166308 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:25:16.166973 [debug] [MainThread]: Connection 'test.capstone_amazon_analytics.unique_stg_reviews_review_id.9b6c259f3c' was properly closed.
+[0m01:25:16.167445 [debug] [MainThread]: Connection 'test.capstone_amazon_analytics.unique_stg_meta_product_id.87607bd376' was properly closed.
+[0m01:25:16.167930 [debug] [MainThread]: Connection 'test.capstone_amazon_analytics.not_null_stg_reviews_review_id.943b8fc3e4' was properly closed.
+[0m01:25:16.168402 [debug] [MainThread]: Connection 'test.capstone_amazon_analytics.not_null_stg_reviews_rating.b94d4a057e' was properly closed.
+[0m01:25:16.169040 [info ] [MainThread]: 
+[0m01:25:16.169717 [info ] [MainThread]: Finished running 9 data tests in 0 hours 0 minutes and 3.07 seconds (3.07s).
+[0m01:25:16.171744 [debug] [MainThread]: Command end result
+[0m01:25:16.222682 [info ] [MainThread]: 
+[0m01:25:16.223203 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:25:16.223530 [info ] [MainThread]: 
+[0m01:25:16.223905 [info ] [MainThread]: Done. PASS=9 WARN=0 ERROR=0 SKIP=0 TOTAL=9
+[0m01:25:16.225532 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 4.0821276, "process_user_time": 3.832633, "process_kernel_time": 0.384166, "process_mem_max_rss": "202320", "process_out_blocks": "2534", "process_in_blocks": "0"}
+[0m01:25:16.226242 [debug] [MainThread]: Command `dbt test` succeeded at 01:25:16.226147 after 4.08 seconds
+[0m01:25:16.226763 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8fe583a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f0629b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6e5bb4f0>]}
+[0m01:25:16.227242 [debug] [MainThread]: Flushing usage events
+[0m01:50:35.293833 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d944400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bd42260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bd42200>]}
+
+
+============================== 01:50:35.298084 | 6e014752-07de-4151-816e-02de74c3b116 ==============================
+[0m01:50:35.298084 [info ] [MainThread]: Running with dbt=1.8.3
+[0m01:50:35.298789 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'profiles_dir': '/opt/airflow/dbt-profiles', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt-profiles --select path:models/staging', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m01:50:35.904650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8bee4ca0>]}
+[0m01:50:35.936480 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff706f4d90>]}
+[0m01:50:35.937132 [info ] [MainThread]: Registered adapter: snowflake=1.8.2
+[0m01:50:36.000065 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m01:50:36.147467 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:50:36.147817 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:50:36.176615 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7012d300>]}
+[0m01:50:36.253160 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d385d20>]}
+[0m01:50:36.253860 [info ] [MainThread]: Found 8 models, 9 data tests, 2 sources, 573 macros
+[0m01:50:36.254167 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d6edf90>]}
+[0m01:50:36.255458 [info ] [MainThread]: 
+[0m01:50:36.256204 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:50:36.259684 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV'
+[0m01:50:36.276610 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV"
+[0m01:50:36.276991 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV"} */
+show terse schemas in database AMAZON_REVIEW_ANALYTICS_DEV
+    limit 10000
+[0m01:50:36.277216 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:50:36.812712 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.535 seconds
+[0m01:50:36.816193 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV: Close
+[0m01:50:36.927520 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE'
+[0m01:50:36.929983 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV, now list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART)
+[0m01:50:36.942816 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"
+[0m01:50:36.946449 [debug] [ThreadPool]: Using snowflake connection "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"
+[0m01:50:36.947148 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE limit 10000
+[0m01:50:36.947787 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "connection_name": "list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART"} */
+show objects in AMAZON_REVIEW_ANALYTICS_DEV.STAGE_MART limit 10000
+[0m01:50:36.948502 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:50:36.949034 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:50:37.459770 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.511 seconds
+[0m01:50:37.464628 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE: Close
+[0m01:50:37.471077 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.522 seconds
+[0m01:50:37.473134 [debug] [ThreadPool]: On list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART: Close
+[0m01:50:37.542559 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d95e860>]}
+[0m01:50:37.543913 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:50:37.544965 [info ] [MainThread]: 
+[0m01:50:37.557311 [debug] [Thread-1 (]: Began running node model.capstone_amazon_analytics.stg_meta
+[0m01:50:37.557862 [debug] [Thread-2 (]: Began running node model.capstone_amazon_analytics.stg_reviews
+[0m01:50:37.558659 [info ] [Thread-1 (]: 1 of 2 START sql view model STAGE_STAGE.stg_meta ............................... [RUN]
+[0m01:50:37.559519 [info ] [Thread-2 (]: 2 of 2 START sql view model STAGE_STAGE.stg_reviews ............................ [RUN]
+[0m01:50:37.560330 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_MART, now model.capstone_amazon_analytics.stg_meta)
+[0m01:50:37.560994 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_AMAZON_REVIEW_ANALYTICS_DEV_STAGE_STAGE, now model.capstone_amazon_analytics.stg_reviews)
+[0m01:50:37.561631 [debug] [Thread-1 (]: Began compiling node model.capstone_amazon_analytics.stg_meta
+[0m01:50:37.562222 [debug] [Thread-2 (]: Began compiling node model.capstone_amazon_analytics.stg_reviews
+[0m01:50:37.571546 [debug] [Thread-1 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:50:37.586612 [debug] [Thread-2 (]: Writing injected SQL for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:50:37.588377 [debug] [Thread-1 (]: Began executing node model.capstone_amazon_analytics.stg_meta
+[0m01:50:37.606449 [debug] [Thread-2 (]: Began executing node model.capstone_amazon_analytics.stg_reviews
+[0m01:50:37.612573 [debug] [Thread-1 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_meta"
+[0m01:50:37.615304 [debug] [Thread-2 (]: Writing runtime sql for node "model.capstone_amazon_analytics.stg_reviews"
+[0m01:50:37.617330 [debug] [Thread-1 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_meta"
+[0m01:50:37.618343 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_meta"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_meta
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_META_RAW_TABLE     
+
+),
+
+renamed as (
+
+select
+product_id as product_id,
+title as product_title,
+brand as brand,
+categories as categories,
+cast(price as float) as price
+from source
+where product_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:50:37.618619 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:50:37.618100 [debug] [Thread-2 (]: Using snowflake connection "model.capstone_amazon_analytics.stg_reviews"
+[0m01:50:37.619033 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "capstone_amazon_profile", "target_name": "dev", "node_id": "model.capstone_amazon_analytics.stg_reviews"} */
+create or replace   view AMAZON_REVIEW_ANALYTICS_DEV.STAGE_STAGE.stg_reviews
+  
+   as (
+    with source as (
+
+select *
+from AMAZON_REVIEW_ANALYTICS_DEV.RAW.CAPSTONE_AMAZON_REVIEW_RAW_TABLE
+
+),
+
+renamed as (
+
+select
+md5(cast(coalesce(cast(reviewer_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(product_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(review_time as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as review_id,
+product_id as product_id,
+reviewer_id as reviewer_id,
+cast(rating as integer) as rating,
+review_text as review_text,
+cast(review_time as timestamp) as review_timestamp
+from source
+where review_id is not null
+
+)
+
+select *
+from renamed
+  );
+[0m01:50:37.621578 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:50:38.194316 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.575 seconds
+[0m01:50:38.222000 [debug] [Thread-1 (]: On model.capstone_amazon_analytics.stg_meta: Close
+[0m01:50:38.275029 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.653 seconds
+[0m01:50:38.277650 [debug] [Thread-2 (]: On model.capstone_amazon_analytics.stg_reviews: Close
+[0m01:50:38.300022 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6ab4fc40>]}
+[0m01:50:38.300961 [info ] [Thread-1 (]: 1 of 2 OK created sql view model STAGE_STAGE.stg_meta .......................... [[32mSUCCESS 1[0m in 0.74s]
+[0m01:50:38.302011 [debug] [Thread-1 (]: Finished running node model.capstone_amazon_analytics.stg_meta
+[0m01:50:38.381339 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6e014752-07de-4151-816e-02de74c3b116', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6b5ab3d0>]}
+[0m01:50:38.382935 [info ] [Thread-2 (]: 2 of 2 OK created sql view model STAGE_STAGE.stg_reviews ....................... [[32mSUCCESS 1[0m in 0.82s]
+[0m01:50:38.383855 [debug] [Thread-2 (]: Finished running node model.capstone_amazon_analytics.stg_reviews
+[0m01:50:38.385692 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:50:38.386220 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_meta' was properly closed.
+[0m01:50:38.386722 [debug] [MainThread]: Connection 'model.capstone_amazon_analytics.stg_reviews' was properly closed.
+[0m01:50:38.387306 [info ] [MainThread]: 
+[0m01:50:38.387850 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.13 seconds (2.13s).
+[0m01:50:38.388928 [debug] [MainThread]: Command end result
+[0m01:50:38.439498 [info ] [MainThread]: 
+[0m01:50:38.440069 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:50:38.440586 [info ] [MainThread]: 
+[0m01:50:38.440997 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m01:50:38.442023 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 3.178773, "process_user_time": 3.074265, "process_kernel_time": 0.495456, "process_mem_max_rss": "197636", "process_out_blocks": "2480", "process_in_blocks": "0"}
+[0m01:50:38.442492 [debug] [MainThread]: Command `dbt run` succeeded at 01:50:38.442436 after 3.18 seconds
+[0m01:50:38.442776 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8d944400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8c327b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8cb8b9a0>]}
+[0m01:50:38.443087 [debug] [MainThread]: Flushing usage events

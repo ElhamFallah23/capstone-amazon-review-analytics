@@ -8,7 +8,11 @@ from {{ source('amazon_raw', 'CAPSTONE_AMAZON_REVIEW_RAW_TABLE') }}
 renamed as (
 
 select
-review_id as review_id,
+{{ dbt_utils.generate_surrogate_key([
+'reviewer_id',
+'product_id',
+'review_time'
+]) }} as review_id,
 product_id as product_id,
 reviewer_id as reviewer_id,
 cast(rating as integer) as rating,

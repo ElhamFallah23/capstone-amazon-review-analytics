@@ -49,7 +49,7 @@ reviews_df = reviews_dyf.toDF()
 # This prepares the data for analytics and downstream systems
 # -------------------------------------------------------------------
 clean_reviews_df = reviews_df.select(
-    col("review_id"),
+    #col("review_id"),
     col("asin"),
     col("reviewerID"),
     col("overall"),
