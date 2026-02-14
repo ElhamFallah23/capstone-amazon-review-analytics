@@ -281,7 +281,7 @@ module "snowflake_quicksight_access" {
 
   quicksight_role_name     = var.quicksight_role_name
   quicksight_user_name     = var.quicksight_user_name
-  quicksight_user_password = var.TF_VAR_QUICKSIGHT_USER_NAME
+  quicksight_user_password = var.quicksight_user_password
 
   warehouse_name = var.warehouse_name
   database_name  = var.database_name
