@@ -122,6 +122,11 @@ variable "mart_schema_name" {
   type = string
 }
 
+variable "quicksight_user_password" {
+  description = "Password for QuickSight Snowflake user"
+  sensitive   = true
+}
+
 
 
 

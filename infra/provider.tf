@@ -53,13 +53,3 @@ provider "snowflake" {
 }
 
 
-########################################
-# Snowflake-QuickSight access
-# - Used for roles, grants, service user
-########################################
-
-variable "quicksight_user_password" {
-  description = "Password for QuickSight Snowflake user"
-}
-
-
