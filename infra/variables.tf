@@ -121,7 +121,7 @@ variable "mart_schema_name" {
 }
 
 variable "quicksight_user_password" {
-  description = "Password for QuickSight Snowflake user"
+  description = "Password for QuickSight Snowflake user" # gggg
   sensitive   = true
 }
 
