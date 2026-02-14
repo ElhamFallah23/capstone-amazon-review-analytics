@@ -273,9 +273,9 @@ module "snowflake_storage_integration" {
 module "snowflake_quicksight_access" {
   source = "./modules/snowflake-quicksight-access"
   providers = {
-    snowflake.accountadmin       = snowflake.accountadmin
-    snowflake.sysadmin           = snowflake.sysadmin
-    snowflake.securityadminadmin = snowflake.securityadminadmin
+    snowflake.accountadmin  = snowflake.accountadmin
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
 
   }
 
