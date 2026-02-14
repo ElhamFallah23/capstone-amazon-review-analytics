@@ -116,7 +116,7 @@ variable "quicksight_user_name" {
   type = string
 }
 
-variable "my_public_key" {}
+variable "TF_VAR_QUICKSIGHT_USER_NAME" {}
 
 variable "mart_schema_name" {
   type = string
