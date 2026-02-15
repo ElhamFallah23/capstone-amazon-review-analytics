@@ -53,6 +53,3 @@ provider "snowflake" {
 }
 
 
-#JNJBJ
-
-

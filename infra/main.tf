@@ -262,3 +262,29 @@ module "snowflake_storage_integration" {
     snowflake.accountadmin = snowflake.accountadmin
   }
 }
+
+
+
+
+####################################################
+# QuickSight Snowflake Access (BI Layer)
+####################################################
+
+module "snowflake_quicksight_access" {
+  source = "./modules/snowflake-quicksight-access"
+  providers = {
+    snowflake.accountadmin  = snowflake.accountadmin
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
+
+  }
+
+  quicksight_role_name     = var.quicksight_role_name
+  quicksight_user_name     = var.quicksight_user_name
+  quicksight_user_password = var.quicksight_user_password
+
+  warehouse_name = var.warehouse_name
+  database_name  = var.database_name
+  schema_name    = var.mart_schema_name
+}
+
