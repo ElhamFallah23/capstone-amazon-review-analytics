@@ -283,8 +283,8 @@ module "snowflake_quicksight_access" {
   quicksight_user_name     = var.quicksight_user_name
   quicksight_user_password = var.quicksight_user_password
 
-  warehouse_name = var.warehouse_name
-  database_name  = var.database_name
+  warehouse_name = "COMPUTE_WH"
+  database_name  = "AMAZON_REVIEW_ANALYTICS_DEV"
   schema_name    = var.mart_schema_name
 }
 
