@@ -28,6 +28,9 @@ jobs:
     name: Terraform Apply with Manual Approval
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_quicksight_user_password: ${{ secrets.QUICKSIGHT_USER_PASSWORD }}
+
     # Protect this job behind environment approval
     environment: dev-approve     # this enables manual approval before terraform apply
 
