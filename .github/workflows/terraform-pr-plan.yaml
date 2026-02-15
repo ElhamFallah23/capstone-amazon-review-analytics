@@ -27,6 +27,10 @@ jobs:
     name: Terraform Plan for Pr 
     runs-on: ubuntu-latest
 
+
+    env:
+    TF_VAR_quicksight_user_password: ${{ secrets.QUICKSIGHT_USER_PASSWORD }}
+
     steps:
       # Step 1: Checkout repository code
       - name: Checkout source code
