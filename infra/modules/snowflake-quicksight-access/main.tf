@@ -116,20 +116,37 @@ resource "snowflake_grant_privileges_to_account_role" "select_tables" {
 
 
 
-resource "snowflake_schema_grant" "mart_usage" {
-  database_name = var.database_name
-  schema_name   = var.schema_name
-  privilege     = "USAGE"
-  roles         = [var.quicksight_role_name]
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_usage" {
+  provider = snowflake.securityadmin
+
+  account_role_name = var.quicksight_role_name
+  privileges        = ["USAGE"]
+
+  on_schema {
+    schema_name = "${var.database_name}.${var.schema_name}"
+  }
 }
 
-resource "snowflake_table_grant" "mart_select" {
-  database_name = var.database_name
-  schema_name   = var.schema_name
-  privilege     = "SELECT"
-  roles         = [var.quicksight_role_name]
-  on_future     = true
+
+
+resource "snowflake_grant_privileges_to_account_role" "mart_select" {
+  provider = snowflake.securityadmin
+
+  account_role_name = var.quicksight_role_name
+  privileges        = ["SELECT"]
+
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "${var.database_name}.${var.schema_name}"
+    }
+  }
 }
+
+
+
 
 #############################################
 # Grant SELECT on all VIEWS in MART schema
