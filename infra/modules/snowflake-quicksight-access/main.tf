@@ -113,6 +113,24 @@ resource "snowflake_grant_privileges_to_account_role" "select_tables" {
   }
 }
 
+
+
+
+resource "snowflake_schema_grant" "mart_usage" {
+database_name = var.database_name
+schema_name = var.schema_name
+privilege = "USAGE"
+roles = [var.quicksight_role_name]
+}
+
+resource "snowflake_table_grant" "mart_select" {
+database_name = var.database_name
+schema_name = var.schema_name
+privilege = "SELECT"
+roles = [var.quicksight_role_name]
+on_future = true
+}
+
 #############################################
 # Grant SELECT on all VIEWS in MART schema
 #############################################
