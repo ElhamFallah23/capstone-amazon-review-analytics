@@ -1,0 +1,219 @@
+# 📦 Amazon Product Review Analytics (Capstone Project)
+
+---
+
+## 🧠 Project Description
+
+This project is designed as a capstone data engineering challenge to build an end-to-end data pipeline for collecting, processing, transforming, and analyzing Amazon product review data using AWS-native services and modern tools such as Terraform, Snowflake, DBT, and Airflow.
+
+---
+
+## ⚙️ Tech Stack
+
+### Cloud & Infrastructure
+- AWS (S3, EventBridge, Glue, Lambda, SNS, Step Functions, IAM)
+- Terraform (modular Infrastructure as Code)
+- GitHub Actions (OIDC-based CI/CD)
+
+### Data & Analytics
+- Snowflake (External Stage, External Table, Storage Integration)
+- dbt Core (staging & mart modeling)
+- Apache Airflow (workflow orchestration)
+- Amazon QuickSight (BI visualization)
+
+---
+
+## 🧠 Key Architectural Highlights
+
+### 🔐 Secure CI/CD with OIDC (No Hard-Coded Credentials)
+
+Infrastructure deployment is performed via GitHub Actions using **OIDC-based authentication**, eliminating long-lived AWS credentials.
+
+Benefits:
+
+- No hard-coded secrets
+- Short-lived access tokens
+- Principle of least privilege
+- Enterprise-grade CI/CD security model
+
+---
+
+### ⚡ Fully Event-Driven Processing
+
+The ingestion pipeline is fully event-driven:
+
+1. A new file is uploaded to **S3 (raw)**
+2. S3 emits an event
+3. EventBridge captures the event
+4. EventBridge triggers Step Functions
+5. Step Functions orchestrates Glue jobs (clean → flatten)
+
+This enables:
+
+- Zero manual triggering
+- Decoupled architecture
+- Automatic pipeline execution
+- Scalable design
+
+---
+
+### ❄️ Snowflake External Table with Automatic Refresh
+
+Processed Parquet files are written to **S3 (processed)** by Glue.
+
+Snowflake is configured using:
+
+- Storage Integration (IAM-based access)
+- External Stage
+- External Table
+- Auto-refresh via S3 Event Notifications
+
+When new files arrive:
+
+- S3 event triggers Snowflake metadata refresh
+- External table updates automatically
+- No manual `COPY INTO` required
+
+This enables near real-time analytics readiness.
+
+---
+
+### 🔁 Airflow Orchestration (Extensible Design)
+
+Currently:
+
+- Airflow DAG runs on a scheduled interval.
+
+Future enhancement:
+
+- Event-driven Airflow triggering via EventBridge/S3
+- Fully reactive orchestration layer
+
+This keeps the system extensible and production-ready.
+
+---
+
+### 🏗 Infrastructure as Code (Full Automation)
+
+All infrastructure components are provisioned via Terraform:
+
+- AWS resources
+- IAM roles & policies
+- Snowflake database objects
+- OIDC roles for CI/CD
+- Event integrations
+
+No manual setup is required once deployed.
+
+---
+
+## 📊 Data Modeling Strategy
+
+The platform follows a layered modeling approach:
+
+### Raw Layer
+- Landing zone in S3 (JSON format)
+
+### Processed Layer
+- Cleaned & flattened data
+- Stored in Parquet format for efficient querying
+
+### Staging Layer (dbt)
+- Source-aligned transformations
+- Minimal business logic
+- Clear column standardization
+
+### Mart Layer (dbt)
+- Aggregated business-ready datasets
+- Clearly defined grain per model
+- Designed for BI consumption
+
+Each mart model explicitly defines its grain and transformation logic.
+
+---
+
+## 🚀 CI/CD Strategy
+
+Infrastructure is deployed using GitHub Actions:
+
+- `terraform-validate-fmt.yaml` → Validates formatting and syntax
+- `terraform-pr-plan.yaml` → Runs Terraform plan on pull requests
+- `terraform-post-merge-apply.yaml` → Applies changes after merge
+
+Remote state management:
+
+- S3 backend
+- DynamoDB state locking
+
+Security:
+
+- OIDC authentication
+- No static AWS credentials
+
+---
+
+## 📂 Repository Structure
+
+.github/workflows/   # CI/CD pipelines for Terraform
+
+infra/               # Modular Terraform infrastructure
+
+dbt/                 # Staging and mart models
+
+airflow/             # DAG definitions
+
+docs/                # Detailed architecture & infra documentation
+
+
+---
+
+## 🛠 How to Run (Development Flow)
+
+1. Initialize Terraform backend
+2. Deploy infrastructure via GitHub Actions
+3. Upload dataset to S3 raw bucket
+4. S3 event triggers the pipeline automatically
+5. Verify processed data in S3 processed layer
+6. Query Snowflake external tables
+7. Run dbt transformations
+8. Trigger Airflow DAG (if required)
+9. Explore dashboards in QuickSight
+
+---
+
+## 🔐 Security Design
+
+- OIDC-based GitHub authentication
+- Least-privilege IAM policies
+- Terraform remote state locking
+- Snowflake IAM-based storage integration
+- No hard-coded credentials
+
+---
+
+## 📈 Future Improvements
+
+- Incremental dbt models
+- Event-driven Airflow orchestration
+- Data quality monitoring & alerting
+- Cost monitoring & optimization
+- CI pipeline for dbt testing
+- Data catalog integration
+
+---
+
+## 🎯 Project Goals
+
+This project demonstrates:
+
+- Cloud-native data architecture
+- Event-driven system design
+- Secure Infrastructure as Code
+- Modern analytics engineering practices
+- Production-style CI/CD implementation
+
+It is designed not as a simple bootcamp exercise, but as a scalable, secure, and automation-first data platform.
+
+## 📬 About the Author
+
+This project is built as part of a Data Engineering capstone bootcamp project using real-world best practices and cloud-native design.
