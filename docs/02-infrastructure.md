@@ -1,3 +1,4 @@
+# 02 — Infrastructure & CI/CD Design
 ## 1. Purpose
 
 This document describes the infrastructure architecture, Terraform module strategy, remote state management, and CI/CD deployment model of the platform.
