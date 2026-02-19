@@ -1,10 +1,73 @@
-# 📦 Amazon Product Review Analytics (Capstone Project)
+# Amazon Review Analytics — Event-Driven End-to-End Data Platform
+
+## 📌 Project Overview
+
+This project is a production-style, end-to-end cloud data platform designed to ingest, process, transform, and analyze Amazon product review data using modern Data Engineering best practices.
+
+The platform provisions infrastructure using **Terraform (Infrastructure as Code)**, deploys via **GitHub Actions CI/CD with OIDC authentication**, processes data using **AWS Glue & Step Functions**, and delivers analytics-ready data in **Snowflake**, modeled with **dbt** and orchestrated via **Apache Airflow**.
+
+The architecture follows production-grade principles:
+
+- Infrastructure as Code (IaC)
+- Secure CI/CD (OIDC, no hard-coded credentials)
+- Event-driven processing
+- Modular Terraform design
+- Layered data modeling (raw → stage → mart)
+- Automated metadata refresh in Snowflake
 
 ---
 
-## 🧠 Project Description
+## 🏗 Architecture Overview
 
-This project is designed as a capstone data engineering challenge to build an end-to-end data pipeline for collecting, processing, transforming, and analyzing Amazon product review data using AWS-native services and modern tools such as Terraform, Snowflake, DBT, and Airflow.
+### High-Level Data Flow
+
+
+S3 (raw)
+
+↓
+
+S3 Event → EventBridge
+
+↓
+
+Step Functions
+
+↓
+
+Glue Job (Cleaning)
+
+↓
+
+Glue Job (Flattening)
+
+↓
+
+S3 (processed – Parquet)
+
+↓
+
+Snowflake External Stage
+
+↓
+
+External Table (Auto Refresh)
+
+↓
+
+dbt (staging & mart models)
+
+↓
+
+Airflow orchestration
+
+↓
+
+QuickSight dashboards
+
+
+
+---
+The system is fully automated and event-driven from ingestion to analytics.
 
 ---
 
