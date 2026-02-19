@@ -1,97 +1,186 @@
-Conversation opened. 1 read message.
+## 1. Purpose
 
-Skip to content
-Using Gmail with screen readers
-Storage update
-Get 100 GB for €1.99
-Storage is shared across Gmail, Drive & Photos
-13.27 GB of 15 GB used
-Conversations
-88% of 15 GB used
-Cancel subscription
-Terms · Privacy · Program Policies
-Last account activity: 0 minutes ago
-Open in 1 other location · Details
-# Phase 02: Terraform Infrastructure Modules
+This document describes the infrastructure architecture, Terraform module strategy, remote state management, and CI/CD deployment model of the platform.
 
-🎯 **Goal of This Phase**  
-To build the foundational data infrastructure using modularized and production-grade Terraform code, allowing scalable and secure ingestion and crawling of raw data.
+All infrastructure is provisioned using Terraform and deployed securely through GitHub Actions using OIDC authentication.
+
+The system follows Infrastructure-as-Code and least-privilege security principles.
 
 ---
 
-## 🧱 Modules Implemented So Far
+## 2. Infrastructure Architecture Overview
 
-### 1️⃣ S3 Ingestion Bucket
+The infrastructure layer provisions:
 
-- **Purpose**: Stores raw review data from Amazon in a secure and partitionable structure.
-- **Module**: `modules/s3_ingestion`
-- **Key Features**:
-  - Bucket name derived from workspace environment (e.g., `amazon-ingestion-dev`)
-  - Public access blocked completely
-  - Optional versioning enabled
-  - AES-256 SSE encryption enabled
+- AWS S3 buckets (raw & processed)
+- EventBridge rules
+- Step Functions state machine
+- Glue jobs
+- IAM roles & policies
+- Snowflake objects (database, schema, stage, external table)
+- GitHub OIDC role
+- Terraform remote backend (S3 + DynamoDB)
 
-**Resources Created**:
-| Resource Type | Description |
-|---------------|-------------|
-| `aws_s3_bucket` | Raw data ingestion bucket |
-| `aws_s3_bucket_public_access_block` | Blocks public access to the bucket |
-| `aws_s3_bucket_versioning` | Enables version control of raw data |
-| `aws_s3_bucket_server_side_encryption_configuration` | Enables AES256 encryption |
+The design is modular and environment-aware.
 
 ---
 
-### 2️⃣ Glue Crawler + Database
+## 3. Terraform Architecture
 
-- **Purpose**: Automatically crawls the raw data in S3 and creates a structured schema in the Glue Data Catalog.
-- **Module**: `modules/glue`
-- **Key Features**:
-  - Glue catalog database created dynamically based on workspace (e.g., `amazon_reviews_db_dev`)
-  - Crawler targets `s3://amazon-ingestion-dev/reviews/`
-  - IAM role created and attached with necessary policies
-  - Schema change policies defined: update in-place, delete to log
+### 3.1 Backend Configuration
 
-**Resources Created**:
-| Resource Type | Description |
-|---------------|-------------|
-| `aws_glue_catalog_database` | Glue database to store crawled metadata |
-| `aws_glue_crawler` | Crawler that scans raw data and updates the Glue table |
-| `aws_iam_role` | Role that allows the crawler to assume permissions |
-| `aws_iam_role_policy_attachment` | Policies for S3 and Glue access |
+Remote state is configured using:
 
----
+- S3 bucket for state storage
+- DynamoDB table for state locking
 
-## ⚠️ Common Issues & Fixes
+Benefits:
 
-| Error Message | Cause | Solution |
-|---------------|-------|----------|
-| `Duplicate backend block` | Multiple `backend.tf` files active | Rename or remove extra backend files |
-| `S3 bucket not found during init` | Bucket not created yet | Disable backend temporarily during `init` |
-| `Missing variable environment` | Not passed to module | Add `environment = "dev"` to `main.tf` |
-| `Unable to validate S3 target` | Crawler points to non-existing folder | Upload a placeholder file to `reviews/` |
-| `Access Denied` when creating crawler | IAM role missing policy | Attach `AmazonS3ReadOnlyAccess` and `AWSGlueServiceRole` |
+- Prevents concurrent Terraform runs
+- Enables team collaboration
+- Ensures consistent state management
+
+This follows Terraform production best practices.
 
 ---
 
-## 📌 Key Learnings
+### 3.2 Modular Design Strategy
 
-- Always separate **bootstrap phase** from main infrastructure
-- Remote backend must only be activated **after** S3/DynamoDB creation
-- Use **workspaces + variables** to isolate `dev/prod` environments
-- Glue crawler **needs a real or placeholder file** in S3 before it can start
+Infrastructure is organized into reusable modules:
+
+- s3
+- iam
+- glue
+- lambda
+- stepfunctions
+- snowflake
+- github-oidc
+
+Each module:
+
+- Has clear input variables
+- Exposes explicit outputs
+- Follows single-responsibility principle
+
+Benefits:
+
+- Reusability
+- Clear separation of concerns
+- Easier testing and debugging
+- Scalable architecture evolution
 
 ---
 
-## 🛠️ Tools Used
+### 3.3 Environment Isolation
 
-- **Terraform**
-- **AWS S3**
-- **AWS Glue**
-- **AWS IAM**
-- **Terraform CLI Workspaces**
+The project is structured to support environment isolation:
+
+- dev environment defined under `infra/environments/dev`
+- Naming conventions include environment suffix
+- Resources are logically separated
+
+This design enables future expansion to staging or production.
 
 ---
 
-▶️ **Next Phase**: [Step Functions Orchestration →](06-stepfunction.md)
-02-terraform-infra.md
-Displaying 02-terraform-infra.md. 
+## 4. Secure CI/CD Architecture
+
+### 4.1 GitHub Actions Workflows
+
+Three workflows manage infrastructure lifecycle:
+
+- terraform-validate-fmt.yaml
+- terraform-pr-plan.yaml
+- terraform-post-merge-apply.yaml
+
+Workflow Strategy:
+
+1. Validate formatting and syntax
+2. Run plan on pull request
+3. Apply changes after merge
+
+This ensures controlled infrastructure changes.
+
+---
+
+### 4.2 OIDC Authentication (No Static Credentials)
+
+Instead of long-lived AWS access keys:
+
+- GitHub Actions uses OpenID Connect (OIDC)
+- AWS IAM role trusts GitHub as identity provider
+- Short-lived tokens are issued dynamically
+
+Benefits:
+
+- No hard-coded credentials
+- Improved security posture
+- Least-privilege access control
+- Enterprise-grade CI/CD pattern
+
+---
+
+## 5. IAM & Security Model
+
+Security is based on least-privilege principles:
+
+- Separate IAM roles for Glue, Step Functions, and CI/CD
+- Explicit trust relationships
+- Scoped permissions per service
+- No wildcard administrative roles
+
+Snowflake integration uses:
+
+- IAM-based storage integration
+- Restricted bucket access policy
+
+All credentials are managed via IAM roles.
+
+---
+
+## 6. Event-Driven Infrastructure
+
+The ingestion pipeline is fully event-driven:
+
+- S3 emits object creation events
+- EventBridge captures the event
+- Step Functions state machine is triggered
+- Glue jobs execute sequentially
+
+Infrastructure components are decoupled and reactive.
+
+---
+
+## 7. Observability & Logging
+
+- Glue logs stored in CloudWatch
+- Step Functions execution history provides visibility
+- GitHub Actions logs infrastructure changes
+- Terraform plan artifacts stored during PR validation
+
+This ensures traceability and operational visibility.
+
+---
+
+## 8. Failure & Recovery Strategy
+
+- Step Functions supports retries and failure states
+- Terraform state locking prevents corruption
+- GitHub PR plan step prevents unsafe changes
+- Modular design enables isolated debugging
+
+The system is designed for safe iteration and controlled failure handling.
+
+---
+
+## 9. Why This Infrastructure Design Is Production-Ready
+
+- Fully Infrastructure-as-Code
+- Secure CI/CD with OIDC
+- Remote state locking
+- Modular Terraform architecture
+- Environment-aware naming
+- Event-driven orchestration
+- Least-privilege IAM model
+
+This reflects real-world cloud infrastructure patterns used in modern data platforms.
