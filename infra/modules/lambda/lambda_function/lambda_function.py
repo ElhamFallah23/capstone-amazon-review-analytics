@@ -56,6 +56,3 @@ def lambda_handler(event, context):
 
     # Return status back to Step Function
     return message
-
-
-
