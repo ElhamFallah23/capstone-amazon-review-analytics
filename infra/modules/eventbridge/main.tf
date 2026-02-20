@@ -46,6 +46,11 @@ resource "aws_cloudwatch_event_rule" "s3_object_created" {
     detail = {
       bucket = {
         name = [var.bucket_name]
+      },
+      object = {
+        key = [{
+          perfix = "test/"
+        }]
       }
     }
   })
