@@ -52,10 +52,15 @@ locals {
         {
           Type     = "Task"
           Resource = "arn:aws:states:::glue:startJobRun"
-          Parameters = merge(
-            { JobName = var.glue_job_name },
-            local.include_glue_args ? { Arguments = var.glue_arguments_override } : {}
-          )
+          Parameters = {
+            JobName = var.glue_job_name
+
+            Arguments = {
+              "--bucket.$" = "$.detail.bucket.name"
+              "--key.$"    = "$.detail.object.key"
+            }
+          }
+
           ResultPath = "$.GlueStart"
           Next       = "WaitBeforeCheck"
         },
