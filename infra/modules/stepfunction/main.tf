@@ -79,9 +79,9 @@ locals {
         Parameters = {
           FunctionName = var.lambda_status_checker_arn
           Payload = {
-            glue_job_name = var.glue_job_name
-            job_run_id    = "$.GlueStart.JobRunId"
-            environment   = var.environment
+            glue_job_name  = var.glue_job_name
+            "job_run_id.$" = "$.GlueStart.JobRunId"
+            environment    = var.environment
           }
         }
         ResultPath = "$.StatusCheck"
