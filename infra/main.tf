@@ -122,6 +122,15 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
   policy_arn = module.iam.sns_fullaccess_policy_arn
 }
 
+module "lambda" {
+  source = "./modules/lambda"
+
+  environment     = var.environment
+  project_tag     = "AmazonReviewAnalytics"
+  glue_job_name   = module.glue.glue_job_name
+  sns_topic_arn   = module.sns.sns_topic_arn
+  lambda_role_arn = module.iam.lambda_role_arn
+}
 
 
 module "glue_status_lambda" {
