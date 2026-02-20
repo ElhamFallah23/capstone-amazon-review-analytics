@@ -298,7 +298,7 @@ module "eventbridge_trigger" {
   source = "./modules/eventbridge"
 
   environment       = var.environment
-  bucket_name       = module.s3_ingestion.bucket_name
+  bucket_name       = module.s3_ingestion.s3_ingestion_bucket_name
   state_machine_arn = module.step_function.state_machine_arn
 }
 
