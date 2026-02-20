@@ -159,7 +159,7 @@ module "stepfunction" {
 
   glue_job_name = module.glue.glue_job_name
   #glue_job_arn              = module.iam.glue_job_role_arn
-  lambda_status_checker_arn = module.iam.lambda.lambda_function_arn
+  lambda_status_checker_arn = module.lambda.lambda_function_arn
 
   poll_interval_seconds = 60
   enable_logging        = true
