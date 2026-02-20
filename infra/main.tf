@@ -122,17 +122,6 @@ resource "aws_iam_user_policy_attachment" "sns_user_attach" {
   policy_arn = module.iam.sns_fullaccess_policy_arn
 }
 
-module "lambda" {
-  source = "./modules/lambda"
-  # Lambda function configuration 
-  lambda_function_name = "glue_job_status_checker"
-  environment          = var.environment
-  project_tag          = "AmazonReviewAnalytics"
-  glue_job_name        = module.glue.glue_job_name
-  sns_topic_arn        = module.sns.sns_topic_arn
-  lambda_role_arn      = module.iam.lambda_role_arn
-}
-
 
 module "glue_status_lambda" {
   source = "./modules/lambda"
@@ -169,7 +158,7 @@ module "stepfunction" {
 
   glue_job_name = module.glue.glue_job_name
   #glue_job_arn              = module.iam.glue_job_role_arn
-  lambda_status_checker_arn = module.lambda.lambda_function_arn
+  lambda_status_checker_arn = module.glue_status_lambda.lambda_function_arn
 
   poll_interval_seconds = 60
   enable_logging        = true
