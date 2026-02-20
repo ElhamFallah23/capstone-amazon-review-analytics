@@ -86,3 +86,21 @@ resource "aws_s3_object" "glue_meta_job_script" {
   source = "${path.module}/glue/meta_etl_job.py"
   etag   = filemd5("${path.module}/glue/meta_etl_job.py")
 }
+
+
+
+# ------------------------------------------------------------
+# EventBridge notifications for this S3 bucket
+# This allows S3 object events to be published to EventBridge
+# ------------------------------------------------------------
+# Enables sending all bucket events to EventBridge
+resource "aws_s3_bucket_notification" "eventbridge" {
+  bucket = aws_s3_bucket.ingestion.id
+
+  # When true, S3 publishes events to EventBridge
+  eventbridge = true
+}
+
+
+
+

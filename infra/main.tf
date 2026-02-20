@@ -288,4 +288,17 @@ module "snowflake_quicksight_access" {
   schema_name    = var.mart_schema_name
 }
 
-#kjjjn
+
+
+####################################################
+# EventBridge 
+####################################################
+
+module "eventbridge_trigger" {
+  source = "../modules/eventbridge_trigger"
+
+  environment       = var.environment
+  bucket_name       = module.s3_ingestion.bucket_name
+  state_machine_arn = module.step_function.state_machine_arn
+}
+
