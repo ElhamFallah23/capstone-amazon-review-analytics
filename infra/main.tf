@@ -105,7 +105,7 @@ module "iam" {
 
   state_machine_name        = "reviews-etl-workflow"
   glue_job_arn              = module.glue.glue_job_arn
-  lambda_status_checker_arn = module.iam.lambda_role_arn
+  lambda_status_checker_arn = module.glue_status_lambda.lambda_function_arn
 
 
 }
