@@ -297,9 +297,9 @@ module "snowflake_quicksight_access" {
 module "eventbridge_trigger" {
   source = "../modules/eventbridge_trigger"
  providers = {
-    snowflake.accountadmin  = snowflake.accountadmin
-    snowflake.sysadmin      = snowflake.sysadmin
-    snowflake.securityadmin = snowflake.securityadmin
+    eventbridge.accountadmin  = eventbridge.accountadmin
+    eventbridge.sysadmin      = eventbridge.sysadmin
+    eventbridge.securityadmin = eventbridge.securityadmin
 
   }
   environment       = var.environment
