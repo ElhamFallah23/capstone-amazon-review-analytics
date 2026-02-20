@@ -296,7 +296,12 @@ module "snowflake_quicksight_access" {
 
 module "eventbridge_trigger" {
   source = "../modules/eventbridge_trigger"
+ providers = {
+    snowflake.accountadmin  = snowflake.accountadmin
+    snowflake.sysadmin      = snowflake.sysadmin
+    snowflake.securityadmin = snowflake.securityadmin
 
+  }
   environment       = var.environment
   bucket_name       = module.s3_ingestion.bucket_name
   state_machine_arn = module.step_function.state_machine_arn
