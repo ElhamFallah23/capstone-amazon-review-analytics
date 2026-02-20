@@ -55,11 +55,7 @@ def lambda_handler(event, context):
     )
 
     # Return status back to Step Function
-    return {
-        "statusCode": 200,
-        "body": json.dumps(message)
-    }
-
+    return message
 
 
 
