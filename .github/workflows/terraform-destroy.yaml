@@ -13,8 +13,8 @@ jobs:
     name: Terraform Destroy Dev Environment
     runs-on: ubuntu-latest
 
-    environment:
-      name: dev # Optional: protects with GitHub Environment rules
+    #environment:
+      #name: dev-approve # Optional: protects with GitHub Environment rules
 
     steps:
 
@@ -44,3 +44,6 @@ jobs:
       - name: Terraform Destroy
         working-directory: ./infra
         run: terraform destroy -auto-approve
+
+
+        #ihihoijpkj
