@@ -63,7 +63,6 @@ jobs:
         working-directory: ./infra
         env:
           TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+          TF_VAR_quicksight_user_password: ${{ secrets.QUICKSIGHT_USER_PASSWORD }}
 
 
-
-        #ihihoijpkj
