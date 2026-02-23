@@ -38,9 +38,11 @@ jobs:
       - name: Export QuickSight password for Terraform
         run: echo "TF_VAR_quicksight_user_password=${{ secrets.QUICKSIGHT_USER_PASSWORD }}" >> $GITHUB_ENV
 
-      - name: Export Snowflake private key for Terraform
-        run: echo "TF_VAR_snowflake_private_key=${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
-
+      - name: Export Snowflake private key
+        run: |
+          echo "TF_VAR_snowflake_private_key<<EOF" >> $GITHUB_ENV
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
+          echo "EOF" >> 
 
       # Step 4: Terraform Init
       - name: Terraform Init
