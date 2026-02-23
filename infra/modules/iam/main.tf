@@ -114,11 +114,11 @@ resource "aws_iam_role" "github_actions_oidc" {
           },
           "StringLike" : {
             "token.actions.githubusercontent.com:sub" : [
-              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
-              "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
-              "repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
-              #"repo:ElhamFallah23/capstone-amazon-review-analytics:*",
-              "repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
+              #"repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/main",
+              # "repo:ElhamFallah23/capstone-amazon-review-analytics:pull_request",
+              #"repo:ElhamFallah23/capstone-amazon-review-analytics:ref:refs/heads/*",
+              "repo:ElhamFallah23/capstone-amazon-review-analytics:*",
+              #"repo:ElhamFallah23/capstone-amazon-review-analytics:environment:dev-approve"
             ]
           }
         }
