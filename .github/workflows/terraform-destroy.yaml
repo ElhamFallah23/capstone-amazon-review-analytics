@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: dev # Optional: protects with GitHub Environment rules
+      name: dev-approve # Optional: protects with GitHub Environment rules
 
     steps:
 
