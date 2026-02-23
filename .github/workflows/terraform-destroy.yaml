@@ -45,6 +45,13 @@ jobs:
         run: |
           echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > private_key.pem
 
+      - name: Debug Terraform state
+        working-directory: ./infra
+        run: |
+          terraform workspace show
+          terraform state list || true
+
+
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
