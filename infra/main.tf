@@ -300,51 +300,51 @@ module "eventbridge_trigger" {
 # Reviews External Objects
 ##############################################
 
-module "reviews_external_objects" {
-source = "./modules/snowflake-external-object"
+#module "reviews_external_objects" {
+#source = "./modules/snowflake-external-object"
 
-database_name = var.database_name
-schema_name = "RAW"
-storage_integration_name = "ARA_S3_INTEGRATION"
+#database_name = var.database_name
+#schema_name = "RAW"
+#storage_integration_name = "ARA_S3_INTEGRATION"
 
-stage_name = "CAPSTONE_AMAZON_REVIEW_RAW_STAGE"
-external_table_name = "CAPSTONE_AMAZON_REVIEW_RAW_TABLE"
+#stage_name = "CAPSTONE_AMAZON_REVIEW_RAW_STAGE"
+#external_table_name = "CAPSTONE_AMAZON_REVIEW_RAW_TABLE"
 
-s3_url = "s3://${module.s3_ingestion.processed_bucket_name}/processed/reviews/"
+#s3_url = "s3://${module.s3_ingestion.processed_bucket_name}/processed/reviews/"
 
-transform_role_name = "ARA_TRANSFORM_DEV"
+#transform_role_name = "ARA_TRANSFORM_DEV"
 
-auto_refresh = false
-notification_channel = null
+#auto_refresh = false
+#notification_channel = null
 
-columns = [
-{
-name = "product_id"
-type = "STRING"
-expression = "(VALUE:asin::STRING)"
-},
-{
-name = "reviewer_id"
-type = "STRING"
-expression = "(VALUE:reviewerID::STRING)"
-},
-{
-name = "rating"
-type = "NUMBER"
-expression = "(VALUE:overall::NUMBER)"
-},
-{
-name = "review_text"
-type = "STRING"
-expression = "(VALUE:reviewText::STRING)"
-},
-{
-name = "review_time"
-type = "STRING"
-expression = "(VALUE:reviewTime::STRING)"
-}
-]
-}
+#columns = [
+#{
+#name = "product_id"
+#type = "STRING"
+#expression = "(VALUE:asin::STRING)"
+#},
+#{
+#name = "reviewer_id"
+#type = "STRING"
+#expression = "(VALUE:reviewerID::STRING)"
+#},
+#{
+#name = "rating"
+#type = "NUMBER"
+#expression = "(VALUE:overall::NUMBER)"
+#},
+#{
+#name = "review_text"
+#type = "STRING"
+#expression = "(VALUE:reviewText::STRING)"
+#},
+#{
+#name = "review_time"
+#type = "STRING"
+#expression = "(VALUE:reviewTime::STRING)"
+#}
+#]
+#}
 
 
 
@@ -356,51 +356,51 @@ expression = "(VALUE:reviewTime::STRING)"
 # Meta External Objects
 ##############################################
 
-module "meta_external_objects" {
-source = "./modules/snowflake-external-object" 
+#module "meta_external_objects" {
+#source = "./modules/snowflake-external-object" 
 
-database_name = var.database_name
-schema_name = "RAW"
-storage_integration_name = "ARA_S3_INTEGRATION"
+#database_name = var.database_name
+#schema_name = "RAW"
+#storage_integration_name = "ARA_S3_INTEGRATION"
 
-stage_name = "CAPSTONE_AMAZON_META_RAW_STAGE"
-external_table_name = "CAPSTONE_AMAZON_META_RAW_TABLE"
+#stage_name = "CAPSTONE_AMAZON_META_RAW_STAGE"
+#external_table_name = "CAPSTONE_AMAZON_META_RAW_TABLE"
 
-s3_url = "s3://${module.s3_ingestion.processed_bucket_name}/processed/meta/"
+#s3_url = "s3://${module.s3_ingestion.processed_bucket_name}/processed/meta/"
 
-transform_role_name = "ARA_TRANSFORM_DEV"
+#transform_role_name = "ARA_TRANSFORM_DEV"
 
-auto_refresh = false
-notification_channel = null
+#auto_refresh = false
+#notification_channel = null
 
-columns = [
-{
-name = "product_id"
-type = "STRING"
-expression = "(VALUE:asin::STRING)"
-},
-{
-name = "title"
-type = "STRING"
-expression = "(VALUE:title::STRING)"
-},
-{
-name = "brand"
-type = "STRING"
-expression = "(VALUE:brand::STRING)"
-},
-{
-name = "price"
-type = "STRING"
-expression = "(VALUE:price::STRING)"
-},
-{
-name = "description"
-type = "STRING"
-expression = "(VALUE:description::STRING)"
-}
-]
-}
+#columns = [
+#{
+#name = "product_id"
+#type = "STRING"
+#expression = "(VALUE:asin::STRING)"
+#},
+#{
+#name = "title"
+#type = "STRING"
+#expression = "(VALUE:title::STRING)"
+#},
+#{
+#name = "brand"
+#type = "STRING"
+#expression = "(VALUE:brand::STRING)"
+#},
+#{
+#name = "price"
+#type = "STRING"
+#expression = "(VALUE:price::STRING)"
+#},
+#{
+#name = "description"
+#type = "STRING"
+#expression = "(VALUE:description::STRING)"
+#}
+#]
+#}
 
 
 
