@@ -1,0 +1,46 @@
+name: Terraform Destroy (DEV)
+
+# This workflow is triggered manually from GitHub UI
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # Required for OIDC authentication
+
+jobs:
+  terraform-destroy:
+    name: Terraform Destroy Dev Environment
+    runs-on: ubuntu-latest
+
+    environment:
+      name: dev # Optional: protects with GitHub Environment rules
+
+    steps:
+
+    # Step 1: Checkout repository
+    - name: Checkout source code
+    uses: actions/checkout@v3
+
+    # Step 2: Setup Terraform CLI
+    - name: Setup Terraform
+    uses: hashicorp/setup-terraform@v3
+    with:
+    terraform_version: 1.6.6
+
+    # Step 3: Configure AWS credentials using OIDC
+    - name: Configure AWS credentials
+    uses: aws-actions/configure-aws-credentials@v4
+    with:
+    role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
+    aws-region: eu-central-1
+
+    # Step 4: Terraform Init
+    - name: Terraform Init
+    working-directory: ./infra
+    run: terraform init
+
+    # Step 5: Terraform Destroy
+    - name: Terraform Destroy
+    working-directory: ./infra
+    run: terraform destroy -auto-approve
