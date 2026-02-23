@@ -40,6 +40,9 @@ jobs:
         working-directory: ./infra
         run: terraform init
 
+      - name: Export QuickSight password for Terraform
+        run: echo "TF_VAR_quicksight_user_password=${{ secrets.QUICKSIGHT_USER_PASSWORD }}" >> $GITHUB_ENV
+
       # Step 5: Terraform Destroy
       - name: Terraform Destroy
         working-directory: ./infra
