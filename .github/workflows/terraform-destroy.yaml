@@ -35,27 +35,21 @@ jobs:
           role-to-assume: arn:aws:iam::887724315744:role/github-actions-oidc-role-dev
           aws-region: eu-central-1
 
-      - name: Export QuickSight password for Terraform
-        run: echo "TF_VAR_quicksight_user_password=${{ secrets.QUICKSIGHT_USER_PASSWORD }}" >> $GITHUB_ENV
-
-      - name: Export Snowflake private key
-        run: |
-          {
-            echo "TF_VAR_snowflake_private_key<<EOF"
-            echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}"
-            echo "EOF"
-          } >> $GITHUB_ENV
 
       # Step 4: Terraform Init
       - name: Terraform Init
         working-directory: ./infra
         run: terraform init
 
-      
-      # Step 5: Terraform Destroy
+      - name: Create Snowflake private key file
+        run: |
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > private_key.pem
+
       - name: Terraform Destroy
-        working-directory: ./infra
         run: terraform destroy -auto-approve
+        env:
+          TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+
 
 
         #ihihoijpkj
