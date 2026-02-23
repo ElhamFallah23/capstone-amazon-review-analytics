@@ -52,8 +52,15 @@ jobs:
           terraform state list || true
 
 
+      - name: Select dev workspace
+        working-directory: ./infra
+        run: |
+          terraform workspace select dev || terraform workspace new dev
+
+
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
+        working-directory: ./infra
         env:
           TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
