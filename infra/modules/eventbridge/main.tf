@@ -49,7 +49,7 @@ resource "aws_cloudwatch_event_rule" "s3_object_created" {
       },
       object = {
         key = [{
-          prefix = "test/"
+          prefix = "raw/"
         }]
       }
     }
