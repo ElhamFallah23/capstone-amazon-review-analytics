@@ -40,9 +40,11 @@ jobs:
 
       - name: Export Snowflake private key
         run: |
-          echo "TF_VAR_snowflake_private_key<<EOF" >> $GITHUB_ENV
-          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
-          echo "EOF" >> 
+          {
+            echo "TF_VAR_snowflake_private_key<<EOF"
+            echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}"
+            echo "EOF"
+          } >> $GITHUB_ENV
 
       # Step 4: Terraform Init
       - name: Terraform Init
