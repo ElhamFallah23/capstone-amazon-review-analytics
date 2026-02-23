@@ -52,10 +52,9 @@ jobs:
           terraform state list || true
 
 
-      - name: Select dev workspace
+      - name: Ensure default workspace
         working-directory: ./infra
-        run: |
-          terraform workspace select dev || terraform workspace new dev
+        run: terraform workspace select default
 
 
       - name: Terraform Destroy
